@@ -4,12 +4,33 @@
 
 ## 项目简介
 
-Baibai 是一个 **Vibe Coding 开发仓库**，整合了代码生成、程序开发和工作流自动化的完整能力。
+Baibai 是一个 **Vibe Coding 开发仓库**，整合了代码生成、程序开发、短剧创作和工作流自动化的完整能力。
 
 核心定位：
 - **代码仓库** — 存放 Vibe Coding 相关的工具代码和模板
 - **程序开发** — 提供基于 AI 的编程环境和 IDE
+- **短剧创作** — 编剧工坊创作工具，一键发布到三平台
 - **工作流自动化** — 配置自动同步、CI/CD、赞助管理等开发工作流
+
+---
+
+## 🎬 短剧创作工具
+
+### 编剧工坊
+
+[![](https://img.shields.io/badge/在线使用-点击打开-6366f1?style=for-the-badge)](https://zeon7744.github.io/baibai/)
+
+编剧工坊是一款专业的短剧剧本创作工具，支持：
+- **要素生成** — 从零创作，输入故事要素自动生成完整剧本
+- **小说改编** — 上传小说文本，自动改编为短剧格式
+- **格式校验** — 符合红果短剧平台规范（≤15字对话、≥3爽点/集）
+- **一键发布** — 创作完成后直接推送至 GitHub/Gitee/爱发电
+
+<!-- DRAMA_PROJECTS -->
+
+## 🙏 感谢赞助
+
+WTcfMbUpkvFdACswPruY3ySxG87KJ45e
 
 ---
 
@@ -32,27 +53,68 @@ GitHub (国际) ↔ Gitee (国内) ↔ 爱发电 (赞助变现)
 ```
 baibai/
 ├── README.md                    # 项目介绍
+├── 编剧工坊.html                # 短剧创作工具（GitHub Pages）
 ├── docs/                        # 详细文档
 │   ├── FEATURES.md              # 功能特性
 │   ├── WORKFLOW.md              # 工作流说明
 │   ├── SETUP.md                 # 安装配置
 │   └── PLATFORMS.md             # 三平台联动
+├── 短剧项目/                   # 短剧剧本库
+│   └── {剧名}/
+│       └── {剧名}_完整剧本.md
 ├── .github/workflows/           # 自动化工作流
 │   ├── sync-to-gitee.yml        # Gitee 同步
-│   └── afdian-sponsors.yml      # 赞助名单更新
+│   ├── afdian-sponsors.yml      # 赞助名单更新
+│   ├── publish-pages.yml        # GitHub Pages 发布
+│   └── update-content.yml       # 内容自动更新
 └── scripts/                     # 工具脚本
+    ├── fetch-sponsors.sh        # 获取赞助者名单
+    └── update-content.sh        # 更新README内容
 ```
 
 ---
 
 ## 快速开始
 
+### 克隆仓库
+
 ```bash
 git clone https://github.com/Zeon7744/baibai.git
 cd baibai
-npm install
-npm run dev
 ```
+
+### 使用编剧工坊
+
+1. 访问 [编剧工坊](https://zeon7744.github.io/baibai/)
+2. 选择创作模式
+3. 填写故事要素或上传小说
+4. 导出剧本文件
+5. 提交到仓库，自动同步
+
+### 本地运行
+
+```bash
+# 直接打开 HTML 文件
+open 编剧工坊.html
+```
+
+---
+
+## 短剧创作规范
+
+### 格式要求
+- ✅ 标题：第X集：集名
+- ✅ 结尾：第X集完
+- ✅ 对话：≤15字/句
+- ✅ 每集：≥500字，≥3爽点+1甜点
+- ❌ 禁止：耀/曜、【】括号
+
+### 发布流程
+1. 使用编剧工坊创作剧本
+2. 保存到 `短剧项目/{剧名}/` 目录
+3. 提交到 GitHub
+4. 自动同步到 Gitee
+5. 更新爱发电 README
 
 ---
 

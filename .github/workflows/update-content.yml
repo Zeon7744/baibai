@@ -1,0 +1,41 @@
+name: Update Content and Sync
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - '短剧项目/**'
+      - 'README.md'
+  schedule:
+    - cron: '0 9 * * *'
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Update Content
+        env:
+          AFDIAN_TOKEN: "${{ secrets.AFDIAN_TOKEN }}"
+        run: bash scripts/update-content.sh
+
+      - name: Commit Changes
+        run: |
+          git config user.email "action@github.com"
+          git config user.name "GitHub Action"
+          git add README.md
+          git diff --staged --quiet || git commit -m "chore: update content and sponsors"
+          git push
+
+      - name: Sync to Gitee
+        env:
+          GITEE_TOKEN: ${{ secrets.GITEE_TOKEN }}
+          GITEE_USER: ${{ secrets.GITEE_USER }}
+        run: |
+          git remote add gitee https://${{ secrets.GITEE_USER }}:${GITEE_TOKEN}@gitee.com/${{ secrets.GITEE_USER }}/baibai.git
+          git push gitee --all --force

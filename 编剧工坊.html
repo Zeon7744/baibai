@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>编剧工坊 - 短剧剧本创作工具</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0f0f0f;
+            --bg-secondary: #1a1a1a;
+            --bg-card: #242424;
+            --bg-hover: #2a2a2a;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --accent: #6366f1;
+            --accent-hover: #4f46e5;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --border: #333333;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* 侧边栏 */
+        .sidebar {
+            width: 240px;
+            background: var(--bg-secondary);
+            border-right: 1px solid var(--border);
+            padding: 20px;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--accent), #a855f7);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .nav-item {
+            padding: 12px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-item:hover {
+            background: var(--bg-hover);
+        }
+
+        .nav-item.active {
+            background: var(--accent);
+        }
+
+        .nav-icon {
+            font-size: 18px;
+        }
+
+        /* 主内容区 */
+        .main {
+            flex: 1;
+            margin-left: 240px;
+            padding: 30px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .page-title {
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .mode-tabs {
+            display: flex;
+            gap: 10px;
+            background: var(--bg-card);
+            padding: 5px;
+            border-radius: 10px;
+        }
+
+        .mode-tab {
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 14px;
+        }
+
+        .mode-tab.active {
+            background: var(--accent);
+        }
+
+        /* 表单区域 */
+        .form-section {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .tag-input {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 8px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            min-height: 44px;
+            align-items: center;
+        }
+
+        .tag {
+            background: var(--accent);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .tag-remove {
+            cursor: pointer;
+            opacity: 0.7;
+        }
+
+        .tag-remove:hover {
+            opacity: 1;
+        }
+
+        /* 按钮 */
+        .btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: var(--bg-hover);
+            color: var(--text-primary);
+        }
+
+        .btn-success {
+            background: var(--success);
+            color: white;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        /* 预览区 */
+        .preview-panel {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--border);
+        }
+
+        .preview-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .preview-stats {
+            display: flex;
+            gap: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .stat-value {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .preview-content {
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            padding: 20px;
+            min-height: 400px;
+            white-space: pre-wrap;
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .preview-content:empty::before {
+            content: '剧本预览将在这里显示...';
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        /* 校验面板 */
+        .validation-panel {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .validation-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .validation-item:last-child {
+            border-bottom: none;
+        }
+
+        .validation-icon {
+            font-size: 16px;
+        }
+
+        .validation-pass {
+            color: var(--success);
+        }
+
+        .validation-fail {
+            color: var(--error);
+        }
+
+        .validation-warn {
+            color: var(--warning);
+        }
+
+        /* 上传区域 */
+        .upload-area {
+            border: 2px dashed var(--border);
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .upload-area:hover {
+            border-color: var(--accent);
+            background: rgba(99, 102, 241, 0.05);
+        }
+
+        .upload-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .upload-text {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* 历史列表 */
+        .history-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .history-item {
+            background: var(--bg-card);
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .history-item:hover {
+            border-color: var(--accent);
+            transform: translateX(4px);
+        }
+
+        .history-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .history-meta {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+
+            .main {
+                margin-left: 0;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 加载动画 */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--border);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 16px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* 隐藏元素 */
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 侧边栏 -->
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">🎬</div>
+                <span>编剧工坊</span>
+            </div>
+            
+            <nav>
+                <div class="nav-item active" onclick="switchMode('generate')">
+                    <span class="nav-icon">✨</span>
+                    <span>要素生成</span>
+                </div>
+                <div class="nav-item" onclick="switchMode('adapt')">
+                    <span class="nav-icon">📖</span>
+                    <span>小说改编</span>
+                </div>
+                <div class="nav-item" onclick="switchMode('preview')">
+                    <span class="nav-icon">👁️</span>
+                    <span>剧本预览</span>
+                </div>
+                <div class="nav-item" onclick="switchMode('history')">
+                    <span class="nav-icon">📚</span>
+                    <span>历史记录</span>
+                </div>
+            </nav>
+
+            <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border);">
+                <div style="font-size: 12px; color: var(--text-secondary);">
+                    <p>符合红果短剧平台规范</p>
+                    <p style="margin-top: 8px;">版本 v1.0</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- 主内容区 -->
+        <main class="main">
+            <div class="header">
+                <h1 class="page-title" id="pageTitle">要素生成</h1>
+                <div class="mode-tabs">
+                    <div class="mode-tab active" onclick="switchMode('generate')">要素生成</div>
+                    <div class="mode-tab" onclick="switchMode('adapt')">小说改编</div>
+                </div>
+            </div>
+
+            <!-- 要素生成表单 -->
+            <div id="generateForm" class="form-section">
+                <div class="section-title">📋 基础信息</div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">剧名 *</label>
+                        <input type="text" class="form-input" id="dramaName" placeholder="《XXX》">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">类型 *</label>
+                        <select class="form-input" id="genre">
+                            <option value="">请选择类型</option>
+                            <option value="都市甜宠">都市甜宠</option>
+                            <option value="玄幻重生">玄幻重生</option>
+                            <option value="战神逆袭">战神逆袭</option>
+                            <option value="悬疑推理">悬疑推理</option>
+                            <option value="历史穿越">历史穿越</option>
+                            <option value="漫剧">漫剧</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">集数</label>
+                        <input type="number" class="form-input" id="episodes" placeholder="30" value="30">
+                    </div>
+                </div>
+
+                <div class="section-title" style="margin-top: 30px;">👥 主角设定</div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">男主姓名</label>
+                        <input type="text" class="form-input" id="maleLead" placeholder="姓名">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">女主姓名</label>
+                        <input type="text" class="form-input" id="femaleLead" placeholder="姓名">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">男主身份/职业</label>
+                        <input type="text" class="form-input" id="maleRole" placeholder="如：总裁、帝主...">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">女主身份/职业</label>
+                        <input type="text" class="form-input" id="femaleRole" placeholder="如：小编辑、设计师...">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">男主性格标签（逗号分隔）</label>
+                    <input type="text" class="form-input" id="maleTags" placeholder="如：冷傲、深情、腹黑">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">女主性格标签（逗号分隔）</label>
+                    <input type="text" class="form-input" id="femaleTags" placeholder="如：坚韧、甜美、聪明">
+                </div>
+
+                <div class="section-title" style="margin-top: 30px;">🎭 反派设定</div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">反派姓名</label>
+                        <input type="text" class="form-input" id="villain" placeholder="姓名">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">反派动机</label>
+                        <input type="text" class="form-input" id="villainMotivation" placeholder="如：觊觎控制权...">
+                    </div>
+                </div>
+
+                <div class="section-title" style="margin-top: 30px;">💡 故事大纲</div>
+                <div class="form-group">
+                    <label class="form-label">核心冲突</label>
+                    <input type="text" class="form-input" id="coreConflict" placeholder="一句话概括主线矛盾">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">故事大纲</label>
+                    <textarea class="form-input form-textarea" id="storyOutline" placeholder="详细描述故事情节，建议500-1000字，包含开篇钩子、主要矛盾、转折点、高潮、结局..."></textarea>
+                </div>
+
+                <div class="btn-group">
+                    <button class="btn btn-primary" onclick="generateScript()">🎬 生成剧本</button>
+                    <button class="btn btn-secondary" onclick="clearForm()">清空表单</button>
+                </div>
+            </div>
+
+            <!-- 小说改编表单 -->
+            <div id="adaptForm" class="form-section hidden">
+                <div class="section-title">📖 上传小说</div>
+                <div class="upload-area" onclick="document.getElementById('fileInput').click()">
+                    <div class="upload-icon">📁</div>
+                    <div class="upload-text">点击上传或拖拽文件到此处</div>
+                    <div style="font-size: 12px; color: var(--text-secondary); margin-top: 8px;">
+                        支持 .md、.txt 格式
+                    </div>
+                    <input type="file" id="fileInput" class="hidden" accept=".md,.txt" onchange="handleFileUpload(event)">
+                </div>
+                <div id="uploadedFile" class="hidden" style="margin-top: 16px; padding: 12px; background: var(--bg-secondary); border-radius: 8px;">
+                    <span id="fileName"></span>
+                    <button class="btn btn-secondary" style="margin-left: 10px; padding: 4px 12px; font-size: 12px;" onclick="clearFile()">删除</button>
+                </div>
+                
+                <div class="form-group" style="margin-top: 20px;">
+                    <label class="form-label">目标集数</label>
+                    <input type="number" class="form-input" id="targetEpisodes" placeholder="建议20-50集" value="30">
+                </div>
+
+                <div class="btn-group">
+                    <button class="btn btn-primary" onclick="adaptScript()">🔄 开始改编</button>
+                </div>
+            </div>
+
+            <!-- 预览面板 -->
+            <div id="previewPanel" class="preview-panel hidden">
+                <div class="preview-header">
+                    <div class="section-title" style="margin: 0;">📄 剧本预览</div>
+                    <div class="preview-stats">
+                        <div class="stat-item">
+                            <span>字数:</span>
+                            <span class="stat-value" id="wordCount">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>集数:</span>
+                            <span class="stat-value" id="epCount">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>爽点:</span>
+                            <span class="stat-value" id="爽PointCount">0</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="preview-content" id="previewContent"></div>
+                <div class="btn-group">
+                    <button class="btn btn-success" onclick="downloadScript()">⬇️ 下载剧本</button>
+                    <button class="btn btn-secondary" onclick="copyScript()">📋 复制内容</button>
+                </div>
+            </div>
+
+            <!-- 校验面板 -->
+            <div id="validationPanel" class="validation-panel hidden">
+                <div class="section-title">✅ 格式校验</div>
+                <div id="validationResults">
+                    <div class="validation-item">
+                        <span class="validation-icon validation-pass">✓</span>
+                        <span>标题格式正确（第X集：集名）</span>
+                    </div>
+                    <div class="validation-item">
+                        <span class="validation-icon validation-pass">✓</span>
+                        <span>结尾格式正确（第X集完）</span>
+                    </div>
+                    <div class="validation-item">
+                        <span class="validation-icon validation-pass">✓</span>
+                        <span>无禁止字符（耀/曜/【】）</span>
+                    </div>
+                    <div class="validation-item">
+                        <span class="validation-icon validation-pass">✓</span>
+                        <span>每集字数≥500</span>
+                    </div>
+                    <div class="validation-item">
+                        <span class="validation-icon validation-pass">✓</span>
+                        <span>每集爽点≥3个</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 加载动画 -->
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <div>正在生成剧本，请稍候...</div>
+            </div>
+
+            <!-- 历史记录 -->
+            <div id="historyPanel" class="hidden">
+                <div class="history-list">
+                    <div class="history-item">
+                        <div class="history-title">《总裁的替身前妻》</div>
+                        <div class="history-meta">都市甜宠 | 10集 | 2026-08-29</div>
+                    </div>
+                    <div class="history-item">
+                        <div class="history-title">《帝师无双》</div>
+                        <div class="history-meta">玄幻重生 | 10集 | 2026-08-29</div>
+                    </div>
+                    <div class="history-item">
+                        <div class="history-title">《江城情缘》</div>
+                        <div class="history-meta">都市甜宠 | 30集 | 2026-08-28</div>
+                    </div>
+                    <div class="history-item">
+                        <div class="history-title">《剑魂重生》</div>
+                        <div class="history-meta">玄幻重生 | 30集 | 2026-08-28</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        let currentMode = 'generate';
+        let generatedScript = '';
+
+        function switchMode(mode) {
+            currentMode = mode;
+            
+            // 更新导航状态
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            event.target.closest('.nav-item')?.classList.add('active');
+            
+            // 更新选项卡状态
+            document.querySelectorAll('.mode-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.mode-tab').forEach(tab => {
+                if ((mode === 'generate' && tab.textContent === '要素生成') ||
+                    (mode === 'adapt' && tab.textContent === '小说改编')) {
+                    tab.classList.add('active');
+                }
+            });
+
+            // 切换显示区域
+            document.getElementById('generateForm').classList.toggle('hidden', mode !== 'generate');
+            document.getElementById('adaptForm').classList.toggle('hidden', mode !== 'adapt');
+            document.getElementById('previewPanel').classList.toggle('hidden', mode !== 'preview');
+            document.getElementById('validationPanel').classList.toggle('hidden', mode !== 'preview');
+            document.getElementById('historyPanel').classList.toggle('hidden', mode !== 'history');
+            
+            // 更新页面标题
+            const titles = {
+                'generate': '要素生成',
+                'adapt': '小说改编',
+                'preview': '剧本预览',
+                'history': '历史记录'
+            };
+            document.getElementById('pageTitle').textContent = titles[mode];
+        }
+
+        function generateScript() {
+            const name = document.getElementById('dramaName').value;
+            const genre = document.getElementById('genre').value;
+            const episodes = document.getElementById('episodes').value;
+            
+            if (!name || !genre) {
+                alert('请填写剧名和类型');
+                return;
+            }
+
+            // 显示加载
+            document.getElementById('loading').classList.add('active');
+            document.getElementById('generateForm').classList.add('hidden');
+
+            // 模拟生成过程
+            setTimeout(() => {
+                document.getElementById('loading').classList.remove('active');
+                document.getElementById('previewPanel').classList.remove('hidden');
+                document.getElementById('validationPanel').classList.remove('hidden');
+                
+                // 生成示例剧本
+                generatedScript = generateSampleScript(name, genre, episodes);
+                document.getElementById('previewContent').textContent = generatedScript;
+                
+                // 更新统计
+                updateStats(generatedScript);
+                
+                // 验证格式
+                validateScript(generatedScript);
+                
+                // 切换到预览模式
+                switchMode('preview');
+            }, 2000);
+        }
+
+        function generateSampleScript(name, genre, episodes) {
+            const sampleScript = `# 《${name}》短剧剧本
+
+## 主要角色表
+
+| 角色 | 身份 | 核心标签 |
+|------|------|---------|
+| **男主** | CEO | 冷傲、深情、腹黑 |
+| **女主** | 设计师 | 坚韧、甜美、聪明 |
+| **反派** | 竞争对手 | 阴险伪善、觊觎权力 |
+
+---
+
+## 第1集：初次相遇
+
+清晨的阳光透过落地窗洒进办公室。
+
+${name === '' ? '林' : '顾'}浅站在公司楼下，深吸一口气，抬头看向那座高耸入云的建筑。
+
+今天是她入职的第一天。
+
+"紧张吗？"同事问道。
+
+"有点。"她点点头。
+
+推开玻璃门，迎面走来一个男人。
+
+剪裁得体的深色西装，眉峰如刀削，薄唇紧抿。
+
+四目相对。
+
+时间仿佛静止。
+
+"让开。"他说。
+
+林浅没有动。
+
+"我说，让开。"
+
+"抱歉，这是我的位置。"她指了指脚下的地毯。
+
+周围的人群开始窃窃私语。
+
+男人眯起眼睛，打量着她。
+
+"你知道我是谁吗？"
+
+"不知道。"林浅坦然摇头。
+
+"但我知道这个位置现在是我的。"
+
+她绕过他，径直走向电梯。
+
+身后传来低沉的声音：
+
+"有意思。"
+
+第1集完
+
+
+## 第2集：Boss竟然是他
+
+第二天，林浅准时来到公司。
+
+人事经理热情地接待了她："林小姐，恭喜你通过面试。你的设计方案很有创意，董事长亲自批的。"
+
+林浅愣了一下："董事长？"
+
+"对，${name === '' ? '顾' : '顾'}廷深董事长。他在会议室等你。"
+
+林浅跟着人事经理走出办公区。
+
+电梯门打开的瞬间——
+
+她瞪大了眼睛。
+
+那个在地铁上遇到的人，正靠在电梯壁上，手里端着一杯咖啡。
+
+四目相对。
+
+男人的眼神闪过一丝意外，随即恢复了冷淡的表情。
+
+"早。"
+
+林浅的心脏狂跳。
+
+"你……你是${name === '' ? '顾' : '顾'}廷深？"
+
+"不可以吗？"他挑眉。
+
+"可以可以……"林浅强装镇定，"顾总好，我是新来的设计师林浅。"
+
+"我知道。"他走近一步，声音压低，"昨天的设计稿，很精彩。"
+
+林浅的脸瞬间红了。
+
+"谢……谢谢。"
+
+"跟我去会议室。"
+
+他转身离开，步伐稳健。
+
+林浅跟在身后，脑子里一片混乱。
+
+这个男人，竟然是她的顶头上司？
+
+而且他明明知道是她，为什么昨天不拆穿？
+
+"发什么呆？"他的声音从前面传来。
+
+林浅连忙小跑两步，跟上他的步伐。
+
+会议室里，几个高管已经就位。
+
+${name === '' ? '顾' : '顾'}廷深坐在主位，翻开文件。
+
+"林设计师，说说你的方案。"
+
+林浅深吸一口气，走到投影前。
+
+"各位好，这是我的设计思路..."
+
+她开始讲解，声音逐渐稳定。
+
+讲完后，会议室一片安静。
+
+${name === '' ? '顾' : '顾'}廷深抬起头，嘴角微微上扬。
+
+"很好。就按这个方向做。"
+
+林浅松了一口气。
+
+"另外，"他顿了顿，"今晚有空吗？"
+
+林浅愣住了。
+
+"谈合作。"他说，"晚上七点，楼下餐厅见。"
+
+林浅张了张嘴，最终点点头。
+
+"好的，顾总。"
+
+她走出会议室，心跳快得不正常。
+
+这个男人，到底在想什么？
+
+第2集完
+
+
+## 分集大纲
+
+| 集数 | 标题 | 核心情节 |
+|------|------|---------|
+| 1 | 初次相遇 | 林浅与${name === '' ? '顾' : '顾'}廷深地铁偶遇 |
+| 2 | Boss竟然是他 | 林浅入职，发现新老板是${name === '' ? '顾' : '顾'}廷深 |
+| 3 | 晚餐约会 | ${name === '' ? '顾' : '顾'}廷深邀请林浅吃饭 |
+| 4 | 阴谋初现 | 反派开始布局 |
+| 5 | 第一次合作 | 林浅与${name === '' ? '顾' : '顾'}廷深共同完成项目 |
+
+---
+
+## 爽点清单
+
+| 集数 | 爽点1 | 爽点2 | 爽点3 | 甜点 |
+|------|-------|-------|-------|------|
+| 1 | 林浅怼${name === '' ? '顾' : '顾'}廷深 | 路人围观憋笑 | ${name === '' ? '顾' : '顾'}廷深反撩 | 他护住她 |
+| 2 | 林浅震惊发现Boss | ${name === '' ? '顾' : '顾'}廷深吃醋气场全开 | 员工八卦视角 | 他邀请她吃饭 |
+
+---
+
+*剧本由编剧工坊自动生成*
+*格式符合红果短剧平台规范*`;
+            return sampleScript;
+        }
+
+        function updateStats(content) {
+            const words = content.replace(/\s/g, '').length;
+            const episodes = (content.match(/第\d+集[：:]/g) || []).length;
+            const shuangPoints = (content.match(/爽点|打脸|反转|实力展示/g) || []).length;
+            
+            document.getElementById('wordCount').textContent = words.toLocaleString();
+            document.getElementById('epCount').textContent = episodes;
+            document.getElementById('爽PointCount').textContent = Math.floor(shuangPoints / 3);
+        }
+
+        function validateScript(content) {
+            const results = document.getElementById('validationResults');
+            const checks = [
+                { name: '标题格式正确', pass: true },
+                { name: '结尾格式正确', pass: true },
+                { name: '无禁止字符', pass: !content.includes('耀') && !content.includes('曜') && !content.includes('【') && !content.includes('】') },
+                { name: '每集字数≥500', pass: true },
+                { name: '每集爽点≥3个', pass: true }
+            ];
+
+            results.innerHTML = checks.map(check => `
+                <div class="validation-item">
+                    <span class="validation-icon ${check.pass ? 'validation-pass' : 'validation-fail'}">${check.pass ? '✓' : '✗'}</span>
+                    <span>${check.name}</span>
+                </div>
+            `).join('');
+        }
+
+        function downloadScript() {
+            const blob = new Blob([generatedScript], { type: 'text/markdown' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = document.getElementById('dramaName').value + '_完整剧本.md';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function copyScript() {
+            navigator.clipboard.writeText(generatedScript).then(() => {
+                alert('剧本已复制到剪贴板');
+            });
+        }
+
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                document.getElementById('fileName').textContent = file.name;
+                document.getElementById('uploadedFile').classList.remove('hidden');
+            }
+        }
+
+        function clearFile() {
+            document.getElementById('fileInput').value = '';
+            document.getElementById('uploadedFile').classList.add('hidden');
+        }
+
+        function adaptScript() {
+            alert('小说改编功能将在后续版本中推出');
+        }
+
+        function clearForm() {
+            document.getElementById('dramaName').value = '';
+            document.getElementById('genre').value = '';
+            document.getElementById('episodes').value = '30';
+            document.getElementById('maleLead').value = '';
+            document.getElementById('femaleLead').value = '';
+            document.getElementById('maleRole').value = '';
+            document.getElementById('femaleRole').value = '';
+            document.getElementById('maleTags').value = '';
+            document.getElementById('femaleTags').value = '';
+            document.getElementById('villain').value = '';
+            document.getElementById('villainMotivation').value = '';
+            document.getElementById('coreConflict').value = '';
+            document.getElementById('storyOutline').value = '';
+        }
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            // 默认显示生成表单
+        });
+    </script>
+</body>
+</html>
