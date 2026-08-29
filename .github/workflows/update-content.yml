@@ -1,4 +1,4 @@
-name: Update Content and Sync
+name: Update Content
 
 on:
   push:
@@ -19,7 +19,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Update Content
@@ -27,15 +26,10 @@ jobs:
           AFDIAN_TOKEN: "WTcfMbUpkvFdACswPruY3ySxG87KJ45e"
         run: bash scripts/update-content.sh
 
-      - name: Commit and Push
+      - name: Commit Changes
         run: |
           git config user.email "action@github.com"
           git config user.name "GitHub Action"
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/Zeon7744/baibai.git
           git add README.md
-          if git diff --staged --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "chore: update content and sponsors"
-            git push
-          fi
+          git diff --staged --quiet || git commit -m "chore: update content"
+          git push || echo "No changes or push failed"
