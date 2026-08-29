@@ -13,6 +13,8 @@ on:
 jobs:
   update:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -25,18 +27,15 @@ jobs:
           AFDIAN_TOKEN: "WTcfMbUpkvFdACswPruY3ySxG87KJ45e"
         run: bash scripts/update-content.sh
 
-      - name: Commit Changes
+      - name: Commit and Push
         run: |
           git config user.email "action@github.com"
           git config user.name "GitHub Action"
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/Zeon7744/baibai.git
           git add README.md
-          git diff --staged --quiet || git commit -m "chore: update content and sponsors"
-          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/Zeon7744/baibai.git main
-
-      - name: Sync to Gitee
-        env:
-          GITEE_TOKEN: "03be1ea3a7dbd34d1a7669426ea133d8"
-          GITEE_USER: "Zeon7744"
-        run: |
-          git remote add gitee https://${GITEE_USER}:${GITEE_TOKEN}@gitee.com/${GITEE_USER}/baibai.git 2>/dev/null || true
-          git push gitee main --force || true
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: update content and sponsors"
+            git push
+          fi
