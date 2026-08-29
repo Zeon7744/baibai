@@ -20,18 +20,15 @@ jobs:
           PARAMS='{"page":1}'
           SIGN=$(echo -n "${AFDIAN_TOKEN}${PARAMS}${TS}${AFDIAN_USER_ID}" | md5sum | cut -d' ' -f1)
           
-          RESPONSE=$(curl -s -X POST "https://afdian.net/api/open/query-sponsor" \
+          curl -s -X POST "https://afdian.net/api/open/query-sponsor" \
             -H "Content-Type: application/json" \
-            -d "{\"user_id\": \"${AFDIAN_USER_ID}\", \"params\": \"${PARAMS}\", \"ts\": ${TS}, \"sign\": \"${SIGN}\"}")
+            -d "{\"user_id\": \"${AFDIAN_USER_ID}\", \"params\": \"${PARAMS}\", \"ts\": ${TS}, \"sign\": \"${SIGN}\"}" \
+            > /tmp/afdian_resp.json
           
-          python3 << 'PYEOF'
-import json, sys
-with open('/tmp/afdian_data.json', 'w') as f:
-    pass  # placeholder
-PYEOF
-          echo "$RESPONSE" | python3 -c "
+          python3 -c "
 import json,sys
-data=json.load(sys.stdin)
+with open('/tmp/afdian_resp.json') as f:
+    data=json.load(f)
 if data.get('ec')!=200:
     print('API Error:',data.get('em'));sys.exit(1)
 sponsors=data['data']['list']
@@ -39,7 +36,7 @@ lines=[]
 for s in sponsors[:20]:
     u=s.get('user',{})
     lines.append(f\"- [{u.get('name','匿名')}](https://afdian.net/u/{u.get('user_id','')})\")
-print('\\n'.join(lines))
+print('\n'.join(lines))
 " > /tmp/sponsors.txt
           cat /tmp/sponsors.txt
 
@@ -47,12 +44,12 @@ print('\\n'.join(lines))
         run: |
           SPONSORS=$(cat /tmp/sponsors.txt 2>/dev/null || echo "暂无赞助者")
           
-          python3 << PYEOF
+          python3 << 'PYEOF'
 import re
 content = open("README.md", encoding="utf-8").read()
-sponsor_section = f"""## 🙏 感谢赞助
+sponsor_section = """## 🙏 感谢赞助
 
-{SPONSORS}
+暂无赞助者
 
 ---
 """
