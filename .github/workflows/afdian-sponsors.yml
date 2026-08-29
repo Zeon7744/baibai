@@ -1,0 +1,73 @@
+name: 更新爱发电赞助者名单
+
+on:
+  schedule:
+    - cron: '0 9 * * *'
+  workflow_dispatch:
+
+jobs:
+  update-sponsors:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch Afdian Sponsors
+        env:
+          AFDIAN_USER_ID: "0c59dda8a1bb11f19b9552540025c377"
+          AFDIAN_TOKEN: "${{ secrets.AFDIAN_TOKEN }}"
+        run: |
+          TS=$(date +%s)
+          PARAMS='{"page":1}'
+          SIGN=$(echo -n "${AFDIAN_TOKEN}${PARAMS}${TS}${AFDIAN_USER_ID}" | md5sum | cut -d' ' -f1)
+          
+          RESPONSE=$(curl -s -X POST "https://afdian.net/api/open/query-sponsor" \
+            -H "Content-Type: application/json" \
+            -d "{\"user_id\": \"${AFDIAN_USER_ID}\", \"params\": \"${PARAMS}\", \"ts\": ${TS}, \"sign\": \"${SIGN}\"}")
+          
+          python3 << 'PYEOF'
+import json, sys
+with open('/tmp/afdian_data.json', 'w') as f:
+    pass  # placeholder
+PYEOF
+          echo "$RESPONSE" | python3 -c "
+import json,sys
+data=json.load(sys.stdin)
+if data.get('ec')!=200:
+    print('API Error:',data.get('em'));sys.exit(1)
+sponsors=data['data']['list']
+lines=[]
+for s in sponsors[:20]:
+    u=s.get('user',{})
+    lines.append(f\"- [{u.get('name','匿名')}](https://afdian.net/u/{u.get('user_id','')})\")
+print('\\n'.join(lines))
+" > /tmp/sponsors.txt
+          cat /tmp/sponsors.txt
+
+      - name: Update README
+        run: |
+          SPONSORS=$(cat /tmp/sponsors.txt 2>/dev/null || echo "暂无赞助者")
+          
+          python3 << PYEOF
+import re
+content = open("README.md", encoding="utf-8").read()
+sponsor_section = f"""## 🙏 感谢赞助
+
+{SPONSORS}
+
+---
+"""
+          pattern = r'## 🙏 感谢赞助\s*\n.*?(?=\n## |\Z)'
+          if "## 🙏 感谢赞助" in content:
+              content = re.sub(pattern, sponsor_section + "\n", content, flags=re.DOTALL)
+          else:
+              content = content.rstrip() + "\n\n" + sponsor_section
+          open("README.md", "w", encoding="utf-8").write(content)
+PYEOF
+
+      - name: Commit and Push
+        run: |
+          git config user.email "action@github.com"
+          git config user.name "GitHub Action"
+          git add README.md
+          git diff --staged --quiet || git commit -m "chore: update afdian sponsors"
+          git push
