@@ -1,0 +1,542 @@
+[
+  {
+    "file": "GITHUB_UPLOAD_GUIDE.md",
+    "name": "GITHUB_UPLOAD_GUIDE.md",
+    "title": "GitHub Workflow 文件上传指南",
+    "type": "教程文档",
+    "description": "教程或技术文档",
+    "scores": {
+      "短剧剧本": 0,
+      "短篇小说": 2,
+      "教程文档": 4,
+      "工具脚本": 1,
+      "配置文件": 4,
+      "其他": 0
+    }
+  },
+  {
+    "file": "PROGRESS.md",
+    "name": "PROGRESS.md",
+    "title": "baibai 三平台联动配置 - 完成报告",
+    "type": "短篇小说",
+    "description": "短篇小说或章节",
+    "scores": {
+      "短剧剧本": 0,
+      "短篇小说": 2,
+      "教程文档": 2,
+      "工具脚本": 0,
+      "配置文件": 0,
+      "其他": 0
+    }
+  },
+  {
+    "file": "README.md",
+    "name": "README.md",
+    "title": "Baibai - Vibe Coding 开发工具库",
+    "type": "短篇小说",
+    "description": "短篇小说或章节",
+    "scores": {
+      "短剧剧本": 0,
+      "短篇小说": 6,
+      "教程文档": 2,
+      "工具脚本": 5,
+      "配置文件": 3,
+      "其他": 0
+    }
+  },
+  {
+    "file": "STATUS.md",
+    "name": "STATUS.md",
+    "title": "baibai 仓库配置状态报告",
+    "type": "教程文档",
+    "description": "教程或技术文档",
+    "scores": {
+      "短剧剧本": 0,
+      "短篇小说": 2,
+      "教程文档": 5,
+      "工具脚本": 0,
+      "配置文件": 1,
+      "其他": 0
+    }
+  },
+  {
+    "file": "pyproject.toml",
+    "name": "pyproject.toml",
+    "title": "pyproject.toml",
+    "type": "配置文件",
+    "description": "配置文件",
+    "scores": {
+      "短剧剧本": 0,
+      "短篇小说": 0,
+      "教程文档": 0,
+      "工具脚本": 1,
+      "配置文件": 4,
+      "其他": 0
+    }
+  },
+  {
+    "file": "docs/FEATURES.md",
+    "name": "FEATURES.md",
+    "title": "功能特性",
+    "type": "配置文件",
+    "description": "配置文件",
+    "scores": {
+      "短剧剧本": 0,
+      "短篇小说": 2,
+      "教程文档": 3,
+      "工具脚本": 3,
+      "配置文件": 5,
+      "其他": 0
+    }
+  },
+  {
+    "file": "docs/PLATFORMS.md",
+    "name": "PLATFORMS.md",
+    "title": "三平台联动配置指南",
+    "type": "教程文档",
+    "description": "教程或技术文档",
+    "scores": {
+      "短剧剧本": 0,
+      "短篇小说": 2,
+      "教程文档": 6,
+      "工具脚本": 1,
+      "配置文件": 1,
+      "其他": 0
+    }
+  },
+  {
+    "file": "docs/SCREENWRITING_INTEGRATION.md",
+    "name": "SCREENWRITING_INTEGRATION.md",
+    "title": "编剧工坊融合发布系统",
+    "type": "短剧剧本",
+    "description": "短剧剧本文件",
+    "scores": {
+      "短剧剧本": 5,
+      "短篇小说": 4,
+      "教程文档": 4,
+      "工具脚本": 2,
+      "配置文件": 0,
+      "其他": 0
+    }
+  },
+  {
+    "file": "docs/SETUP.md",
+    "name": "SETUP.md",
+    "title": "安装配置",
+    "type": "短篇小说",
+    "description": "短篇小说或章节",
+    "scores": {
+      "短剧剧本": 0,
+      "短篇小说": 2,
+      "教程文档": 1,
+      "工具脚本": 0,
+      "配置文件": 1,
+      "其他": 0
+    }
+  },
+  {
+    "file": "docs/WORKFLOW.md",
+    "name": "WORKFLOW.md",
+    "title": "Vibe Coding 工作流",
+    "type": "短篇小说",
+    "description": "短篇小说或章节",
+    "scores": {
+      "短剧剧本": 0,
+      "短篇小说": 4,
+      "教程文档": 2,
+      "工具脚本": 2,
+      "配置文件": 0,
+      "其他": 0
+    }
+  },
+  {
+    "file": "scripts/check_format.py",
+    "name": "check_format.py",
+    "title": "!/usr/bin/env python3",
+    "type": "工具脚本",
+    "description": "自动化脚本或工具",
+    "scores": {
+      "短剧剧本": 0,
+      "短篇小说": 2,
+      "教程文档": 0,
+      "工具脚本": 3,
+      "配置文件": 2,
+      "其他": 0
+    }
+  },
+  {
+    "file": "scripts/gen_blog.py",
+    "name": "gen_blog.py",
+    "title": "!/usr/bin/env python3",
+    "type": "工具脚本",
+    "description": "自动化脚本或工具",
+    "scores": {
+      "短剧剧本": 2,
+      "短篇小说": 2,
+      "教程文档": 0,
+      "工具脚本": 3,
+      "配置文件": 1,
+      "其他": 0
+    }
+  },
+  {
+    "file": "scripts/gen_drama_pages.py",
+    "name": "gen_drama_pages.py",
+    "title": "!/usr/bin/env python3",
+    "type": "工具脚本",
+    "description": "自动化脚本或工具",
+    "scores": {
+      "短剧剧本": 0,
+      "短篇小说": 2,
+      "教程文档": 0,
+      "工具脚本": 3,
+      "配置文件": 3,
+      "其他": 0
+    }
+  },
+  {
+    "file": "scripts/gen_readme.py",
+    "name": "gen_readme.py",
+    "title": "!/usr/bin/env python3",
+    "type": "短剧剧本",
+    "description": "短剧剧本文件",
+    "scores": {
+      "短剧剧本": 12,
+      "短篇小说": 2,
+      "教程文档": 0,
+      "工具脚本": 3,
+      "配置文件": 2,
+      "其他": 0
+    }
+  },
+  {
+    "file": "scripts/gen_readme_v2.py",
+    "name": "gen_readme_v2.py",
+    "title": "!/usr/bin/env python3",
+    "type": "短剧剧本",
+    "description": "短剧剧本文件",
+    "scores": {
+      "短剧剧本": 12,
+      "短篇小说": 2,
+      "教程文档": 0,
+      "工具脚本": 3,
+      "配置文件": 2,
+      "其他": 0
+    }
+  },
+  {
+    "file": "scripts/stats_analyzer.py",
+    "name": "stats_analyzer.py",
+    "title": "!/usr/bin/env python3",
+    "type": "短剧剧本",
+    "description": "短剧剧本文件",
+    "scores": {
+      "短剧剧本": 11,
+      "短篇小说": 2,
+      "教程文档": 0,
+      "工具脚本": 5,
+      "配置文件": 3,
+      "其他": 0
+    }
+  },
+  {
+    "file": "tests/__init__.py",
+    "name": "__init__.py",
+    "title": "__init__.py",
+    "type": "配置文件",
+    "description": "配置文件",
+    "scores": {
+      "短剧剧本": 0,
+      "短篇小说": 0,
+      "教程文档": 0,
+      "工具脚本": 0,
+      "配置文件": 1,
+      "其他": 0
+    }
+  },
+  {
+    "file": "tests/test_baibai.py",
+    "name": "test_baibai.py",
+    "title": "!/usr/bin/env python3",
+    "type": "工具脚本",
+    "description": "自动化脚本或工具",
+    "scores": {
+      "短剧剧本": 0,
+      "短篇小说": 2,
+      "教程文档": 0,
+      "工具脚本": 9,
+      "配置文件": 2,
+      "其他": 0
+    }
+  },
+  {
+    "file": "tools/__init__.py",
+    "name": "__init__.py",
+    "title": "!/usr/bin/env python3",
+    "type": "工具脚本",
+    "description": "自动化脚本或工具",
+    "scores": {
+      "短剧剧本": 0,
+      "短篇小说": 2,
+      "教程文档": 1,
+      "工具脚本": 3,
+      "配置文件": 1,
+      "其他": 0
+    }
+  },
+  {
+    "file": "tools/classifier.py",
+    "name": "classifier.py",
+    "title": "!/usr/bin/env python3",
+    "type": "短剧剧本",
+    "description": "短剧剧本文件",
+    "scores": {
+      "短剧剧本": 12,
+      "短篇小说": 7,
+      "教程文档": 7,
+      "工具脚本": 10,
+      "配置文件": 8,
+      "其他": 0
+    }
+  },
+  {
+    "file": "tools/cli.py",
+    "name": "cli.py",
+    "title": "!/usr/bin/env python3",
+    "type": "工具脚本",
+    "description": "自动化脚本或工具",
+    "scores": {
+      "短剧剧本": 0,
+      "短篇小说": 2,
+      "教程文档": 0,
+      "工具脚本": 6,
+      "配置文件": 3,
+      "其他": 0
+    }
+  },
+  {
+    "file": "tools/cli_enhanced.py",
+    "name": "cli_enhanced.py",
+    "title": "!/usr/bin/env python3",
+    "type": "工具脚本",
+    "description": "自动化脚本或工具",
+    "scores": {
+      "短剧剧本": 0,
+      "短篇小说": 2,
+      "教程文档": 0,
+      "工具脚本": 6,
+      "配置文件": 3,
+      "其他": 0
+    }
+  },
+  {
+    "file": "tools/format_checker.py",
+    "name": "format_checker.py",
+    "title": "!/usr/bin/env python3",
+    "type": "工具脚本",
+    "description": "自动化脚本或工具",
+    "scores": {
+      "短剧剧本": 0,
+      "短篇小说": 2,
+      "教程文档": 0,
+      "工具脚本": 3,
+      "配置文件": 3,
+      "其他": 0
+    }
+  },
+  {
+    "file": "tools/md2html.py",
+    "name": "md2html.py",
+    "title": "!/usr/bin/env python3",
+    "type": "工具脚本",
+    "description": "自动化脚本或工具",
+    "scores": {
+      "短剧剧本": 0,
+      "短篇小说": 2,
+      "教程文档": 0,
+      "工具脚本": 3,
+      "配置文件": 0,
+      "其他": 0
+    }
+  },
+  {
+    "file": "tools/readme_gen.py",
+    "name": "readme_gen.py",
+    "title": "!/usr/bin/env python3",
+    "type": "短剧剧本",
+    "description": "短剧剧本文件",
+    "scores": {
+      "短剧剧本": 8,
+      "短篇小说": 7,
+      "教程文档": 4,
+      "工具脚本": 7,
+      "配置文件": 2,
+      "其他": 0
+    }
+  },
+  {
+    "file": "tools/stats_analyzer.py",
+    "name": "stats_analyzer.py",
+    "title": "!/usr/bin/env python3",
+    "type": "短剧剧本",
+    "description": "短剧剧本文件",
+    "scores": {
+      "短剧剧本": 8,
+      "短篇小说": 7,
+      "教程文档": 4,
+      "工具脚本": 6,
+      "配置文件": 3,
+      "其他": 0
+    }
+  },
+  {
+    "file": "data/stats/analysis_stats.json",
+    "name": "analysis_stats.json",
+    "title": "analysis_stats.json",
+    "type": "短剧剧本",
+    "description": "短剧剧本文件",
+    "scores": {
+      "短剧剧本": 5,
+      "短篇小说": 0,
+      "教程文档": 0,
+      "工具脚本": 1,
+      "配置文件": 3,
+      "其他": 0
+    }
+  },
+  {
+    "file": "data/stats/drama_stats.json",
+    "name": "drama_stats.json",
+    "title": "drama_stats.json",
+    "type": "短剧剧本",
+    "description": "短剧剧本文件",
+    "scores": {
+      "短剧剧本": 11,
+      "短篇小说": 0,
+      "教程文档": 0,
+      "工具脚本": 1,
+      "配置文件": 3,
+      "其他": 0
+    }
+  },
+  {
+    "file": "data/stats/format_check.json",
+    "name": "format_check.json",
+    "title": "format_check.json",
+    "type": "短剧剧本",
+    "description": "短剧剧本文件",
+    "scores": {
+      "短剧剧本": 5,
+      "短篇小说": 0,
+      "教程文档": 0,
+      "工具脚本": 1,
+      "配置文件": 3,
+      "其他": 0
+    }
+  },
+  {
+    "file": ".github/workflows/afdian-sponsors.yml",
+    "name": "afdian-sponsors.yml",
+    "title": "afdian-sponsors.yml",
+    "type": "配置文件",
+    "description": "配置文件",
+    "scores": {
+      "短剧剧本": 0,
+      "短篇小说": 0,
+      "教程文档": 0,
+      "工具脚本": 1,
+      "配置文件": 3,
+      "其他": 0
+    }
+  },
+  {
+    "file": ".github/workflows/generate-pages.yml",
+    "name": "generate-pages.yml",
+    "title": "generate-pages.yml",
+    "type": "配置文件",
+    "description": "配置文件",
+    "scores": {
+      "短剧剧本": 0,
+      "短篇小说": 0,
+      "教程文档": 0,
+      "工具脚本": 2,
+      "配置文件": 4,
+      "其他": 0
+    }
+  },
+  {
+    "file": ".github/workflows/publish-pages.yml",
+    "name": "publish-pages.yml",
+    "title": "publish-pages.yml",
+    "type": "配置文件",
+    "description": "配置文件",
+    "scores": {
+      "短剧剧本": 0,
+      "短篇小说": 0,
+      "教程文档": 0,
+      "工具脚本": 1,
+      "配置文件": 3,
+      "其他": 0
+    }
+  },
+  {
+    "file": ".github/workflows/sync-scripts-to-gitee.yml",
+    "name": "sync-scripts-to-gitee.yml",
+    "title": "sync-scripts-to-gitee.yml",
+    "type": "配置文件",
+    "description": "配置文件",
+    "scores": {
+      "短剧剧本": 0,
+      "短篇小说": 0,
+      "教程文档": 0,
+      "工具脚本": 1,
+      "配置文件": 2,
+      "其他": 0
+    }
+  },
+  {
+    "file": ".github/workflows/sync-to-gitee.yml",
+    "name": "sync-to-gitee.yml",
+    "title": "sync-to-gitee.yml",
+    "type": "配置文件",
+    "description": "配置文件",
+    "scores": {
+      "短剧剧本": 0,
+      "短篇小说": 0,
+      "教程文档": 0,
+      "工具脚本": 1,
+      "配置文件": 2,
+      "其他": 0
+    }
+  },
+  {
+    "file": ".github/workflows/test.yml",
+    "name": "test.yml",
+    "title": "test.yml",
+    "type": "配置文件",
+    "description": "配置文件",
+    "scores": {
+      "短剧剧本": 0,
+      "短篇小说": 0,
+      "教程文档": 0,
+      "工具脚本": 1,
+      "配置文件": 2,
+      "其他": 0
+    }
+  },
+  {
+    "file": ".github/workflows/update-content.yml",
+    "name": "update-content.yml",
+    "title": "update-content.yml",
+    "type": "配置文件",
+    "description": "配置文件",
+    "scores": {
+      "短剧剧本": 0,
+      "短篇小说": 0,
+      "教程文档": 0,
+      "工具脚本": 1,
+      "配置文件": 3,
+      "其他": 0
+    }
+  }
+]
