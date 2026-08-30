@@ -1,53 +1,56 @@
-# 发布说明模板
+# Baibai v{version}
 
-## 版本信息
-- **版本号**: vX.Y.Z
-- **发布日期**: YYYY-MM-DD
-- **发布类型**: Major / Minor / Patch
-- **状态**: Stable / Beta / RC
+## 新增功能
 
----
+- MCP Server 支持，可直接接入 Claude Code、Cursor、Codex
+- 12 个 MCP 工具，覆盖格式校验、内容分析、文档生成
 
-## 变更摘要
+## 安装
 
-### 新增功能
-- [ ] 功能描述
-
-### 改进优化
-- [ ] 改进描述
-
-### 问题修复
-- [ ] 修复描述
-
----
-
-## 升级指南
-
-### 从 vX.Y.Z 升级
 ```bash
-pip install --upgrade baibai
-# 或
-git pull && pip install -e .
+pip install -e ".[mcp]"
 ```
 
-### 已知问题
-- 暂无
+## 快速开始
 
----
+### 1. 配置 AI 助手
 
-## 下载链接
+在 Claude Code、Cursor 等客户端添加：
 
-| 类型 | 链接 |
-|------|------|
-| Source Code (zip) | https://github.com/Zeon7744/baibai/releases/download/vX.Y.Z/baibai-vX.Y.Z.zip |
-| Source Code (tar.gz) | https://github.com/Zeon7744/baibai/releases/download/vX.Y.Z/baibai-vX.Y.Z.tar.gz |
-| PyPI | https://pypi.org/project/baibai/X.Y.Z/ |
+```json
+{
+  "mcpServers": {
+    "baibai": {
+      "command": "python",
+      "args": ["mcp_server.py"]
+    }
+  }
+}
+```
 
----
+### 2. 使用工具
 
-## 测试验证
+```bash
+# 命令行使用
+baibai check-format path/to/file.md
+baibai analyze path/to/dir
+baibai gen-readme path/to/content
 
-- [ ] CI 测试通过
-- [ ] 本地安装测试
-- [ ] 工具功能验证
-- [ ] 文档检查
+# MCP 工具调用（在 AI 助手中自动可用）
+check_format(filepath="...")
+classify_directory(directory="...")
+md_to_html(markdown_content="...")
+```
+
+## 特性
+
+- **格式校验**: 自动检查 Markdown 格式规范
+- **内容分析**: 统计字数、章节、爽点密度
+- **自动分类**: 识别剧本/小说/教程等类型
+- **文档生成**: 自动生成 README
+- **MCP 集成**: 支持主流 AI 助手接入
+
+## 链接
+
+- GitHub: https://github.com/Zeon7744/baibai
+- 文档: https://github.com/Zeon7744/baibai/blob/main/README_MCP.md

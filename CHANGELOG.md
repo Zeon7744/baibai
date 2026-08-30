@@ -5,6 +5,33 @@
 格式基于 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.0.0/)，
 项目遵循 [语义化版本](https://semver.org/lang/zh-CN/)。
 
+## [1.1.0] - 2026-08-31
+
+### 新增
+- **MCP Server 支持** - 将 baibai 工具包装为 MCP 协议服务
+- 新增 12 个 MCP 工具：
+  - `check_format` - 校验 Markdown 格式
+  - `validate_directory` - 批量校验目录
+  - `classify_file` - 分类单个文件
+  - `classify_directory` - 批量分类目录
+  - `md_to_html` - Markdown 转 HTML
+  - `convert_file` - 文件转换
+  - `gen_readme` - 生成 README
+  - `extract_content_info` - 提取内容信息
+  - `analyze_content_data` - 分析单文件数据
+  - `analyze_directory` - 分析目录统计数据
+  - `search_content` - 搜索内容
+  - `list_tools` - 列出所有工具
+- 支持 Claude Code、Cursor、Codex 等 AI 助手接入
+- 添加 `.mcp.json` 配置文件
+- 添加 MCP 配置示例文档
+
+### 改进
+- 更新 README.md 添加 MCP 集成说明
+- 完善安装和使用文档
+
+---
+
 ## [1.0.0] - 2026-08-30
 
 ### 新增
@@ -18,7 +45,6 @@
   - `md2html.py` - Markdown 转 HTML
   - `classifier.py` - 内容自动分类器
 - 支持 pip 安装 (`pip install -e .`)
-- MCP 协议集成支持
 - GitHub Actions CI 测试
 - Pages 展示页重构
 
@@ -45,6 +71,7 @@
 
 | 版本 | 日期 | 说明 |
 |------|------|------|
+| 1.1.0 | 2026-08-31 | MCP Server 支持 |
 | 1.0.0 | 2026-08-30 | 首次通用化工具库发布 |
 | 0.3.0 | 2026-08-29 | 短剧工具优化 |
 | 0.2.0 | 2026-08-28 | 初始版本 |
