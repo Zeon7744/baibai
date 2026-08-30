@@ -291,3 +291,62 @@ MIT License - 见 [LICENSE](LICENSE) 文件
 暂无赞助者
 
 ---
+
+---
+
+## 🚀 发布项目
+
+Baibai 也是**项目发布地**，你可以在这里发布：
+
+### 发布类型
+
+| 类型 | 说明 | 位置 |
+|------|------|------|
+| 完整项目 | 可运行的应用/工具 | `projects/` |
+| 工具脚本 | 单文件工具 | `tools/` |
+| 示例代码 | 学习演示 | `examples/` |
+| 试用版本 | Beta/RC 版本 | `releases/` |
+
+### 发布流程
+
+```bash
+# 1. 创建项目目录
+mkdir -p releases/v1.0.0
+
+# 2. 准备发布内容
+cp -r your-project releases/v1.0.0/
+
+# 3. 更新版本信息
+echo "1.0.0" > releases/v1.0.0/VERSION
+
+# 4. 生成发布说明
+python scripts/release.py v1.0.0
+
+# 5. 提交并推送
+git add .
+git commit -m "release: v1.0.0"
+git tag v1.0.0
+git push origin main --tags
+```
+
+### 发布示例
+
+查看 `example-project/` 了解完整的发布项目结构。
+
+---
+
+## 📦 试用测试
+
+用户可以在这里试用测试版：
+
+```bash
+# 获取最新测试版
+git clone https://github.com/Zeon7744/baibai.git
+cd baibai
+pip install -e .
+
+# 或下载 releases/ 目录下的测试包
+wget https://github.com/Zeon7744/baibai/releases/download/v1.0.0-beta/baibai-v1.0.0-beta.zip
+```
+
+---

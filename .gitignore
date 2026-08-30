@@ -41,3 +41,10 @@ data/stats/*.json
 # OS
 .DS_Store
 Thumbs.db
+
+# Releases (本地测试用)
+releases/*/
+!releases/.gitkeep
+
+# Example projects (可选)
+# example-project/
