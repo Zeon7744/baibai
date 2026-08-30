@@ -79,9 +79,16 @@ python scripts/gen_readme.py ../awesome-ai-short-drama/short-dramas
 
 ---
 
+## 🎬 短剧项目
+
+暂无短剧项目
+
+
+---
+
 ## 🙏 感谢赞助
 
-- [爱发电赞助列表](https://ifdian.net/a/Zeon7744)
+暂无赞助者
 
 ---
 
