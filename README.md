@@ -283,3 +283,10 @@ MIT License - 见 [LICENSE](LICENSE) 文件
 
 *由 [Zeon7744](https://github.com/Zeon7744) 维护*  
 *Vibe Coding · 自然语言驱动开发*
+
+## 🙏 感谢赞助
+
+暂无赞助者
+
+---
+
