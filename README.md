@@ -18,6 +18,7 @@
 - **CLI 优先** — 简洁的命令行界面，适合开发者
 - **MCP 支持** — 兼容 Model Context Protocol，可集成到 AI 助手
 - **BYOK 模式** — 自带 API Key，工具免费使用
+- **项目发布地** — 发布应用、工具、示例代码和测试版本
 
 ---
 
@@ -166,9 +167,19 @@ baibai/
 │   └── test_baibai.py
 ├── data/                   # 数据缓存
 │   └── stats/             # 统计数据
-├── scripts/                # 遗留脚本（兼容）
+├── scripts/                # 辅助脚本
+│   ├── release.py         # 版本发布脚本
+│   └── publish.py         # PyPI/GitHub 发布
 ├── docs/                   # 文档
+│   ├── PUBLISHING.md      # 发布指南
+│   └── REFACTOR_LOG.md    # 重构记录
+├── releases/               # 发布版本
+│   └── v1.0.0/            # v1.0.0 发布包
+├── example-project/        # 示例项目
 ├── pyproject.toml          # 项目配置
+├── setup.py                # 安装脚本
+├── VERSION.md              # 版本信息
+├── CHANGELOG.md            # 变更日志
 └── README.md               # 本文件
 ```
 
@@ -214,6 +225,58 @@ Baibai 支持 Model Context Protocol (MCP)，可以集成到各种 AI 助手：
     }
   }
 }
+```
+
+---
+
+## 🚀 发布项目
+
+Baibai 也是**项目发布地**，你可以在这里发布：
+
+### 发布类型
+
+| 类型 | 说明 | 位置 |
+|------|------|------|
+| 完整项目 | 可运行的应用/工具 | `projects/` |
+| 工具脚本 | 单文件工具 | `tools/` |
+| 示例代码 | 学习演示 | `examples/` |
+| 试用版本 | Beta/RC 版本 | `releases/` |
+
+### 发布流程
+
+```bash
+# 1. 创建版本目录
+python scripts/release.py 1.0.0 "版本说明"
+
+# 2. 准备发布内容
+mkdir -p releases/v1.0.0
+cp -r tools/ releases/v1.0.0/
+
+# 3. 提交并推送
+git add .
+git commit -m "release: v1.0.0"
+git tag v1.0.0
+git push origin main --tags
+```
+
+### 发布示例
+
+查看 `example-project/` 了解完整的发布项目结构。
+
+---
+
+## 📦 试用测试
+
+用户可以在这里试用测试版：
+
+```bash
+# 获取最新测试版
+git clone https://github.com/Zeon7744/baibai.git
+cd baibai
+pip install -e .
+
+# 或下载 releases/ 目录下的测试包
+wget https://github.com/Zeon7744/baibai/releases/download/v1.0.0-beta/baibai-v1.0.0-beta.zip
 ```
 
 ---
@@ -271,87 +334,3 @@ MIT License - 见 [LICENSE](LICENSE) 文件
 
 *由 [Zeon7744](https://github.com/Zeon7744) 维护*  
 *Vibe Coding · 自然语言驱动开发*
-
-## 🎬 短剧项目
-
-暂无短剧项目
-
-
----
-
-## 🎬 短剧项目
-
-暂无短剧项目
-
-
----
-
-## 🎬 短剧项目
-
-暂无短剧项目
-
-
----
-
-## 🙏 感谢赞助
-
-暂无赞助者
-
----
-
-## 🚀 发布项目
-
-Baibai 也是**项目发布地**，你可以在这里发布：
-
-### 发布类型
-
-| 类型 | 说明 | 位置 |
-|------|------|------|
-| 完整项目 | 可运行的应用/工具 | `projects/` |
-| 工具脚本 | 单文件工具 | `tools/` |
-| 示例代码 | 学习演示 | `examples/` |
-| 试用版本 | Beta/RC 版本 | `releases/` |
-
-### 发布流程
-
-```bash
-# 1. 创建项目目录
-mkdir -p releases/v1.0.0
-
-# 2. 准备发布内容
-cp -r your-project releases/v1.0.0/
-
-# 3. 更新版本信息
-echo "1.0.0" > releases/v1.0.0/VERSION
-
-# 4. 生成发布说明
-python scripts/release.py v1.0.0
-
-# 5. 提交并推送
-git add .
-git commit -m "release: v1.0.0"
-git tag v1.0.0
-git push origin main --tags
-```
-
-### 发布示例
-
-查看 `example-project/` 了解完整的发布项目结构。
-
----
-
-## 📦 试用测试
-
-用户可以在这里试用测试版：
-
-```bash
-# 获取最新测试版
-git clone https://github.com/Zeon7744/baibai.git
-cd baibai
-pip install -e .
-
-# 或下载 releases/ 目录下的测试包
-wget https://github.com/Zeon7744/baibai/releases/download/v1.0.0-beta/baibai-v1.0.0-beta.zip
-```
-
----
