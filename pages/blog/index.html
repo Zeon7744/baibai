@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创作日志 - Baibai</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #6366f1;
+            --bg: #0f172a;
+            --bg-card: #1e293b;
+            --bg-hover: #334155;
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #334155;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-bottom: 30px;
+            transition: color 0.2s;
+        }
+        .back-link:hover { color: var(--primary); }
+        h1 {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        .subtitle {
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+        .section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        h2 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        th, td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        th {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+        tr:hover { background: var(--bg-hover); }
+        .genre-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .genre-xuanhuan { background: rgba(168,85,247,0.2); color: #a855f7; }
+        .genre-dushi { background: rgba(59,130,246,0.2); color: #3b82f6; }
+        .genre-haomen { background: rgba(245,158,11,0.2); color: #f59e0b; }
+        .genre-xuanyi { background: rgba(239,68,68,0.2); color: #ef4444; }
+        .genre-lishi { background: rgba(34,197,94,0.2); color: #22c55e; }
+        .genre-tianchong { background: rgba(236,72,153,0.2); color: #ec4899; }
+        .genre-other { background: rgba(100,116,139,0.2); color: #64748b; }
+        .genre-bar {
+            display: grid;
+            grid-template-columns: 100px 1fr 60px;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .genre-name { font-size: 14px; }
+        .bar-track {
+            height: 8px;
+            background: var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .bar-fill {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 4px;
+        }
+        .genre-count { font-size: 14px; color: var(--text-muted); text-align: right; }
+        .log-entry {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 20px;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .log-entry:last-child { border-bottom: none; }
+        .log-date {
+            font-size: 14px;
+            color: var(--text-muted);
+            padding-top: 4px;
+        }
+        .log-content h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+        .log-content p {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+        @media (max-width: 600px) {
+            .genre-bar { grid-template-columns: 80px 1fr 50px; }
+            .log-entry { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-link">← 返回首页</a>
+        
+        <h1>📝 创作日志</h1>
+        <p class="subtitle">记录每一部作品的创作历程</p>
+        
+        <div class="section">
+            <h2>📊 作品总览</h2>
+            <table>
+                <thead>
+                    <tr><th>#</th><th>剧名</th><th>类型</th><th>集数</th><th>字数</th><th>爽点</th></tr>
+                </thead>
+                <tbody>
+                    
+            <tr>
+                <td>1</td>
+                <td><strong>剑魂重生</strong></td>
+                <td><span class="genre-tag genre-xuanhuan">玄幻重生</span></td>
+                <td>30集</td>
+                <td>19k字</td>
+                <td>43次</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td><strong>帝师无双</strong></td>
+                <td><span class="genre-tag genre-xuanhuan">玄幻重生</span></td>
+                <td>10集</td>
+                <td>14k字</td>
+                <td>11次</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td><strong>总裁的替身前妻</strong></td>
+                <td><span class="genre-tag genre-dushi">都市异能</span></td>
+                <td>10集</td>
+                <td>7k字</td>
+                <td>2次</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td><strong>暗夜追凶_完整剧本</strong></td>
+                <td><span class="genre-tag genre-xuanyi">悬疑推理</span></td>
+                <td>10集</td>
+                <td>2k字</td>
+                <td>10次</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td><strong>江城情缘</strong></td>
+                <td><span class="genre-tag genre-tianchong">都市甜宠</span></td>
+                <td>30集</td>
+                <td>18k字</td>
+                <td>17次</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td><strong>狂少逆袭_完整剧本</strong></td>
+                <td><span class="genre-tag genre-haomen">都市豪门</span></td>
+                <td>10集</td>
+                <td>1k字</td>
+                <td>10次</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td><strong>神医赘婿_完整剧本</strong></td>
+                <td><span class="genre-tag genre-dushi">都市异能</span></td>
+                <td>10集</td>
+                <td>1k字</td>
+                <td>8次</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td><strong>龙皇归来_完整剧本</strong></td>
+                <td><span class="genre-tag genre-xuanhuan">玄幻重生</span></td>
+                <td>10集</td>
+                <td>2k字</td>
+                <td>7次</td>
+            </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="section">
+            <h2>🎭 类型分布</h2>
+            <div>
+                
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>📖 创作历程</h2>
+            <div>
+                
+        <div class="log-entry">
+            <div class="log-date">作品 1</div>
+            <div class="log-content">
+                <h3>剑魂重生</h3>
+                <p>玄幻重生 · 30集 · 19千字 · 爽点密度 1.4/集</p>
+            </div>
+        </div>
+        <div class="log-entry">
+            <div class="log-date">作品 2</div>
+            <div class="log-content">
+                <h3>帝师无双</h3>
+                <p>玄幻重生 · 10集 · 14千字 · 爽点密度 1.1/集</p>
+            </div>
+        </div>
+        <div class="log-entry">
+            <div class="log-date">作品 3</div>
+            <div class="log-content">
+                <h3>总裁的替身前妻</h3>
+                <p>都市异能 · 10集 · 7千字 · 爽点密度 0.2/集</p>
+            </div>
+        </div>
+        <div class="log-entry">
+            <div class="log-date">作品 4</div>
+            <div class="log-content">
+                <h3>暗夜追凶_完整剧本</h3>
+                <p>悬疑推理 · 10集 · 2千字 · 爽点密度 1.0/集</p>
+            </div>
+        </div>
+        <div class="log-entry">
+            <div class="log-date">作品 5</div>
+            <div class="log-content">
+                <h3>江城情缘</h3>
+                <p>都市甜宠 · 30集 · 18千字 · 爽点密度 0.6/集</p>
+            </div>
+        </div>
+        <div class="log-entry">
+            <div class="log-date">作品 6</div>
+            <div class="log-content">
+                <h3>狂少逆袭_完整剧本</h3>
+                <p>都市豪门 · 10集 · 1千字 · 爽点密度 1.0/集</p>
+            </div>
+        </div>
+        <div class="log-entry">
+            <div class="log-date">作品 7</div>
+            <div class="log-content">
+                <h3>神医赘婿_完整剧本</h3>
+                <p>都市异能 · 10集 · 1千字 · 爽点密度 0.8/集</p>
+            </div>
+        </div>
+        <div class="log-entry">
+            <div class="log-date">作品 8</div>
+            <div class="log-content">
+                <h3>龙皇归来_完整剧本</h3>
+                <p>玄幻重生 · 10集 · 2千字 · 爽点密度 0.7/集</p>
+            </div>
+        </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

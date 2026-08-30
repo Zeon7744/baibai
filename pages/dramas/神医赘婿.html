@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>神医赘婿 - Baibai 短剧库</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #3b82f6;
+            --bg: #0f172a;
+            --bg-card: #1e293b;
+            --bg-hover: #334155;
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #334155;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-bottom: 30px;
+            transition: color 0.2s;
+        }
+        .back-link:hover { color: var(--primary); }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .genre-tag {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        h1 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+        .stat-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 28px;
+            font-weight: 800;
+            color: #3b82f6;
+        }
+        .stat-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+        .section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        h2 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        th {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+        tr:hover { background: var(--bg-hover); }
+        .shuang-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .shuang-bar {
+            display: grid;
+            grid-template-columns: 60px 1fr 40px;
+            align-items: center;
+            gap: 12px;
+        }
+        .bar-label { font-size: 12px; color: var(--text-muted); }
+        .bar-track {
+            height: 8px;
+            background: var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.3s;
+        }
+        .bar-value { font-size: 12px; color: var(--text-muted); text-align: right; }
+        .read-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #3b82f6;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+        .read-btn:hover { opacity: 0.9; }
+        @media (max-width: 600px) {
+            .stats-row { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-link">← 返回短剧库</a>
+        
+        <div class="header">
+            <span class="genre-tag">都市异能</span>
+            <h1>神医赘婿</h1>
+        </div>
+        
+        <div class="stats-row">
+            <div class="stat-item">
+                <div class="stat-value">10</div>
+                <div class="stat-label">集数</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">1k</div>
+                <div class="stat-label">字数</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">7</div>
+                <div class="stat-label">爽点</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">0.7</div>
+                <div class="stat-label">爽点/集</div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="section">
+            <h2>🔥 爽点密度分布</h2>
+            <div class="shuang-chart">
+                
+            <div class="shuang-bar">
+                <span class="bar-label">第1集</span>
+                <div class="bar-track">
+                    <div class="bar-fill" style="width:50%;background:#3b82f6"></div>
+                </div>
+                <span class="bar-value">1</span>
+            </div>
+            <div class="shuang-bar">
+                <span class="bar-label">第2集</span>
+                <div class="bar-track">
+                    <div class="bar-fill" style="width:0%;background:#3b82f6"></div>
+                </div>
+                <span class="bar-value">0</span>
+            </div>
+            <div class="shuang-bar">
+                <span class="bar-label">第3集</span>
+                <div class="bar-track">
+                    <div class="bar-fill" style="width:100%;background:#3b82f6"></div>
+                </div>
+                <span class="bar-value">2</span>
+            </div>
+            <div class="shuang-bar">
+                <span class="bar-label">第4集</span>
+                <div class="bar-track">
+                    <div class="bar-fill" style="width:0%;background:#3b82f6"></div>
+                </div>
+                <span class="bar-value">0</span>
+            </div>
+            <div class="shuang-bar">
+                <span class="bar-label">第5集</span>
+                <div class="bar-track">
+                    <div class="bar-fill" style="width:50%;background:#3b82f6"></div>
+                </div>
+                <span class="bar-value">1</span>
+            </div>
+            <div class="shuang-bar">
+                <span class="bar-label">第6集</span>
+                <div class="bar-track">
+                    <div class="bar-fill" style="width:0%;background:#3b82f6"></div>
+                </div>
+                <span class="bar-value">0</span>
+            </div>
+            <div class="shuang-bar">
+                <span class="bar-label">第7集</span>
+                <div class="bar-track">
+                    <div class="bar-fill" style="width:0%;background:#3b82f6"></div>
+                </div>
+                <span class="bar-value">0</span>
+            </div>
+            <div class="shuang-bar">
+                <span class="bar-label">第8集</span>
+                <div class="bar-track">
+                    <div class="bar-fill" style="width:100%;background:#3b82f6"></div>
+                </div>
+                <span class="bar-value">2</span>
+            </div>
+            <div class="shuang-bar">
+                <span class="bar-label">第9集</span>
+                <div class="bar-track">
+                    <div class="bar-fill" style="width:50%;background:#3b82f6"></div>
+                </div>
+                <span class="bar-value">1</span>
+            </div>
+            <div class="shuang-bar">
+                <span class="bar-label">第10集</span>
+                <div class="bar-track">
+                    <div class="bar-fill" style="width:0%;background:#3b82f6"></div>
+                </div>
+                <span class="bar-value">0</span>
+            </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>📖 剧集列表</h2>
+            <table>
+                <thead>
+                    <tr><th>集数</th><th>标题</th><th>字数</th><th>爽点</th></tr>
+                </thead>
+                <tbody>
+                    
+            <tr>
+                <td>第1集</td>
+                <td>入赘豪门</td>
+                <td>196字</td>
+                <td>1次</td>
+            </tr>
+            <tr>
+                <td>第2集</td>
+                <td>一药救父</td>
+                <td>176字</td>
+                <td>0次</td>
+            </tr>
+            <tr>
+                <td>第3集</td>
+                <td>权贵挑衅</td>
+                <td>159字</td>
+                <td>2次</td>
+            </tr>
+            <tr>
+                <td>第4集</td>
+                <td>医馆争霸</td>
+                <td>156字</td>
+                <td>0次</td>
+            </tr>
+            <tr>
+                <td>第5集</td>
+                <td>打脸时刻</td>
+                <td>156字</td>
+                <td>1次</td>
+            </tr>
+            <tr>
+                <td>第6集</td>
+                <td>宫廷召见</td>
+                <td>129字</td>
+                <td>0次</td>
+            </tr>
+            <tr>
+                <td>第7集</td>
+                <td>暗箭难防</td>
+                <td>143字</td>
+                <td>0次</td>
+            </tr>
+            <tr>
+                <td>第8集</td>
+                <td>真相大白</td>
+                <td>143字</td>
+                <td>2次</td>
+            </tr>
+            <tr>
+                <td>第9集</td>
+                <td>恶有恶报</td>
+                <td>133字</td>
+                <td>1次</td>
+            </tr>
+            <tr>
+                <td>第10集</td>
+                <td>荣耀归来</td>
+                <td>265字</td>
+                <td>0次</td>
+            </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="https://github.com/Zeon7744/awesome-ai-short-drama/tree/main/short-dramas/{ title }" class="read-btn" target="_blank">查看完整剧本</a>
+        </div>
+    </div>
+</body>
+</html>

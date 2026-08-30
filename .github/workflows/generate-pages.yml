@@ -1,0 +1,37 @@
+name: Auto Generate Drama Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/gen_drama_pages.py'
+      - 'scripts/gen_blog.py'
+      - 'data/stats/*.json'
+  schedule:
+    - cron: '0 9 * * 1'  # 每周一上午9点
+  workflow_dispatch:
+
+jobs:
+  generate-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Generate Drama Pages
+        run: |
+          python scripts/gen_drama_pages.py ../awesome-ai-short-drama/short-dramas pages/dramas
+          python scripts/gen_blog.py data/stats/drama_stats.json pages/blog/index.html
+      
+      - name: Commit and Push
+        run: |
+          git config user.email "action@github.com"
+          git config user.name "GitHub Action"
+          git add pages/
+          git diff --staged --quiet || git commit -m "chore: auto-generate drama pages"
+          git push
