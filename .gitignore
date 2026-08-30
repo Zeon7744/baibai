@@ -54,3 +54,13 @@ yarn-error.log
 # Logs
 *.log
 logs/
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+*.egg
+
+# Python distribution
+*.tar.gz
+*.whl
