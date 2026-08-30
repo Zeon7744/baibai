@@ -341,3 +341,70 @@ MIT License - 见 [LICENSE](LICENSE) 文件
 
 ---
 
+
+---
+
+## 📈 金融分析器
+
+基于 **MLP（多层感知器）** 的精准金融分析工具。
+
+### 功能
+
+- **实时数据获取** - 支持 yfinance 获取全球股票数据
+- **技术指标计算** - MA / RSI / MACD / 布林带 / 波动率
+- **MLP 预测模型** - 分类器 + 回归器双模型
+- **特征重要性分析** - 识别关键影响因素
+- **投资建议生成** - 综合技术指标和 ML 预测
+
+### 使用方式
+
+#### 命令行
+
+```bash
+# 分析股票
+python tools/financial_analyzer.py AAPL
+
+# 保存报告
+python tools/financial_analyzer.py AAPL --output report.json
+
+# 生成图表
+python tools/financial_analyzer.py AAPL --charts
+```
+
+#### Web 界面
+
+直接打开 `web/index.html` 即可使用，无需部署。
+
+#### MCP Server
+
+在 Claude Code、Cursor 等 AI 助手中自动可用：
+
+```
+analyze_stock(symbol="AAPL")
+save_analysis_report(symbol="AAPL")
+generate_stock_charts(symbol="AAPL")
+```
+
+### 输出示例
+
+```json
+{
+  "symbol": "AAPL",
+  "price": 178.50,
+  "change_1d": 1.25,
+  "indicators": {
+    "RSI": 58.32,
+    "MACD": 0.8542,
+    "BB_position": 0.65
+  },
+  "ml_prediction": {
+    "classifier_accuracy": 0.72,
+    "expected_5d_return_pct": 1.85
+  },
+  "advice": {
+    "operation": "买入",
+    "risk_level": "中等"
+  }
+}
+```
+
