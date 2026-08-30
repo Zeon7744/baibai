@@ -43,6 +43,7 @@ mcp = [
 
 [project.scripts]
 baibai = "tools.cli:main"
+baibai-mcp = "mcp_server:run_server"
 
 [project.urls]
 Homepage = "https://github.com/Zeon7744/baibai"
