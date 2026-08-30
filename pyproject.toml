@@ -1,0 +1,65 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "baibai"
+version = "1.0.0"
+description = "Vibe Coding 开发工具库 - 用自然语言驱动开发"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "Zeon7744", email = "zeon7744@gmail.com"}
+]
+keywords = ["vibe-coding", "cli", "ai", "assistant", "markdown", "analysis"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+requires-python = ">=3.8"
+dependencies = [
+    "typer>=0.9.0",
+    "rich>=13.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+]
+mcp = [
+    "mcp>=1.0.0",
+]
+
+[project.scripts]
+baibai = "tools.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/Zeon7744/baibai"
+Documentation = "https://github.com/Zeon7744/baibai#readme"
+Repository = "https://github.com/Zeon7744/baibai.git"
+Issues = "https://github.com/Zeon7744/baibai/issues"
+
+[tool.setuptools.packages.find]
+include = ["tools*"]
+
+[tool.black]
+line-length = 100
+target-version = ['py38', 'py39', 'py310', 'py311']
+
+[tool.ruff]
+line-length = 100
+select = ["E", "F", "W", "I"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

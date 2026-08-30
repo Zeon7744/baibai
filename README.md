@@ -1,188 +1,285 @@
-# Baibai - Vibe Coding 开发仓库
+# Baibai - Vibe Coding 开发工具库
 
-> 代码 · 程序 · 工作流 — 用自然语言驱动开发
+> 用自然语言驱动开发 — 通用 CLI 工具集
 
-## 项目简介
+[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![CLI](https://img.shields.io/badge/CLI-Ready-brightgreen.svg)](https://github.com/Zeon7744/baibai)
+[![MCP](https://img.shields.io/badge/MCP-Support-violet.svg)](https://modelcontextprotocol.io)
 
-Baibai 是一个 **Vibe Coding 开发仓库**，整合了应用开发、工具构建和工作流自动化的完整能力。
+---
+
+## 🚀 简介
+
+**Baibai** 是一个 **Vibe Coding 开发工具库**，提供通用的命令行工具和自动化能力。
 
 核心定位：
-- **代码仓库** — 存放 Vibe Coding 相关的工具代码和模板
-- **应用开发** — 提供基于 AI 的编程环境和 IDE
-- **开发工具** — 编剧工坊等创作工具，支持一键发布到三平台
-- **工作流自动化** — 配置自动同步、CI/CD、赞助管理等开发工作流
+- **通用工具库** — 格式校验、数据分析、文档生成
+- **CLI 优先** — 简洁的命令行界面，适合开发者
+- **MCP 支持** — 兼容 Model Context Protocol，可集成到 AI 助手
+- **BYOK 模式** — 自带 API Key，工具免费使用
+
+### 第一个应用场景：短剧创作
+
+Baibai 的第一个成功场景是短剧创作工具链，但这不是唯一场景。工具设计为通用可扩展架构。
 
 ---
 
-## 🎬 短剧创作工具
+## 📦 安装
 
-### 编剧工坊
-
-[![](https://img.shields.io/badge/在线使用-点击打开-6366f1?style=for-the-badge)](https://zeon7744.github.io/baibai/)
-
-编剧工坊是一款专业的短剧剧本创作工具，支持：
-- **要素生成** — 从零创作，输入故事要素自动生成完整剧本
-- **小说改编** — 上传小说文本，自动改编为短剧格式
-- **格式校验** — 符合红果短剧平台规范（≤15字对话、≥3爽点/集）
-- **一键发布** — 创作完成后直接推送至 GitHub/Gitee/爱发电
-
----
-
-## 🛠️ 工具链
-
-### 脚本工具
-
-| 工具 | 说明 | 使用方式 |
-|------|------|---------|
-| `check_format.py` | 短剧格式校验器 | 检查剧本是否符合平台规范 |
-| `stats_analyzer.py` | 数据统计分析 | 统计剧本库数据，生成分析报告 |
-| `gen_readme.py` | README 自动生成 | 根据剧本库内容自动生成 README 短剧列表 |
-
-### 使用示例
-
-```bash
-# 格式校验
-python scripts/check_format.py ../awesome-ai-short-drama/short-dramas
-
-# 数据分析
-python scripts/stats_analyzer.py ../awesome-ai-short-drama/short-dramas
-
-# 生成 README
-python scripts/gen_readme.py ../awesome-ai-short-drama/short-dramas
-```
-
----
-
-## 🎬 短剧剧本库
-
-本仓库收录 **8部完整短剧剧本**，符合红果短剧平台规范（≤15字对话、≥3爽点/集）。详见 [awesome-ai-short-drama](https://github.com/Zeon7744/awesome-ai-short-drama)。
-
-| 序号 | 剧名 | 类型 | 集数 |
-|------|------|------|------|
-| 1 | **剑魂重生** | 玄幻重生 | 30集 |
-| 2 | **帝师无双** | 玄幻重生 | 10集 |
-| 3 | **总裁的替身前妻** | 都市异能 | 10集 |
-| 4 | **暗夜追凶** | 悬疑推理 | 10集 |
-| 5 | **江城情缘** | 都市甜宠 | 30集 |
-| 6 | **狂少逆袭** | 都市豪门 | 10集 |
-| 7 | **神医赘婿** | 都市异能 | 10集 |
-| 8 | **龙皇归来** | 玄幻重生 | 10集 |
-
-> 📌 剧本创作规范：标题第X集：集名 · 结尾第X集完 · 对话≤15字 · 每集≥3爽点+1甜点
-
----
-
-## 🎬 短剧项目
-
-暂无短剧项目
-
-
----
-
-## 🎬 短剧项目
-
-暂无短剧项目
-
-
----
-
-## 🙏 感谢赞助
-
-暂无赞助者
-
----
-
-## 三平台联动
-
-```
-GitHub (国际) ↔ Gitee (国内) ↔ 爱发电 (赞助变现)
-```
-
-| 平台 | 地址 |
-|------|------|
-| GitHub | https://github.com/Zeon7744/baibai |
-| Gitee | https://gitee.com/Zeon7744/baibai |
-| 爱发电 | https://ifdian.net/a/Zeon7744 |
-| 编剧工坊 | https://zeon7744.github.io/baibai/ |
-| 展示页 | https://zeon7744.github.io/baibai-pages/ |
-
----
-
-## 内容结构
-
-```
-baibai/
-├── README.md                    # 项目介绍
-├── 编剧工坊.html                # 短剧创作工具（GitHub Pages）
-├── pages/                       # GitHub Pages 展示页
-│   └── index.html              # 主展示页
-├── docs/                        # 详细文档
-├── scripts/                     # 工具脚本
-│   ├── check_format.py         # 格式校验器
-│   ├── stats_analyzer.py       # 数据分析
-│   └── gen_readme.py           # README 生成
-├── data/stats/                  # 统计数据缓存
-└── .github/workflows/           # 自动化工作流
-    ├── update-content.yml      # 内容自动更新
-    ├── publish-pages.yml       # GitHub Pages 发布
-    └── sync-to-gitee.yml       # Gitee 同步
-```
-
----
-
-## 快速开始
-
-### 克隆仓库
+### 从源码安装（推荐）
 
 ```bash
 git clone https://github.com/Zeon7744/baibai.git
 cd baibai
+pip install -e .
 ```
 
-### 使用编剧工坊
-
-1. 访问 [编剧工坊](https://zeon7744.github.io/baibai/)
-2. 选择创作模式：
-   - **要素生成**：输入故事要素，自动生成剧本
-   - **小说改编**：上传小说文本，自动改编为短剧格式
-3. 导出剧本文件
-4. 提交到仓库，自动同步
-
-### 本地运行
+### 直接运行
 
 ```bash
-# 直接打开 HTML 文件
-open 编剧工坊.html
+# 无需安装，直接运行
+python tools/cli.py --help
+```
+
+### 依赖
+
+- Python 3.8+
+- typer (CLI 框架)
+- rich (终端美化)
+
+---
+
+## 🛠️ 工具集
+
+### 1. 格式校验器 (`format check`)
+
+检查 Markdown 文件是否符合规范：
+- 禁止字符检测（如：耀、曜）
+- 括号格式检查（【】）
+- 标题结构验证
+- 生成评分报告
+
+```bash
+# 基本用法
+baibai format check <目录路径>
+
+# 示例
+baibai format check ../awesome-ai-short-drama/short-dramas
+```
+
+### 2. 数据分析 (`stats analyze`)
+
+统计分析内容库数据：
+- 总字数、章节数统计
+- 类型分布分析
+- 排行榜生成
+- JSON 报告导出
+
+```bash
+# 基本用法
+baibai stats analyze <目录路径>
+
+# 示例
+baibai stats analyze ../awesome-ai-short-drama/short-dramas
+```
+
+### 3. README 生成器 (`readme generate`)
+
+根据内容库自动生成 README 文档：
+- 自动提取文件信息
+- 生成分类表格
+- 更新现有 README
+
+```bash
+# 基本用法
+baibai readme generate <README路径> <内容目录>
+
+# 示例
+baibai readme generate README.md ../awesome-ai-short-drama/short-dramas
+```
+
+### 4. MCP 服务器 (`mcp serve`)
+
+启动 MCP 服务器，将 baibai 工具暴露给 AI 助手：
+
+```bash
+baibai mcp serve
+```
+
+暴露的工具：
+- `baibai_format_check` — 格式校验
+- `baibai_analyze_stats` — 数据分析
+- `baibai_generate_readme` — README 生成
+
+---
+
+## 📊 使用示例
+
+### 示例 1：校验短剧剧本格式
+
+```bash
+# 进入 baibai 目录
+cd baibai
+
+# 校验短剧库
+python tools/format_checker.py ../awesome-ai-short-drama/short-dramas
+```
+
+输出示例：
+```
+============================================================
+📋 格式校验报告
+============================================================
+
+📊 统计: 共 8 个文件 | ✅通过 6 | ⚠️警告 2 | ❌失败 0
+------------------------------------------------------------
+
+✅ 剑魂重生
+   得分: 95/100 | 内容: 30项, 45000字符
+   
+✅ 帝师无双
+   得分: 85/100 | 内容: 10项, 42000字符
+...
+```
+
+### 示例 2：分析内容库数据
+
+```bash
+python tools/stats_analyzer.py ../awesome-ai-short-drama/short-dramas
+```
+
+输出示例：
+```
+============================================================
+📊 内容数据分析报告
+============================================================
+
+📈 总体统计
+  内容数量: 8 个
+  总字数: 6万字
+  总章节: 120 章
+  
+📂 类型分布
+  短剧剧本: ████████ (8)
+...
+```
+
+### 示例 3：生成 README
+
+```bash
+python tools/readme_gen.py README.md ../awesome-ai-short-drama/short-dramas
 ```
 
 ---
 
-## 短剧创作规范
+## 🏗️ 项目结构
 
-### 格式要求
-- ✅ 标题：第X集：集名
-- ✅ 结尾：第X集完
-- ✅ 对话：≤15字/句
-- ✅ 每集：≥500字，≥3爽点+1甜点
-- ❌ 禁止：耀/曜、【】括号
-
-### 发布流程
-1. 使用编剧工坊创作剧本
-2. 运行格式校验：`python scripts/check_format.py`
-3. 运行数据分析：`python scripts/stats_analyzer.py`
-4. 提交到 [awesome-ai-short-drama](https://github.com/Zeon7744/awesome-ai-short-drama) 仓库
-
----
-
-## 详细文档
-
-- [功能特性](./docs/FEATURES.md)
-- [工作流说明](./docs/WORKFLOW.md)
-- [安装配置](./docs/SETUP.md)
-- [三平台联动](./docs/PLATFORMS.md)
-- [编剧工坊融合指南](./docs/SCREENWRITING_INTEGRATION.md)
+```
+baibai/
+├── tools/                  # 工具库
+│   ├── __init__.py        # 包定义
+│   ├── cli.py             # CLI 入口
+│   ├── format_checker.py  # 格式校验器
+│   ├── stats_analyzer.py  # 数据分析
+│   └── readme_gen.py      # README 生成器
+├── templates/              # 页面模板
+│   ├── index.html         # 主展示页
+│   └── drama.html         # 短剧详情页模板
+├── examples/               # 示例项目
+├── data/                   # 数据缓存
+│   └── stats/             # 统计数据
+├── scripts/                # 遗留脚本（兼容）
+├── docs/                   # 文档
+├── pyproject.toml          # 项目配置
+└── README.md               # 本文件
+```
 
 ---
 
-*由 [红剑](https://github.com/Zeon7744) 维护*  
+## 🔌 MCP 集成
+
+Baibai 支持 Model Context Protocol (MCP)，可以集成到各种 AI 助手：
+
+### 配置 Claude Code
+
+```json
+{
+  "mcpServers": {
+    "baibai": {
+      "command": "python",
+      "args": ["-m", "tools.cli", "mcp", "serve"]
+    }
+  }
+}
+```
+
+### 配置 Cursor
+
+在 `.cursor/mcp.json` 中添加：
+
+```json
+{
+  "mcpServers": {
+    "baibai": {
+      "command": "python",
+      "args": ["tools/cli.py", "mcp", "serve"]
+    }
+  }
+}
+```
+
+---
+
+## 🎯 扩展开发
+
+### 添加新工具
+
+1. 在 `tools/` 目录下创建新模块
+2. 在 `cli.py` 中注册命令
+3. 在 `MCP_TOOLS` 中注册 MCP 工具
+
+示例：
+
+```python
+# tools/new_tool.py
+def new_feature(directory: str) -> dict:
+    # 实现功能
+    return {"status": "ok"}
+
+# cli.py 中注册
+@app.command()
+def new_command(directory: str = Option(...)):
+    result = new_feature(directory)
+    print(result)
+```
+
+---
+
+## 📄 许可证
+
+MIT License - 见 [LICENSE](LICENSE) 文件
+
+---
+
+## 🤝 贡献
+
+欢迎提交 Issue 和 Pull Request！
+
+1. Fork 本仓库
+2. 创建特性分支 (`git checkout -b feature/AmazingFeature`)
+3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
+4. 推送到分支 (`git push origin feature/AmazingFeature`)
+5. 开启 Pull Request
+
+---
+
+## 📚 相关项目
+
+- [awesome-ai-short-drama](https://github.com/Zeon7744/awesome-ai-short-drama) - AI 短剧资源库
+- [Model Context Protocol](https://modelcontextprotocol.io) - MCP 协议规范
+
+---
+
+*由 [Zeon7744](https://github.com/Zeon7744) 维护*  
 *Vibe Coding · 自然语言驱动开发*
