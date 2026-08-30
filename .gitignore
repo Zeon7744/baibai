@@ -42,9 +42,15 @@ data/stats/*.json
 .DS_Store
 Thumbs.db
 
-# Releases (本地测试用)
+# Releases (本地测试用，实际发布通过 GitHub Releases)
 releases/*/
 !releases/.gitkeep
 
-# Example projects (可选)
-# example-project/
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Logs
+*.log
+logs/
