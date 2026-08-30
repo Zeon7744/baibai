@@ -1,0 +1,86 @@
+{
+  "total": 8,
+  "dramas": [
+    {
+      "title": "剑魂重生",
+      "file": "../awesome-ai-short-drama/short-dramas/剑魂重生/剑魂重生_完整剧本.md",
+      "episodes": 30,
+      "words": 19398,
+      "dialogues": 685,
+      "shuang_count": 43,
+      "read_time": 64,
+      "genre": "玄幻重生"
+    },
+    {
+      "title": "帝师无双",
+      "file": "../awesome-ai-short-drama/short-dramas/帝师无双/帝师无双_完整剧本.md",
+      "episodes": 10,
+      "words": 14021,
+      "dialogues": 173,
+      "shuang_count": 11,
+      "read_time": 46,
+      "genre": "玄幻重生"
+    },
+    {
+      "title": "总裁的替身前妻",
+      "file": "../awesome-ai-short-drama/short-dramas/总裁的替身前妻/总裁的替身前妻_完整剧本.md",
+      "episodes": 10,
+      "words": 7357,
+      "dialogues": 207,
+      "shuang_count": 2,
+      "read_time": 24,
+      "genre": "都市异能"
+    },
+    {
+      "title": "暗夜追凶_完整剧本",
+      "file": "../awesome-ai-short-drama/short-dramas/暗夜追凶/暗夜追凶_完整剧本.md",
+      "episodes": 10,
+      "words": 2139,
+      "dialogues": 0,
+      "shuang_count": 10,
+      "read_time": 7,
+      "genre": "悬疑推理"
+    },
+    {
+      "title": "江城情缘",
+      "file": "../awesome-ai-short-drama/short-dramas/江城情缘/江城情缘_完整剧本.md",
+      "episodes": 30,
+      "words": 18212,
+      "dialogues": 608,
+      "shuang_count": 17,
+      "read_time": 60,
+      "genre": "都市甜宠"
+    },
+    {
+      "title": "狂少逆袭_完整剧本",
+      "file": "../awesome-ai-short-drama/short-dramas/狂少逆袭/狂少逆袭_完整剧本.md",
+      "episodes": 10,
+      "words": 1943,
+      "dialogues": 0,
+      "shuang_count": 10,
+      "read_time": 6,
+      "genre": "都市豪门"
+    },
+    {
+      "title": "神医赘婿_完整剧本",
+      "file": "../awesome-ai-short-drama/short-dramas/神医赘婿/神医赘婿_完整剧本.md",
+      "episodes": 10,
+      "words": 1800,
+      "dialogues": 0,
+      "shuang_count": 8,
+      "read_time": 6,
+      "genre": "都市异能"
+    },
+    {
+      "title": "龙皇归来_完整剧本",
+      "file": "../awesome-ai-short-drama/short-dramas/龙皇归来/龙皇归来_完整剧本.md",
+      "episodes": 10,
+      "words": 2065,
+      "dialogues": 0,
+      "shuang_count": 7,
+      "read_time": 6,
+      "genre": "玄幻重生"
+    }
+  ],
+  "generated_at": "2026-08-30T19:32:31.260652"
+}

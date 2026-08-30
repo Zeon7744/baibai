@@ -1,0 +1,48 @@
+{
+  "total_dramas": 8,
+  "total_episodes": 120,
+  "total_words": 66935,
+  "avg_episodes": 15.0,
+  "avg_words": 8366.875,
+  "genre_distribution": {
+    "玄幻重生": 3,
+    "都市异能": 2,
+    "悬疑推理": 1,
+    "都市甜宠": 1,
+    "都市豪门": 1
+  },
+  "episodes_range": "10-30",
+  "words_range": "1k-19k",
+  "top_shuang": [
+    {
+      "title": "剑魂重生",
+      "file": "../awesome-ai-short-drama/short-dramas/剑魂重生/剑魂重生_完整剧本.md",
+      "episodes": 30,
+      "words": 19398,
+      "dialogues": 685,
+      "shuang_count": 43,
+      "read_time": 64,
+      "genre": "玄幻重生"
+    },
+    {
+      "title": "江城情缘",
+      "file": "../awesome-ai-short-drama/short-dramas/江城情缘/江城情缘_完整剧本.md",
+      "episodes": 30,
+      "words": 18212,
+      "dialogues": 608,
+      "shuang_count": 17,
+      "read_time": 60,
+      "genre": "都市甜宠"
+    },
+    {
+      "title": "帝师无双",
+      "file": "../awesome-ai-short-drama/short-dramas/帝师无双/帝师无双_完整剧本.md",
+      "episodes": 10,
+      "words": 14021,
+      "dialogues": 173,
+      "shuang_count": 11,
+      "read_time": 46,
+      "genre": "玄幻重生"
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-# 🖥️ Baibai - Vibe Coding 开发仓库
+# Baibai - Vibe Coding 开发仓库
 
 > 代码 · 程序 · 工作流 — 用自然语言驱动开发
 
@@ -28,23 +28,47 @@ Baibai 是一个 **Vibe Coding 开发仓库**，整合了应用开发、工具�
 
 ---
 
+## 🛠️ 工具链
+
+### 脚本工具
+
+| 工具 | 说明 | 使用方式 |
+|------|------|---------|
+| `check_format.py` | 短剧格式校验器 | 检查剧本是否符合平台规范 |
+| `stats_analyzer.py` | 数据统计分析 | 统计剧本库数据，生成分析报告 |
+| `gen_readme.py` | README 自动生成 | 根据剧本库内容自动生成 README 短剧列表 |
+
+### 使用示例
+
+```bash
+# 格式校验
+python scripts/check_format.py ../awesome-ai-short-drama/short-dramas
+
+# 数据分析
+python scripts/stats_analyzer.py ../awesome-ai-short-drama/short-dramas
+
+# 生成 README
+python scripts/gen_readme.py ../awesome-ai-short-drama/short-dramas
+```
 
 ---
 
-## 🎬 短剧项目
+## 🎬 短剧剧本库
 
-- **剑魂重生** - [`剑魂重生_完整剧本.md`](./短剧项目/剑魂重生/剑魂重生_完整剧本.md)
-- **帝师无双** - [`帝师无双_完整剧本.md`](./短剧项目/帝师无双/帝师无双_完整剧本.md)
-- **总裁的替身前妻** - [`总裁的替身前妻_完整剧本.md`](./短剧项目/总裁的替身前妻/总裁的替身前妻_完整剧本.md)
-- **江城情缘** - [`江城情缘_完整剧本.md`](./短剧项目/江城情缘/江城情缘_完整剧本.md)
+本仓库收录 **8部完整短剧剧本**，符合红果短剧平台规范（≤15字对话、≥3爽点/集）。详见 [awesome-ai-short-drama](https://github.com/Zeon7744/awesome-ai-short-drama)。
 
+| 序号 | 剧名 | 类型 | 集数 |
+|------|------|------|------|
+| 1 | **剑魂重生** | 玄幻重生 | 30集 |
+| 2 | **帝师无双** | 玄幻重生 | 10集 |
+| 3 | **总裁的替身前妻** | 都市异能 | 10集 |
+| 4 | **暗夜追凶** | 悬疑推理 | 10集 |
+| 5 | **江城情缘** | 都市甜宠 | 30集 |
+| 6 | **狂少逆袭** | 都市豪门 | 10集 |
+| 7 | **神医赘婿** | 都市异能 | 10集 |
+| 8 | **龙皇归来** | 玄幻重生 | 10集 |
 
----
-
-## 🎬 短剧项目
-
-暂无短剧项目
-
+> 📌 剧本创作规范：标题第X集：集名 · 结尾第X集完 · 对话≤15字 · 每集≥3爽点+1甜点
 
 ---
 
@@ -57,7 +81,7 @@ Baibai 是一个 **Vibe Coding 开发仓库**，整合了应用开发、工具�
 
 ## 🙏 感谢赞助
 
-暂无赞助者
+- [爱发电赞助列表](https://ifdian.net/a/Zeon7744)
 
 ---
 
@@ -73,6 +97,7 @@ GitHub (国际) ↔ Gitee (国内) ↔ 爱发电 (赞助变现)
 | Gitee | https://gitee.com/Zeon7744/baibai |
 | 爱发电 | https://ifdian.net/a/Zeon7744 |
 | 编剧工坊 | https://zeon7744.github.io/baibai/ |
+| 展示页 | https://zeon7744.github.io/baibai-pages/ |
 
 ---
 
@@ -82,21 +107,18 @@ GitHub (国际) ↔ Gitee (国内) ↔ 爱发电 (赞助变现)
 baibai/
 ├── README.md                    # 项目介绍
 ├── 编剧工坊.html                # 短剧创作工具（GitHub Pages）
+├── pages/                       # GitHub Pages 展示页
+│   └── index.html              # 主展示页
 ├── docs/                        # 详细文档
-│   ├── FEATURES.md              # 功能特性
-│   ├── WORKFLOW.md              # 工作流说明
-│   ├── SETUP.md                 # 安装配置
-│   └── PLATFORMS.md             # 三平台联动
-├── 短剧项目/                   # 短剧剧本库
-│   └── {剧名}/
-│       └── {剧名}_完整剧本.md
-├── .github/workflows/           # 自动化工作流
-│   ├── update-content.yml       # 内容自动更新
-│   ├── publish-pages.yml        # GitHub Pages 发布
-│   └── sync-to-gitee.yml        # Gitee 同步
-└── scripts/                     # 工具脚本
-    ├── update-content.sh        # README 更新脚本
-    └── fetch-sponsors.sh        # 爱发电 API 调用
+├── scripts/                     # 工具脚本
+│   ├── check_format.py         # 格式校验器
+│   ├── stats_analyzer.py       # 数据分析
+│   └── gen_readme.py           # README 生成
+├── data/stats/                  # 统计数据缓存
+└── .github/workflows/           # 自动化工作流
+    ├── update-content.yml      # 内容自动更新
+    ├── publish-pages.yml       # GitHub Pages 发布
+    └── sync-to-gitee.yml       # Gitee 同步
 ```
 
 ---
@@ -139,8 +161,9 @@ open 编剧工坊.html
 
 ### 发布流程
 1. 使用编剧工坊创作剧本
-2. 导出剧本文件
-3. 提交到 [awesome-ai-short-drama](https://github.com/Zeon7744/awesome-ai-short-drama) 仓库
+2. 运行格式校验：`python scripts/check_format.py`
+3. 运行数据分析：`python scripts/stats_analyzer.py`
+4. 提交到 [awesome-ai-short-drama](https://github.com/Zeon7744/awesome-ai-short-drama) 仓库
 
 ---
 

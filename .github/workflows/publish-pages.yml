@@ -1,9 +1,11 @@
-name: Publish Script to GitHub Pages
+name: Publish Pages to GitHub Pages
 
 on:
   push:
+    branches: [main]
     paths:
-      - '编剧工坊.html'
+      - 'pages/**'
+      - '.github/workflows/publish-pages.yml'
   workflow_dispatch:
 
 permissions:
@@ -24,16 +26,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
+      
       - name: Setup Pages
-        id: pages
         uses: actions/configure-pages@v5
-
+      
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
-
+          path: 'pages'
+      
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

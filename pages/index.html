@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baibai - Vibe Coding 开发仓库</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --bg: #0f172a;
+            --bg-card: #1e293b;
+            --bg-hover: #334155;
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            padding: 60px 0 40px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 40px;
+        }
+        
+        .logo {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+        
+        h1 {
+            font-size: 42px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+        }
+        
+        .tagline {
+            font-size: 20px;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+        
+        .badges {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            font-size: 14px;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        
+        .badge:hover {
+            background: var(--bg-hover);
+            color: var(--text);
+            transform: translateY(-2px);
+        }
+        
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            transition: all 0.2s;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+        }
+        
+        .stat-value {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Sections */
+        section {
+            margin-bottom: 60px;
+        }
+        
+        h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        h2::before {
+            content: '';
+            width: 4px;
+            height: 28px;
+            background: linear-gradient(135deg, var(--primary), #a855f7);
+            border-radius: 2px;
+        }
+        
+        /* Tools Grid */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.1);
+        }
+        
+        .tool-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+        
+        .tool-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .tool-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+        
+        .tool-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(99, 102, 241, 0.2);
+            color: var(--primary);
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        /* Drama List */
+        .drama-table {
+            width: 100%;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        
+        .drama-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .drama-table th,
+        .drama-table td {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .drama-table th {
+            background: var(--bg-hover);
+            font-weight: 600;
+            color: var(--text-muted);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .drama-table tr:hover {
+            background: var(--bg-hover);
+        }
+        
+        .drama-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .genre-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .genre-xuanhuan { background: rgba(168, 85, 247, 0.2); color: #a855f7; }
+        .genre-dushi { background: rgba(59, 130, 246, 0.2); color: #3b82f6; }
+        .genre-xuanyi { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+        .genre-lishi { background: rgba(245, 158, 11, 0.2); color: #f59e0b; }
+        
+        /* Links */
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+        }
+        
+        .link-card {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.2s;
+        }
+        
+        .link-card:hover {
+            border-color: var(--primary);
+            transform: translateX(8px);
+        }
+        
+        .link-icon {
+            font-size: 24px;
+        }
+        
+        .link-text {
+            flex: 1;
+        }
+        
+        .link-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .link-desc {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 32px; }
+            .tagline { font-size: 16px; }
+            .stats { grid-template-columns: repeat(2, 1fr); }
+            .drama-table { overflow-x: auto; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">⚔️</div>
+            <h1>Baibai</h1>
+            <p class="tagline">Vibe Coding · 用自然语言驱动开发</p>
+            <div class="badges">
+                <a href="https://github.com/Zeon7744/baibai" class="badge" target="_blank">
+                    🐙 GitHub
+                </a>
+                <a href="https://gitee.com/Zeon7744/baibai" class="badge" target="_blank">
+                    🌟 Gitee
+                </a>
+                <a href="https://ifdian.net/a/Zeon7744" class="badge" target="_blank">
+                    ⚡ 爱发电
+                </a>
+                <a href="https://zeon7744.github.io/baibai/" class="badge" target="_blank">
+                    🎭 编剧工坊
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Stats -->
+        <section class="stats">
+            <div class="stat-card">
+                <div class="stat-value">8</div>
+                <div class="stat-label">短剧作品</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">120</div>
+                <div class="stat-label">总集数</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">6万</div>
+                <div class="stat-label">总字数</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">3</div>
+                <div class="stat-label">平台同步</div>
+            </div>
+        </section>
+
+        <!-- Tools -->
+        <section>
+            <h2>🛠️ 工具链</h2>
+            <div class="tools-grid">
+                <a href="https://zeon7744.github.io/baibai/" class="tool-card" target="_blank">
+                    <div class="tool-icon">🎭</div>
+                    <div class="tool-name">编剧工坊</div>
+                    <div class="tool-desc">短剧剧本创作工具，支持要素生成和小说改编，一键发布到三平台</div>
+                    <span class="tool-tag">在线使用</span>
+                </a>
+                <a href="https://github.com/Zeon7744/baibai/tree/main/scripts" class="tool-card" target="_blank">
+                    <div class="tool-icon">📝</div>
+                    <div class="tool-name">格式校验器</div>
+                    <div class="tool-desc">检查剧本是否符合红果短剧平台规范（对话长度、爽点密度、字数统计）</div>
+                    <span class="tool-tag">Python</span>
+                </a>
+                <a href="https://github.com/Zeon7744/baibai/tree/main/scripts" class="tool-card" target="_blank">
+                    <div class="tool-icon">📊</div>
+                    <div class="tool-name">数据分析</div>
+                    <div class="tool-desc">短剧库数据统计分析，类型分布、集数统计、爽点密度排行</div>
+                    <span class="tool-tag">Python</span>
+                </a>
+                <a href="https://github.com/Zeon7744/baibai/tree/main/.github/workflows" class="tool-card" target="_blank">
+                    <div class="tool-icon">🔄</div>
+                    <div class="tool-name">自动同步</div>
+                    <div class="tool-desc">GitHub ↔ Gitee 双端同步，定期更新赞助者名单，自动化工作流</div>
+                    <span class="tool-tag">Actions</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Drama Library -->
+        <section>
+            <h2>🎬 短剧剧本库</h2>
+            <div class="drama-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>剧名</th>
+                            <th>类型</th>
+                            <th>集数</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><strong>剑魂重生</strong></td>
+                            <td><span class="genre-tag genre-xuanhuan">玄幻重生</span></td>
+                            <td>30集</td>
+                            <td><a href="https://github.com/Zeon7744/awesome-ai-short-drama/tree/main/short-dramas/剑魂重生" target="_blank" style="color: var(--primary);">查看</a></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><strong>帝师无双</strong></td>
+                            <td><span class="genre-tag genre-xuanhuan">玄幻重生</span></td>
+                            <td>10集</td>
+                            <td><a href="https://github.com/Zeon7744/awesome-ai-short-drama/tree/main/short-dramas/帝师无双" target="_blank" style="color: var(--primary);">查看</a></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><strong>总裁的替身前妻</strong></td>
+                            <td><span class="genre-tag genre-dushi">都市异能</span></td>
+                            <td>10集</td>
+                            <td><a href="https://github.com/Zeon7744/awesome-ai-short-drama/tree/main/short-dramas/总裁的替身前妻" target="_blank" style="color: var(--primary);">查看</a></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td><strong>暗夜追凶</strong></td>
+                            <td><span class="genre-tag genre-xuanyi">悬疑推理</span></td>
+                            <td>10集</td>
+                            <td><a href="https://github.com/Zeon7744/awesome-ai-short-drama/tree/main/short-dramas/暗夜追凶" target="_blank" style="color: var(--primary);">查看</a></td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td><strong>江城情缘</strong></td>
+                            <td><span class="genre-tag genre-dushi">都市甜宠</span></td>
+                            <td>30集</td>
+                            <td><a href="https://github.com/Zeon7744/awesome-ai-short-drama/tree/main/short-dramas/江城情缘" target="_blank" style="color: var(--primary);">查看</a></td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td><strong>狂少逆袭</strong></td>
+                            <td><span class="genre-tag genre-dushi">都市豪门</span></td>
+                            <td>10集</td>
+                            <td><a href="https://github.com/Zeon7744/awesome-ai-short-drama/tree/main/short-dramas/狂少逆袭" target="_blank" style="color: var(--primary);">查看</a></td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td><strong>神医赘婿</strong></td>
+                            <td><span class="genre-tag genre-dushi">都市异能</span></td>
+                            <td>10集</td>
+                            <td><a href="https://github.com/Zeon7744/awesome-ai-short-drama/tree/main/short-dramas/神医赘婿" target="_blank" style="color: var(--primary);">查看</a></td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td><strong>龙皇归来</strong></td>
+                            <td><span class="genre-tag genre-xuanhuan">玄幻重生</span></td>
+                            <td>10集</td>
+                            <td><a href="https://github.com/Zeon7744/awesome-ai-short-drama/tree/main/short-dramas/龙皇归来" target="_blank" style="color: var(--primary);">查看</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Links -->
+        <section>
+            <h2>🔗 相关链接</h2>
+            <div class="links-grid">
+                <a href="https://github.com/Zeon7744/awesome-ai-short-drama" class="link-card" target="_blank">
+                    <div class="link-icon">🎬</div>
+                    <div class="link-text">
+                        <div class="link-title">Awesome AI Short Drama</div>
+                        <div class="link-desc">AI短剧全链路资源精选清单</div>
+                    </div>
+                </a>
+                <a href="https://zeon7744.github.io/baibai/" class="link-card" target="_blank">
+                    <div class="link-icon">🎭</div>
+                    <div class="link-text">
+                        <div class="link-title">编剧工坊</div>
+                        <div class="link-desc">在线短剧剧本创作工具</div>
+                    </div>
+                </a>
+                <a href="https://ifdian.net/a/Zeon7744" class="link-card" target="_blank">
+                    <div class="link-icon">⚡</div>
+                    <div class="link-text">
+                        <div class="link-title">爱发电赞助</div>
+                        <div class="link-desc">支持白皇的创作之路</div>
+                    </div>
+                </a>
+                <a href="https://github.com/Zeon7744" class="link-card" target="_blank">
+                    <div class="link-icon">👤</div>
+                    <div class="link-text">
+                        <div class="link-title">GitHub 主页</div>
+                        <div class="link-desc">查看更多开源项目</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Workflow -->
+        <section>
+            <h2>⚙️ 工作流程</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">1️⃣</div>
+                    <div class="tool-name">创作剧本</div>
+                    <div class="tool-desc">使用编剧工坊或手动创作短剧剧本，符合平台规范</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">2️⃣</div>
+                    <div class="tool-name">格式校验</div>
+                    <div class="tool-desc">运行 check_format.py 自动检查剧本格式和问题</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">3️⃣</div>
+                    <div class="tool-name">数据归档</div>
+                    <div class="tool-desc">运行 stats_analyzer.py 统计剧本数据，生成分析报告</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">4️⃣</div>
+                    <div class="tool-name">三端同步</div>
+                    <div class="tool-desc">自动推送到 GitHub + Gitee + 爱发电，保持同步</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>由 <a href="https://github.com/Zeon7744" style="color: var(--primary); text-decoration: none;">白皇</a> 维护</p>
+            <p style="margin-top: 8px;">Vibe Coding · 用自然语言驱动开发</p>
+        </div>
+    </footer>
+</body>
+</html>
