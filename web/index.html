@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baibai 金融分析器</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f1419; color: #e6edf3; min-height: 100vh; }
+        .header { background: linear-gradient(135deg, #1a1f2e 0%, #0d1117 100%); padding: 20px 40px; border-bottom: 1px solid #21262d; display: flex; align-items: center; justify-content: space-between; }
+        .logo { font-size: 24px; font-weight: 700; color: #58a6ff; }
+        .logo span { color: #3fb950; }
+        .search-box { display: flex; gap: 10px; }
+        .search-box input { padding: 10px 16px; border-radius: 8px; border: 1px solid #30363d; background: #161b22; color: #e6edf3; font-size: 14px; width: 200px; }
+        .search-box input:focus { outline: none; border-color: #58a6ff; }
+        .search-box button { padding: 10px 20px; border-radius: 8px; border: none; background: #238636; color: white; cursor: pointer; font-weight: 600; }
+        .search-box button:hover { background: #2ea043; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 30px; }
+        .stock-info { display: flex; gap: 40px; margin-bottom: 30px; align-items: center; }
+        .stock-title h1 { font-size: 32px; margin-bottom: 5px; }
+        .stock-title .exchange { color: #8b949e; font-size: 14px; }
+        .price-display { text-align: right; }
+        .current-price { font-size: 42px; font-weight: 700; color: #3fb950; }
+        .price-change { font-size: 18px; margin-top: 5px; }
+        .positive { color: #3fb950; }
+        .negative { color: #f85149; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .card { background: #161b22; border: 1px solid #21262d; border-radius: 12px; padding: 20px; }
+        .card-title { font-size: 16px; font-weight: 600; margin-bottom: 15px; color: #8b949e; text-transform: uppercase; letter-spacing: 0.5px; }
+        .chart-container { height: 300px; position: relative; }
+        .indicator-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+        .indicator-item { background: #0d1117; padding: 15px; border-radius: 8px; border-left: 3px solid #58a6ff; }
+        .indicator-label { font-size: 12px; color: #8b949e; margin-bottom: 5px; }
+        .indicator-value { font-size: 20px; font-weight: 600; }
+        .ml-section { background: linear-gradient(135deg, #1a1f2e 0%, #0d1117 100%); border: 1px solid #f0883e; }
+        .ml-section .card-title { color: #f0883e; }
+        .prediction-box { display: flex; justify-content: space-around; text-align: center; padding: 20px; }
+        .pred-value { font-size: 28px; font-weight: 700; }
+        .pred-label { font-size: 12px; color: #8b949e; margin-top: 5px; }
+        .advice-box { background: #161b22; border-radius: 12px; padding: 25px; text-align: center; }
+        .advice-action { font-size: 36px; font-weight: 700; margin: 15px 0; }
+        .advice-reason { color: #8b949e; font-size: 14px; line-height: 1.6; }
+        .signals-list { display: flex; flex-direction: column; gap: 10px; }
+        .signal-item { display: flex; justify-content: space-between; padding: 10px 15px; background: #0d1117; border-radius: 6px; }
+        .signal-name { color: #8b949e; }
+        .signal-status { font-weight: 600; }
+        .loading { text-align: center; padding: 60px; color: #8b949e; }
+        .sample-stocks { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 15px; }
+        .sample-btn { padding: 6px 12px; border-radius: 6px; border: 1px solid #30363d; background: #161b22; color: #e6edf3; cursor: pointer; font-size: 12px; }
+        .sample-btn:hover { border-color: #58a6ff; background: #1f2937; }
+        .footer { text-align: center; padding: 30px; color: #8b949e; font-size: 12px; border-top: 1px solid #21262d; margin-top: 40px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">Baibai <span>金融分析器</span></div>
+        <div class="search-box">
+            <input type="text" id="symbolInput" placeholder="输入股票代码..." value="AAPL">
+            <button onclick="analyzeStock()">分析</button>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="stock-info" id="stockInfo" style="display:none;">
+            <div class="stock-title">
+                <h1 id="stockName">AAPL</h1>
+                <div class="exchange" id="exchange">NASDAQ</div>
+            </div>
+            <div class="price-display">
+                <div class="current-price" id="currentPrice">$0.00</div>
+                <div class="price-change" id="priceChange">+0.00%</div>
+            </div>
+        </div>
+        
+        <div class="grid" id="chartsGrid" style="display:none;">
+            <div class="card">
+                <div class="card-title">价格走势</div>
+                <div class="chart-container"><canvas id="priceChart"></canvas></div>
+            </div>
+            <div class="card">
+                <div class="card-title">RSI 相对强弱</div>
+                <div class="chart-container"><canvas id="rsiChart"></canvas></div>
+            </div>
+            <div class="card">
+                <div class="card-title">MACD 指标</div>
+                <div class="chart-container"><canvas id="macdChart"></canvas></div>
+            </div>
+            <div class="card">
+                <div class="card-title">成交量</div>
+                <div class="chart-container"><canvas id="volumeChart"></canvas></div>
+            </div>
+        </div>
+        
+        <div class="grid" id="indicatorsGrid" style="display:none;">
+            <div class="card">
+                <div class="card-title">技术指标</div>
+                <div class="indicator-grid" id="indicatorValues"></div>
+            </div>
+            <div class="card ml-section">
+                <div class="card-title">MLP 预测分析</div>
+                <div class="prediction-box">
+                    <div>
+                        <div class="pred-value" id="mlAccuracy">--</div>
+                        <div class="pred-label">分类准确率</div>
+                    </div>
+                    <div>
+                        <div class="pred-value" id="mlRMSE">--</div>
+                        <div class="pred-label">回归 RMSE</div>
+                    </div>
+                    <div>
+                        <div class="pred-value" id="mlPrediction">--</div>
+                        <div class="pred-label">预期5日收益</div>
+                    </div>
+                </div>
+                <div style="margin-top:15px;">
+                    <div class="card-title" style="font-size:12px;">特征重要性 TOP5</div>
+                    <div id="featureImportance" style="font-size:13px; color:#8b949e;"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card advice-box" id="adviceBox" style="display:none;">
+            <div class="card-title">投资建议</div>
+            <div class="advice-action" id="adviceAction">观望</div>
+            <div class="advice-reason" id="adviceReason"></div>
+            <div style="margin-top:20px; text-align:left;" id="signalsList"></div>
+        </div>
+        
+        <div class="card" style="margin-top:20px;">
+            <div class="card-title">快速测试</div>
+            <div class="sample-stocks">
+                <button class="sample-btn" onclick="quickAnalyze('AAPL')">AAPL 苹果</button>
+                <button class="sample-btn" onclick="quickAnalyze('GOOGL')">GOOGL 谷歌</button>
+                <button class="sample-btn" onclick="quickAnalyze('MSFT')">MSFT 微软</button>
+                <button class="sample-btn" onclick="quickAnalyze('TSLA')">TSLA 特斯拉</button>
+                <button class="sample-btn" onclick="quickAnalyze('000001.SZ')">000001.SZ 平安银行</button>
+                <button class="sample-btn" onclick="quickAnalyze('600519.SH')">600519.SH 贵州茅台</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        Baibai Financial Analyzer | Powered by MLP & Technical Indicators<br>
+        免责声明：本工具仅供学习研究，不构成投资建议
+    </div>
+
+    <script>
+        let priceChart, rsiChart, macdChart, volumeChart;
+        
+        async function analyzeStock() {
+            const symbol = document.getElementById('symbolInput').value.trim().toUpperCase();
+            if (!symbol) return;
+            
+            document.getElementById('stockInfo').style.display = 'none';
+            document.getElementById('chartsGrid').style.display = 'none';
+            document.getElementById('indicatorsGrid').style.display = 'none';
+            document.getElementById('adviceBox').style.display = 'none';
+            
+            // 模拟分析（实际部署时调用后端 API）
+            await simulateAnalysis(symbol);
+        }
+        
+        async function simulateAnalysis(symbol) {
+            // 这里会调用 baibai MCP Server 或后端 API
+            // 由于是演示，先显示加载状态
+            const btn = document.querySelector('.search-box button');
+            btn.textContent = '分析中...';
+            btn.disabled = true;
+            
+            await new Promise(r => setTimeout(r, 800));
+            
+            // 生成模拟数据用于演示
+            const mockData = generateMockData(symbol);
+            displayResults(mockData);
+            
+            btn.textContent = '分析';
+            btn.disabled = false;
+        }
+        
+        function generateMockData(symbol) {
+            const basePrice = symbol === 'AAPL' ? 178 : symbol === 'GOOGL' ? 141 : symbol === 'MSFT' ? 378 : symbol === 'TSLA' ? 248 : 1800;
+            const prices = [];
+            let price = basePrice;
+            for (let i = 0; i < 252; i++) {
+                price *= (1 + (Math.random() - 0.48) * 0.02);
+                prices.push(price);
+            }
+            
+            const rsi = Array.from({length: 252}, (_, i) => i < 14 ? 50 : 30 + Math.random() * 40);
+            const macd = Array.from({length: 252}, () => (Math.random() - 0.5) * 5);
+            const volume = Array.from({length: 252}, () => Math.floor(Math.random() * 5000000 + 1000000));
+            
+            return {
+                symbol: symbol,
+                date: new Date().toISOString().split('T')[0],
+                price: prices[prices.length - 1],
+                change: (Math.random() - 0.4) * 5,
+                indicators: {
+                    RSI: 45 + Math.random() * 20,
+                    MACD: (Math.random() - 0.5) * 3,
+                    MACD_signal: (Math.random() - 0.5) * 3,
+                    BB_position: 0.3 + Math.random() * 0.4,
+                    volatility_annual: 20 + Math.random() * 30
+                },
+                ma_system: {
+                    MA5: prices[prices.length - 1] * (1 + (Math.random() - 0.5) * 0.02),
+                    MA10: prices[prices.length - 1] * (1 + (Math.random() - 0.5) * 0.03),
+                    MA20: prices[prices.length - 1] * (1 + (Math.random() - 0.5) * 0.04),
+                    MA50: prices[prices.length - 1] * (1 + (Math.random() - 0.5) * 0.05)
+                },
+                ml_prediction: {
+                    classifier_accuracy: 0.65 + Math.random() * 0.15,
+                    regression_rmse: 2 + Math.random() * 5,
+                    expected_5d_return_pct: (Math.random() - 0.4) * 5,
+                    top_features: {
+                        'RSI': 0.25,
+                        'MACD': 0.22,
+                        'BB_position': 0.18,
+                        'Volume_ratio': 0.15,
+                        'MA5_MA10_ratio': 0.12
+                    }
+                },
+                advice: {
+                    signals: [
+                        {indicator: 'RSI', status: '正常', suggestion: '中性'},
+                        {indicator: 'MACD', status: Math.random() > 0.5 ? '金叉' : '死叉', suggestion: Math.random() > 0.5 ? '看涨' : '看跌'},
+                        {indicator: '布林带', status: '中轨', suggestion: '观望'}
+                    ],
+                    risk_level: Math.random() > 0.5 ? '中等' : '低',
+                    operation: Math.random() > 0.5 ? '买入' : '观望'
+                },
+                prices: prices,
+                rsi: rsi,
+                macd: macd,
+                volume: volume
+            };
+        }
+        
+        function displayResults(data) {
+            document.getElementById('stockInfo').style.display = 'flex';
+            document.getElementById('stockName').textContent = data.symbol;
+            document.getElementById('currentPrice').textContent = '$' + data.price.toFixed(2);
+            document.getElementById('priceChange').textContent = (data.change >= 0 ? '+' : '') + data.change.toFixed(2) + '%';
+            document.getElementById('priceChange').className = 'price-change ' + (data.change >= 0 ? 'positive' : 'negative');
+            
+            document.getElementById('chartsGrid').style.display = 'grid';
+            renderCharts(data);
+            
+            document.getElementById('indicatorsGrid').style.display = 'grid';
+            renderIndicators(data);
+            
+            document.getElementById('adviceBox').style.display = 'block';
+            renderAdvice(data);
+        }
+        
+        function renderCharts(data) {
+            const labels = data.prices.map((_, i) => i);
+            
+            if (priceChart) priceChart.destroy();
+            priceChart = new Chart(document.getElementById('priceChart'), {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Close Price',
+                        data: data.prices,
+                        borderColor: '#58a6ff',
+                        backgroundColor: 'rgba(88, 166, 255, 0.1)',
+                        fill: true,
+                        tension: 0.3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: { x: { display: false }, y: { grid: { color: '#21262d' } } }
+                }
+            });
+            
+            if (rsiChart) rsiChart.destroy();
+            rsiChart = new Chart(document.getElementById('rsiChart'), {
+                type: 'line',
+                data: {
+                    labels: labels.slice(14),
+                    datasets: [{
+                        label: 'RSI',
+                        data: data.rsi.slice(14),
+                        borderColor: '#d2a8ff',
+                        backgroundColor: 'rgba(210, 168, 255, 0.1)',
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: { x: { display: false }, y: { min: 0, max: 100, grid: { color: '#21262d' } } }
+                }
+            });
+            
+            if (macdChart) macdChart.destroy();
+            macdChart = new Chart(document.getElementById('macdChart'), {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'MACD',
+                        data: data.macd,
+                        backgroundColor: data.macd.map(v => v >= 0 ? '#3fb950' : '#f85149'),
+                        opacity: 0.7
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: { x: { display: false }, y: { grid: { color: '#21262d' } } }
+                }
+            });
+            
+            if (volumeChart) volumeChart.destroy();
+            volumeChart = new Chart(document.getElementById('volumeChart'), {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Volume',
+                        data: data.volume,
+                        backgroundColor: '#21262d'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: { x: { display: false }, y: { grid: { color: '#21262d' } } }
+                }
+            });
+        }
+        
+        function renderIndicators(data) {
+            const container = document.getElementById('indicatorValues');
+            const ind = data.indicators;
+            container.innerHTML = `
+                <div class="indicator-item"><div class="indicator-label">RSI(14)</div><div class="indicator-value" style="color:#d2a8ff">${ind.RSI.toFixed(2)}</div></div>
+                <div class="indicator-item"><div class="indicator-label">MACD</div><div class="indicator-value" style="color:#58a6ff">${ind.MACD.toFixed(4)}</div></div>
+                <div class="indicator-item"><div class="indicator-label">布林带位置</div><div class="indicator-value" style="color:#3fb950">${(ind.BB_position * 100).toFixed(1)}%</div></div>
+                <div class="indicator-item"><div class="indicator-label">年化波动率</div><div class="indicator-value" style="color:#f0883e">${ind.volatility_annual.toFixed(2)}%</div></div>
+            `;
+            
+            const ml = data.ml_prediction;
+            document.getElementById('mlAccuracy').textContent = (ml.classifier_accuracy * 100).toFixed(1) + '%';
+            document.getElementById('mlRMSE').textContent = ml.regression_rmse.toFixed(2);
+            const ret = ml.expected_5d_return_pct;
+            document.getElementById('mlPrediction').textContent = (ret >= 0 ? '+' : '') + ret.toFixed(2) + '%';
+            document.getElementById('mlPrediction').style.color = ret >= 0 ? '#3fb950' : '#f85149';
+            
+            const features = Object.entries(ml.top_features).slice(0, 5).map(([k, v]) => `${k}: ${(v * 100).toFixed(1)}%`).join(' | ');
+            document.getElementById('featureImportance').textContent = features;
+        }
+        
+        function renderAdvice(data) {
+            const adv = data.advice;
+            const actionEl = document.getElementById('adviceAction');
+            actionEl.textContent = adv.operation;
+            actionEl.style.color = adv.operation === '买入' ? '#3fb950' : adv.operation === '卖出' ? '#f85149' : '#d2a8ff';
+            
+            const reasons = adv.signals.map(s => `${s.indicator}: ${s.status} (${s.suggestion})`).join('；');
+            document.getElementById('adviceReason').textContent = `风险等级: ${adv.risk_level} | ${reasons}`;
+            
+            const signalsEl = document.getElementById('signalsList');
+            signalsEl.innerHTML = '<div class="card-title" style="margin-bottom:10px">技术信号</div>' + 
+                adv.signals.map(s => `<div class="signal-item"><span class="signal-name">${s.indicator}</span><span class="signal-status" style="color:${s.suggestion === '看涨' || s.suggestion === '关注' ? '#3fb950' : s.suggestion === '看跌' || s.suggestion === '谨慎' ? '#f85149' : '#8b949e'}">${s.status} - ${s.suggestion}</span></div>`).join('');
+        }
+        
+        function quickAnalyze(symbol) {
+            document.getElementById('symbolInput').value = symbol;
+            analyzeStock();
+        }
+        
+        // 页面加载时自动分析 AAPL
+        window.onload = () => quickAnalyze('AAPL');
+    </script>
+</body>
+</html>

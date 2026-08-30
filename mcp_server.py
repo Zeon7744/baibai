@@ -331,3 +331,67 @@ def run_server():
 
 if __name__ == "__main__":
     run_server()
+
+# 金融分析器导入
+from tools.financial_analyzer import FinancialAnalyzer, analyze
+
+
+def register_financial_tools(mcp: "FastMCP") -> None:
+    """注册金融分析工具"""
+    
+    @mcp.tool()
+    def analyze_stock(symbol: str, period: str = "1y") -> str:
+        """分析指定股票，返回完整分析报告（含 MLP 预测）
+        
+        Args:
+            symbol: 股票代码，如 AAPL, 000001.SZ, 600519.SH
+            period: 数据周期，默认 1y
+        """
+        try:
+            analyzer = FinancialAnalyzer(symbol=symbol, period=period)
+            report = analyzer.generate_report()
+            return json.dumps(report, ensure_ascii=False, indent=2, default=str)
+        except Exception as e:
+            return json.dumps({"error": str(e)}, ensure_ascii=False)
+    
+    @mcp.tool()
+    def save_analysis_report(symbol: str, output_path: str = None) -> str:
+        """保存股票分析报告到文件
+        
+        Args:
+            symbol: 股票代码
+            output_path: 输出路径（可选）
+        """
+        try:
+            analyzer = FinancialAnalyzer(symbol=symbol)
+            path = analyzer.save_report(output_path)
+            return json.dumps({"success": True, "path": path}, ensure_ascii=False)
+        except Exception as e:
+            return json.dumps({"error": str(e)}, ensure_ascii=False)
+    
+    @mcp.tool()
+    def generate_stock_charts(symbol: str, output_dir: str = "charts") -> str:
+        """生成股票分析图表
+        
+        Args:
+            symbol: 股票代码
+            output_dir: 输出目录
+        """
+        try:
+            analyzer = FinancialAnalyzer(symbol=symbol)
+            charts = analyzer.generate_charts(output_dir)
+            return json.dumps({"success": True, "charts": charts}, ensure_ascii=False)
+        except Exception as e:
+            return json.dumps({"error": str(e)}, ensure_ascii=False)
+
+
+# 在 create_mcp_server 中调用
+original_create = create_mcp_server
+
+def create_mcp_server_with_financial():
+    server = original_create()
+    register_financial_tools(server)
+    return server
+
+# 替换
+create_mcp_server = create_mcp_server_with_financial
