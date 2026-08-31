@@ -258,7 +258,7 @@ MIT License - 见 [LICENSE](LICENSE) 文件
 
 ## 📚 相关项目
 
-- [ml-finance](https://github.com/Zeon7744/ml-finance) - MLP精准金融分析工具
+- [ml-finance](https://github.com/Zeon7744/dev-artifacts) - MLP精准金融分析工具
 - [awesome-ai-short-drama](https://github.com/Zeon7744/awesome-ai-short-drama) - AI 短剧创作全链路（作品 + 工具 + 资源）
 - [Model Context Protocol](https://modelcontextprotocol.io) - MCP 协议规范
 - [opencode](https://github.com/opencode-ai/opencode) - 开源 AI 编码助手
