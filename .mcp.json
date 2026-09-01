@@ -2,8 +2,9 @@
   "mcpServers": {
     "baibai": {
       "command": "python",
-      "args": ["mcp_server.py"],
-      "env": {}
+      "args": ["mcp_server_v2.py", "--port", "8000"],
+      "env": {},
+      "notes": "MCP 2026-07-28 无状态协议版本，支持 MRTR 和 HTTP Streamable 传输"
     }
   }
 }
