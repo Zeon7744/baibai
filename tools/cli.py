@@ -33,6 +33,7 @@ def get_drama_dir(default: str = "../awesome-ai-short-drama/short-dramas") -> st
 def check_format(drama_dir: str) -> dict:
     """格式校验"""
     import os
+
     _base = os.path.dirname(os.path.abspath(__file__))
     sys.path.insert(0, _base)
     from format_checker import print_report, scan_dramas
