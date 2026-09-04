@@ -294,3 +294,10 @@ MIT License - 见 [LICENSE](LICENSE) 文件
 *Vibe Coding · 自然语言驱动开发*
 
 </div>
+
+## 🙏 感谢赞助
+
+暂无赞助者
+
+---
+
