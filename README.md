@@ -11,3 +11,10 @@
 [![MCP](https://img.shields.io/badge/MCP-Support-violet.svg)](https://modelcontextprotocol.io)
 
 ---
+
+## 🙏 感谢赞助
+
+暂无赞助者
+
+---
+
