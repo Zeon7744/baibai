@@ -4,6 +4,8 @@
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![GitHub stars](https://img.shields.io/github/stars/Zeon7744/baibai?style=social)](https://github.com/Zeon7744/baibai)
+[![GitHub forks](https://img.shields.io/github/forks/Zeon7744/baibai?style=social)](https://github.com/Zeon7744/baibai/forks)
 [![CLI](https://img.shields.io/badge/CLI-Ready-brightgreen.svg)](https://github.com/Zeon7744/baibai)
 [![MCP](https://img.shields.io/badge/MCP-Support-violet.svg)](https://modelcontextprotocol.io)
 
@@ -11,7 +13,7 @@
 
 ## 🚀 简介
 
-**Baibai** 是一个 **Vibe Coding 开发工具库**，提供通用的命令行工具和自动化能力。
+**Baibai** 是一个 **Vibe Coding 开发工具库**，提供通用的命令行工具和 MCP Server 能力。
 
 > ⚠️ 这是**通用工具库**。短剧专用工具（格式校验器、爽点分析器等）请在 [awesome-ai-short-drama](https://github.com/Zeon7744/awesome-ai-short-drama) 查看。
 
@@ -238,6 +240,26 @@ Baibai 也是**项目发布地**，你可以在这里发布：
 
 ---
 
+## 💖 支持本项目
+
+如果这个项目对你有帮助，欢迎赞助支持：
+
+| 平台 | 链接 | 说明 |
+|------|------|------|
+| 🇨🇳 爱发电 | [afdian.com/@Zeon7744](https://afdian.com) | 支付宝/微信支付 |
+| 🌍 GitHub Sponsors | [github.com/sponsors/Zeon7744](https://github.com/sponsors) | PayPal/Stripe |
+| 📦 Gitee | [gitee.com/Zeon7744/baibai](https://gitee.com) | 国内同步 |
+
+### 赞助档位
+
+| 档位 | 价格 | 权益 |
+|------|------|------|
+| ☕ 请喝咖啡 | ¥18/月 | 感谢支持 |
+| 🍺 请喝啤酒 | ¥58/月 | 优先回复 Issue |
+| 🎁 项目赞助 | ¥188/月 | 定制功能需求 |
+
+---
+
 ## 📄 许可证
 
 MIT License - 见 [LICENSE](LICENSE) 文件
@@ -266,67 +288,9 @@ MIT License - 见 [LICENSE](LICENSE) 文件
 
 ---
 
-*由 [Zeon7744](https://github.com/Zeon7744) 维护*  
+<div align="center">
+
+**由 [Zeon7744](https://github.com/Zeon7744) 维护**  
 *Vibe Coding · 自然语言驱动开发*
 
-## 🎬 短剧项目
-
-暂无短剧项目
-
-
----
-
-## 🎬 短剧项目
-
-暂无短剧项目
-
-
----
-
-## 🎬 短剧项目
-
-暂无短剧项目
-
-
----
-
-## 🎬 短剧项目
-
-暂无短剧项目
-
-
----
-
-## 🎬 短剧项目
-
-暂无短剧项目
-
-
----
-
-## 🎬 短剧项目
-
-暂无短剧项目
-
-
----
-
-## 🎬 短剧项目
-
-暂无短剧项目
-
-
----
-
-## 🎬 短剧项目
-
-暂无短剧项目
-
-
----
-
-## 🙏 感谢赞助
-
-暂无赞助者
-
----
+</div>
