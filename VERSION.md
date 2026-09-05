@@ -1,8 +1,8 @@
 # Baibai 版本信息
 
 ## 当前版本
-- **主版本**: 1.0.0
-- **发布日期**: 2026-08-30
+- **主版本**: 1.2.0
+- **发布日期**: 2026-09-05
 - **状态**: Beta
 
 ## 版本说明
@@ -12,5 +12,5 @@
 
 ## 发布渠道
 - GitHub Releases: https://github.com/Zeon7744/baibai/releases
-- PyPI: (待发布)
+- PyPI: https://pypi.org/project/baibai/
 - 试用版: releases/ 目录
