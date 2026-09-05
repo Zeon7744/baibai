@@ -87,9 +87,15 @@ pip install -e .
 
 *由 [Zeon7744](https://github.com/Zeon7744) 维护 · Vibe Coding · 三平台同步*
 
+## 🎬 短剧项目
+
+暂无短剧项目
+
+
+---
+
 ## 🙏 感谢赞助
 
 暂无赞助者
 
 ---
-
