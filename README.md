@@ -6,14 +6,12 @@
 [![Gitee stars](https://gitee.com/Zeon7744/baibai/badge/star.svg?theme=gvp)](https://gitee.com/Zeon7744/baibai)
 [![GitCode stars](https://gitcode.com/Zeon7744/baibai/stars/badge)](https://gitcode.com/Zeon7744/baibai)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Version](https://img.shields.io/badge/version-1.3.0-blue)](https://github.com/Zeon7744/baibai/releases)
+[![Version](https://img.shields.io/badge/version-1.2.0-blue)](https://github.com/Zeon7744/baibai/releases)
 [![MCP](https://img.shields.io/badge/MCP-Compatible-violet.svg)](https://modelcontextprotocol.io)
 
 ## 简介
 
 baibai 是一个 **MCP (Model Context Protocol) 工具库**，提供实用的开发工具集，可集成到 Claude Code、Cursor、Codex 等 AI 编程助手。
-
-> ⚠️ 这是**通用工具库**。短剧专用工具（格式校验器、爽点分析器等）请在 [awesome-ai-short-drama](https://github.com/Zeon7744/awesome-ai-short-drama) 查看。
 
 ## 功能特性
 
@@ -46,6 +44,10 @@ pip install -e .
 }
 ```
 
+## 在线演示
+
+- [GitHub Pages](https://zeon7744.github.io/baibai/)
+
 ## 多平台镜像
 
 | 平台 | 链接 |
@@ -53,7 +55,6 @@ pip install -e .
 | GitHub (主仓库) | [GitHub](https://github.com/Zeon7744/baibai) |
 | Gitee | [Gitee](https://gitee.com/Zeon7744/baibai) |
 | GitCode | [GitCode](https://gitcode.com/Zeon7744/baibai) |
-| GitHub Pages | [Pages](https://zeon7744.github.io/baibai/) |
 
 ## 赞助与支持
 
@@ -86,16 +87,3 @@ pip install -e .
 ---
 
 *由 [Zeon7744](https://github.com/Zeon7744) 维护 · Vibe Coding · 三平台同步*
-
-## 🎬 短剧项目
-
-暂无短剧项目
-
-
----
-
-## 🙏 感谢赞助
-
-暂无赞助者
-
----
