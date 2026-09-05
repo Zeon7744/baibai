@@ -1,0 +1,37 @@
+name: Sync to Gitee and GitCode
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  sync-gitee:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Sync to Gitee
+        env:
+          GITEE_TOKEN: ${{ secrets.GITEE_TOKEN }}
+          GITEE_USER: ${{ secrets.GITEE_USER }}
+        run: |
+          git remote add gitee https://${{ secrets.GITEE_USER }}:${GITEE_TOKEN}@gitee.com/${{ secrets.GITEE_USER }}/${{ github.event.repository.name }}.git
+          git push gitee --all --force
+          git push gitee --tags --force
+
+  sync-gitcode:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Sync to GitCode
+        env:
+          GITCODE_TOKEN: ${{ secrets.GITCODE_TOKEN }}
+          GITCODE_USER: ${{ secrets.GITCODE_USER }}
+        run: |
+          git remote add gitcode https://${{ secrets.GITCODE_USER }}:${GITCODE_TOKEN}@gitcode.com/${{ secrets.GITCODE_USER }}/${{ github.event.repository.name }}.git
+          git push gitcode --all --force
+          git push gitcode --tags --force
