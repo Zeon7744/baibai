@@ -25,10 +25,28 @@ baibai 是一个 **MCP (Model Context Protocol) 工具库**，提供实用的开
 
 ## 快速开始
 
+### 方式一：pip 安装（推荐）
+
+```bash
+# 从 GitHub Releases 安装（预编译 wheel）
+pip install https://github.com/Zeon7744/baibai/releases/download/v1.2.0/baibai-1.2.0-py3-none-any.whl
+
+# 或从源码安装
+pip install https://github.com/Zeon7744/baibai/releases/download/v1.2.0/baibai-1.2.0.tar.gz
+```
+
+### 方式二：源码安装
+
 ```bash
 git clone https://github.com/Zeon7744/baibai.git
 cd baibai
 pip install -e .
+```
+
+### 方式三：直接 Git 安装
+
+```bash
+pip install git+https://github.com/Zeon7744/baibai.git@v1.2.0
 ```
 
 ## MCP 集成
@@ -87,10 +105,3 @@ pip install -e .
 ---
 
 *由 [Zeon7744](https://github.com/Zeon7744) 维护 · Vibe Coding · 三平台同步*
-
-## 🙏 感谢赞助
-
-暂无赞助者
-
----
-
