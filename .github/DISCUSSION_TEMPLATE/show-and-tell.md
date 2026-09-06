@@ -11,15 +11,15 @@ body:
     attributes:
       label: Project Title
       description: What did you build?
-      placeholder: e.g. My ML-powered trading bot using crypto-mlp
+      placeholder: e.g. My ML-powered trading bot
     validations:
       required: true
   - type: textarea
     id: description
     attributes:
       label: Description
-      description: Tell us about your project and how you used this library.
-      placeholder: What problem does it solve? What features did you add?
+      description: Tell us about your project.
+      placeholder: What problem does it solve?
     validations:
       required: true
   - type: input
@@ -33,4 +33,3 @@ body:
     attributes:
       label: Feedback Requested
       description: What kind of feedback are you looking for?
-      placeholder: Performance tips, feature suggestions, code review...
