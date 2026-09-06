@@ -11,21 +11,21 @@ body:
     attributes:
       label: Topic
       description: What area are you interested in exploring?
-      placeholder: e.g. Adding ETH prediction support
+      placeholder: e.g. Adding multi-timeframe analysis
     validations:
       required: true
   - type: textarea
     id: question
     attributes:
       label: Question
-      description: Describe your research question or idea in detail.
+      description: Describe your research question or idea.
     validations:
       required: true
   - type: textarea
     id: context
     attributes:
       label: Context
-      description: Any background information, papers, or references.
+      description: Background information, papers, or references.
   - type: dropdown
     id: priority
     attributes:
