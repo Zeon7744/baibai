@@ -105,3 +105,10 @@ pip install git+https://github.com/Zeon7744/baibai.git@v1.2.0
 ---
 
 *由 [Zeon7744](https://github.com/Zeon7744) 维护 · Vibe Coding · 三平台同步*
+
+## 🙏 感谢赞助
+
+暂无赞助者
+
+---
+
