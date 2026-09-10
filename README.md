@@ -1,27 +1,30 @@
 # baibai
 
-> MCP 工具库 — 格式校验器 · 数据分析 · README 生成器 · MCP Server
+> MCP 工具库 — 格式校验器 · 数据分析 · README 生成器 · TTS
 
 [![GitHub Stars](https://img.shields.io/github/stars/Zeon7744/baibai?style=social)](https://github.com/Zeon7744/baibai)
 [![Gitee stars](https://gitee.com/Zeon7744/baibai/badge/star.svg?theme=gvp)](https://gitee.com/Zeon7744/baibai)
 [![GitCode stars](https://gitcode.com/Zeon7744/baibai/stars/badge)](https://gitcode.com/Zeon7744/baibai)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Version](https://img.shields.io/badge/version-1.2.0-blue)](https://github.com/Zeon7744/baibai/releases)
+[![Version](https://img.shields.io/badge/version-1.2.0-blue)](https://github.com/Zeon7744/baibai/releases/tag/v1.2.0)
 [![MCP](https://img.shields.io/badge/MCP-Compatible-violet.svg)](https://modelcontextprotocol.io)
 
 ## 简介
 
 baibai 是一个 **MCP (Model Context Protocol) 工具库**，提供实用的开发工具集，可集成到 Claude Code、Cursor、Codex 等 AI 编程助手。
 
-## 功能特性
+## 工具列表
 
-| 工具 | 说明 |
-|------|------|
-| `check-format` | 代码/文档格式校验器，支持 Markdown、JSON、YAML |
-| `analyze` | 数据统计分析，生成报告 |
-| `gen-readme` | README 自动生成器 |
-| `md2html` | Markdown 转 HTML 页面 |
-| `classify` | 内容自动分类器 |
+| 工具 | 说明 | 用法 |
+|------|------|------|
+| `check-format` | 代码/文档格式校验器，支持 Markdown、JSON、YAML | `python -m tools.check_format <path>` |
+| `analyze` | 数据统计分析，生成报告 | `python -m tools.analyze <path>` |
+| `gen-readme` | README 自动生成器 | `python -m tools.gen_readme` |
+| `md2html` | Markdown 转 HTML 页面 | `python -m tools.md2html <input> <output>` |
+| `classify` | 内容自动分类器 | `python -m tools.classify <text>` |
+| `tts` | 文本转语音 (Coqui TTS) | `python -m tools.tts "文本"` |
+| `summarize` | 文本摘要生成 | `python -m tools.summarize <path>` |
+| `translate` | 多语言翻译 | `python -m tools.translate <text>` |
 
 ## 快速开始
 
@@ -51,6 +54,8 @@ pip install git+https://github.com/Zeon7744/baibai.git@v1.2.0
 
 ## MCP 集成
 
+将以下内容添加到 Claude Code / Cursor 的 MCP 配置中：
+
 ```json
 {
   "mcpServers": {
@@ -66,6 +71,10 @@ pip install git+https://github.com/Zeon7744/baibai.git@v1.2.0
 
 - [GitHub Pages](https://zeon7744.github.io/baibai/)
 
+## 变更日志
+
+- [CHANGELOG.md](CHANGELOG.md) — 版本历史与更新记录
+
 ## 多平台镜像
 
 | 平台 | 链接 |
@@ -75,8 +84,6 @@ pip install git+https://github.com/Zeon7744/baibai.git@v1.2.0
 | GitCode | [GitCode](https://gitcode.com/Zeon7744/baibai) |
 
 ## 赞助与支持
-
-如果这个项目对你有帮助，欢迎赞助：
 
 | 平台 | 链接 | 支付方式 |
 |------|------|----------|
@@ -102,47 +109,8 @@ pip install git+https://github.com/Zeon7744/baibai.git@v1.2.0
 
 欢迎提交 Issue 和 Pull Request！详见 [CONTRIBUTING.md](CONTRIBUTING.md)
 
----
-
-*由 [Zeon7744](https://github.com/Zeon7744) 维护 · Vibe Coding · 三平台同步*
-
-## 🎬 短剧项目
-
-暂无短剧项目
-
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
 
 ---
 
-## 🎬 短剧项目
-
-暂无短剧项目
-
-
----
-
-## 🎬 短剧项目
-
-暂无短剧项目
-
-
----
-
-## 🎬 短剧项目
-
-暂无短剧项目
-
-
----
-
-## 🎬 短剧项目
-
-暂无短剧项目
-
-
----
-
-## 🙏 感谢赞助
-
-暂无赞助者
-
----
+*由 [Zeon7744](https://github.com/Zeon7744) 维护 · MCP ToolKit · Vibe Coding · 三平台同步*
