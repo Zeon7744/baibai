@@ -134,6 +134,13 @@ pip install git+https://github.com/Zeon7744/baibai.git@v1.2.0
 
 ---
 
+## 🎬 短剧项目
+
+暂无短剧项目
+
+
+---
+
 ## 🙏 感谢赞助
 
 暂无赞助者
