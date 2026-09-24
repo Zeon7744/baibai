@@ -4,8 +4,19 @@
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![CLI](https://img.shields.io/badge/CLI-Ready-brightgreen.svg)](https://github.com/Zeon7744/baibai)
+[![Gitee stars](https://gitee.com/Zeon7744/baibai/badge/star.svg?theme=gvp)](https://gitee.com/Zeon7744/baibai)
+[![GitHub Stars](https://img.shields.io/github/stars/Zeon7744/baibai?style=social)](https://github.com/Zeon7744/baibai)
 [![MCP](https://img.shields.io/badge/MCP-Support-violet.svg)](https://modelcontextprotocol.io)
+
+---
+
+## 三平台同步
+
+| 平台 | 链接 |
+|------|------|
+| **Gitee** (主站) | [gitee.com/Zeon7744/baibai](https://gitee.com/Zeon7744/baibai) |
+| GitHub | [github.com/Zeon7744/baibai](https://github.com/Zeon7744/baibai) |
+| GitCode | [gitcode.com/Zeon7744/baibai](https://gitcode.com/Zeon7744/baibai) |
 
 ---
 
@@ -13,7 +24,7 @@
 
 **Baibai** 是一个 **Vibe Coding 开发工具库**，提供通用的命令行工具和自动化能力。
 
-> ⚠️ 这是**通用工具库**。短剧专用工具（格式校验器、爽点分析器等）请在 [awesome-ai-short-drama](https://github.com/Zeon7744/awesome-ai-short-drama) 查看。
+> ⚠️ 这是**通用工具库**。短剧专用工具（格式校验器、爽点分析器等）请在 [awesome-ai-short-drama](https://gitee.com/Zeon7744/awesome-ai-short-drama) 查看。
 
 核心定位：
 - **通用工具库** — 格式校验、数据分析、文档生成
@@ -28,7 +39,7 @@
 ### 从源码安装（推荐）
 
 ```bash
-git clone https://github.com/Zeon7744/baibai.git
+git clone https://gitee.com/Zeon7744/baibai.git
 cd baibai
 pip install -e .
 ```
@@ -258,54 +269,13 @@ MIT License - 见 [LICENSE](LICENSE) 文件
 
 ## 📚 相关项目
 
-- [dev-artifacts](https://github.com/Zeon7744/dev-artifacts) - MLP精准金融分析工具
-- [awesome-ai-short-drama](https://github.com/Zeon7744/awesome-ai-short-drama) - AI 短剧创作全链路（作品 + 工具 + 资源）
+- [dev-artifacts](https://gitee.com/Zeon7744/dev-artifacts) - MLP精准金融分析工具
+- [awesome-ai-short-drama](https://gitee.com/Zeon7744/awesome-ai-short-drama) - AI 短剧创作全链路（作品 + 工具 + 资源）
 - [Model Context Protocol](https://modelcontextprotocol.io) - MCP 协议规范
 - [opencode](https://github.com/opencode-ai/opencode) - 开源 AI 编码助手
 - [Aider](https://github.com/Aider-AI/aider) - 终端 AI 编程助手
 
 ---
 
-*由 [Zeon7744](https://github.com/Zeon7744) 维护*  
+*由 [Zeon7744](https://gitee.com/Zeon7744) 维护*  
 *Vibe Coding · 自然语言驱动开发*
-
-## 🎬 短剧项目
-
-暂无短剧项目
-
-
----
-
-## 🎬 短剧项目
-
-暂无短剧项目
-
-
----
-
-## 🎬 短剧项目
-
-暂无短剧项目
-
-
----
-
-## 🎬 短剧项目
-
-暂无短剧项目
-
-
----
-
-## 🎬 短剧项目
-
-暂无短剧项目
-
-
----
-
-## 🙏 感谢赞助
-
-暂无赞助者
-
----
