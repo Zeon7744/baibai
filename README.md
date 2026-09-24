@@ -1,15 +1,25 @@
-# Baibai - Vibe Coding 开发工具库
+# baibai
 
-> 用自然语言驱动开发 — 通用 CLI 工具集 + MCP Server
+> MCP 工具库 — 格式校验器 · 数据分析 · README 生成器 · TTS
 
+<<<<<<< HEAD
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Gitee stars](https://gitee.com/Zeon7744/baibai/badge/star.svg?theme=gvp)](https://gitee.com/Zeon7744/baibai)
 [![GitHub Stars](https://img.shields.io/github/stars/Zeon7744/baibai?style=social)](https://github.com/Zeon7744/baibai)
 [![MCP](https://img.shields.io/badge/MCP-Support-violet.svg)](https://modelcontextprotocol.io)
+=======
+[![GitHub Stars](https://img.shields.io/github/stars/Zeon7744/baibai?style=social)](https://github.com/Zeon7744/baibai)
+[![Gitee stars](https://gitee.com/Zeon7744/baibai/badge/star.svg?theme=gvp)](https://gitee.com/Zeon7744/baibai)
+[![GitCode stars](https://gitcode.com/Zeon7744/baibai/stars/badge)](https://gitcode.com/Zeon7744/baibai)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Version](https://img.shields.io/badge/version-1.2.0-blue)](https://github.com/Zeon7744/baibai/releases/tag/v1.2.0)
+[![MCP](https://img.shields.io/badge/MCP-Compatible-violet.svg)](https://modelcontextprotocol.io)
+>>>>>>> origin/main
 
----
+## 简介
 
+<<<<<<< HEAD
 ## 三平台同步
 
 | 平台 | 链接 |
@@ -21,22 +31,40 @@
 ---
 
 ## 🚀 简介
+=======
+baibai 是一个 **MCP (Model Context Protocol) 工具库**，提供实用的开发工具集，可集成到 Claude Code、Cursor、Codex 等 AI 编程助手。
+>>>>>>> origin/main
 
-**Baibai** 是一个 **Vibe Coding 开发工具库**，提供通用的命令行工具和自动化能力。
+## 工具列表
 
+<<<<<<< HEAD
 > ⚠️ 这是**通用工具库**。短剧专用工具（格式校验器、爽点分析器等）请在 [awesome-ai-short-drama](https://gitee.com/Zeon7744/awesome-ai-short-drama) 查看。
+=======
+| 工具 | 说明 | 用法 |
+|------|------|------|
+| `check-format` | 代码/文档格式校验器，支持 Markdown、JSON、YAML | `python -m tools.check_format <path>` |
+| `analyze` | 数据统计分析，生成报告 | `python -m tools.analyze <path>` |
+| `gen-readme` | README 自动生成器 | `python -m tools.gen_readme` |
+| `md2html` | Markdown 转 HTML 页面 | `python -m tools.md2html <input> <output>` |
+| `classify` | 内容自动分类器 | `python -m tools.classify <text>` |
+| `tts` | 文本转语音 (Coqui TTS) | `python -m tools.tts "文本"` |
+| `summarize` | 文本摘要生成 | `python -m tools.summarize <path>` |
+| `translate` | 多语言翻译 | `python -m tools.translate <text>` |
+>>>>>>> origin/main
 
-核心定位：
-- **通用工具库** — 格式校验、数据分析、文档生成
-- **CLI 优先** — 简洁的命令行界面，适合开发者
-- **MCP 支持** — 兼容 Model Context Protocol，可集成到 AI 助手
-- **BYOK 模式** — 自带 API Key，工具免费使用
+## 快速开始
 
----
+### 方式一：pip 安装（推荐）
 
-## 📦 安装
+```bash
+# 从 GitHub Releases 安装（预编译 wheel）
+pip install https://github.com/Zeon7744/baibai/releases/download/v1.2.0/baibai-1.2.0-py3-none-any.whl
 
-### 从源码安装（推荐）
+# 或从源码安装
+pip install https://github.com/Zeon7744/baibai/releases/download/v1.2.0/baibai-1.2.0.tar.gz
+```
+
+### 方式二：源码安装
 
 ```bash
 git clone https://gitee.com/Zeon7744/baibai.git
@@ -44,157 +72,15 @@ cd baibai
 pip install -e .
 ```
 
-### 直接运行
+### 方式三：直接 Git 安装
 
 ```bash
-# 无需安装，直接运行
-python tools/cli.py --help
+pip install git+https://github.com/Zeon7744/baibai.git@v1.2.0
 ```
 
-### 依赖
+## MCP 集成
 
-- Python 3.8+
-- typer (CLI 框架)
-- rich (终端美化)
-
----
-
-## 🛠️ 工具集
-
-### 1. 格式校验器 (`check-format`)
-
-检查 Markdown 文件是否符合规范：
-- 禁止字符检测
-- 括号格式检查（【】）
-- 标题结构验证
-- 生成评分报告
-
-```bash
-baibai check-format <目录路径>
-baibai check-format --json <目录>
-```
-
-### 2. 数据分析 (`analyze`)
-
-统计分析内容库数据：
-- 总字数、章节数统计
-- 类型分布分析
-- 排行榜生成
-- JSON 报告导出
-
-```bash
-baibai analyze <目录路径>
-```
-
-### 3. README 生成器 (`gen-readme`)
-
-根据内容库自动生成 README 文档：
-- 自动提取文件信息
-- 生成分类表格
-- 更新现有 README
-
-```bash
-baibai gen-readme <README路径> <内容目录>
-baibai gen-readme -p README.md <内容目录>  # 仅预览
-```
-
-### 4. Markdown 转 HTML (`md2html`)
-
-将 Markdown 文件转换为美观的 HTML 页面：
-- 支持标题、列表、代码块、表格
-- 自动生成完整 HTML 页面
-- 响应式设计
-
-```bash
-baibai md2html <输入文件> [输出文件]
-```
-
-### 5. 内容分类器 (`classify`)
-
-自动识别和分类内容类型：
-- 短剧剧本、短篇小说、教程文档
-- 工具脚本、配置文件等
-- 生成分类报告
-
-```bash
-baibai classify <目录路径>
-```
-
----
-
-## 📊 使用示例
-
-### 示例 1：校验内容格式
-
-```bash
-cd baibai
-python tools/check_format.py ../awesome-ai-short-drama/short-dramas
-```
-
-### 示例 2：分析内容库数据
-
-```bash
-python tools/stats_analyzer.py ../awesome-ai-short-drama/short-dramas
-```
-
-### 示例 3：转换 Markdown 为 HTML
-
-```bash
-python tools/md2html.py README.md
-# 生成 README.html
-```
-
----
-
-## 🏗️ 项目结构
-
-```
-baibai/
-├── tools/                  # 核心工具包
-│   ├── __init__.py        # 包定义
-│   ├── cli.py             # CLI 入口（基础版）
-│   ├── cli_enhanced.py    # CLI 增强版（Typer + Rich）
-│   ├── format_checker.py  # 格式校验器
-│   ├── stats_analyzer.py  # 数据分析
-│   ├── readme_gen.py      # README 生成器
-│   ├── md2html.py         # Markdown 转 HTML
-│   └── classifier.py      # 内容分类器
-├── templates/              # 页面模板
-│   ├── index.html         # 主展示页
-│   └── drama.html         # 短剧详情页模板
-├── examples/               # 示例项目
-├── tests/                  # 测试套件
-├── data/                   # 数据缓存
-├── scripts/                # 辅助脚本
-│   ├── release.py         # 版本发布脚本
-│   └── publish.py         # PyPI/GitHub 发布
-├── docs/                   # 文档
-├── releases/               # 发布版本
-├── example-project/        # 示例项目
-├── pyproject.toml          # 项目配置
-├── setup.py                # 安装脚本
-├── VERSION.md              # 版本信息
-├── CHANGELOG.md            # 变更日志
-└── README.md               # 本文件
-```
-
----
-
-## 🔌 MCP 集成
-
-Baibai 支持 Model Context Protocol (MCP)，可以集成到各种 AI 助手：
-
-### 暴露的工具
-
-| 工具名 | 功能 |
-|--------|------|
-| `baibai_format_check` | 格式校验 |
-| `baibai_analyze_stats` | 数据分析 |
-| `baibai_generate_readme` | README 生成 |
-| `baibai_md2html` | Markdown 转 HTML |
-| `baibai_classify` | 内容分类 |
-
-### 配置 Claude Code
+将以下内容添加到 Claude Code / Cursor 的 MCP 配置中：
 
 ```json
 {
@@ -207,68 +93,80 @@ Baibai 支持 Model Context Protocol (MCP)，可以集成到各种 AI 助手：
 }
 ```
 
-### 配置 Cursor
+## 在线演示
 
-在 `.cursor/mcp.json` 中添加：
+- [GitHub Pages](https://zeon7744.github.io/baibai/)
 
-```json
-{
-  "mcpServers": {
-    "baibai": {
-      "command": "python",
-      "args": ["tools/cli.py", "mcp", "serve"]
-    }
-  }
-}
-```
+## 变更日志
 
----
+- [CHANGELOG.md](CHANGELOG.md) — 版本历史与更新记录
 
-## 🚀 发布项目
+## 多平台镜像
 
-Baibai 也是**项目发布地**，你可以在这里发布：
+| 平台 | 链接 |
+|------|------|
+| GitHub (主仓库) | [GitHub](https://github.com/Zeon7744/baibai) |
+| Gitee | [Gitee](https://gitee.com/Zeon7744/baibai) |
+| GitCode | [GitCode](https://gitcode.com/Zeon7744/baibai) |
 
-### 发布类型
+## 赞助与支持
 
-| 类型 | 说明 | 位置 |
+| 平台 | 链接 | 支付方式 |
+|------|------|----------|
+| ☕ **爱发电** | [afdian.com/@Zeon7744](https://afdian.com/@Zeon7744) | 支付宝 / 微信支付 |
+| 🌍 **GitHub Sponsors** | [github.com/sponsors/Zeon7744](https://github.com/sponsors/Zeon7744) | PayPal / Stripe |
+
+### 赞助档位
+
+| 档位 | 价格 | 权益 |
 |------|------|------|
-| 完整项目 | 可运行的应用/工具 | `projects/` |
-| 工具脚本 | 单文件工具 | `tools/` |
-| 示例代码 | 学习演示 | `examples/` |
-| 试用版本 | Beta/RC 版本 | `releases/` |
+| ☕ 请喝咖啡 | ¥18/月 | 感谢支持 + 赞助者名单 |
+| 🍺 请喝啤酒 | ¥58/月 | 以上 + 优先回复 Issue |
+| 🎁 项目赞助 | ¥188/月 | 以上 + 定制功能需求优先开发 |
+
+## 相关项目
+
+- [crypto-mlp-high-confidence](https://github.com/Zeon7744/crypto-mlp-high-confidence) — MLP 加密货币预测
+- [global-investment-mlp](https://github.com/Zeon7744/global-investment-mlp) — 量化投资框架
+- [awesome-ai-short-drama](https://github.com/Zeon7744/awesome-ai-short-drama) — AI 短剧资源合集
+- [dev-artifacts](https://github.com/Zeon7744/dev-artifacts) — 开发工具箱
+
+## 贡献
+
+欢迎提交 Issue 和 Pull Request！详见 [CONTRIBUTING.md](CONTRIBUTING.md)
+
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
 
 ---
 
-## 🎯 扩展开发
+*由 [Zeon7744](https://github.com/Zeon7744) 维护 · MCP ToolKit · Vibe Coding · 三平台同步*
 
-### 添加新工具
+## 🎬 短剧项目
 
-1. 在 `tools/` 目录下创建新模块
-2. 在 `cli_enhanced.py` 中注册命令
-3. 在 `MCP_TOOLS` 中注册 MCP 工具
+暂无短剧项目
 
----
-
-## 📄 许可证
-
-MIT License - 见 [LICENSE](LICENSE) 文件
 
 ---
 
-## 🤝 贡献
+## 🎬 短剧项目
 
-欢迎提交 Issue 和 Pull Request！
+暂无短剧项目
 
-1. Fork 本仓库
-2. 创建特性分支 (`git checkout -b feature/AmazingFeature`)
-3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
-4. 推送到分支 (`git push origin feature/AmazingFeature`)
-5. 开启 Pull Request
 
 ---
 
-## 📚 相关项目
+## 🎬 短剧项目
 
+暂无短剧项目
+
+
+---
+
+## 🎬 短剧项目
+
+暂无短剧项目
+
+<<<<<<< HEAD
 - [dev-artifacts](https://gitee.com/Zeon7744/dev-artifacts) - MLP精准金融分析工具
 - [awesome-ai-short-drama](https://gitee.com/Zeon7744/awesome-ai-short-drama) - AI 短剧创作全链路（作品 + 工具 + 资源）
 - [Model Context Protocol](https://modelcontextprotocol.io) - MCP 协议规范
@@ -279,3 +177,76 @@ MIT License - 见 [LICENSE](LICENSE) 文件
 
 *由 [Zeon7744](https://gitee.com/Zeon7744) 维护*  
 *Vibe Coding · 自然语言驱动开发*
+=======
+
+---
+
+## 🎬 短剧项目
+
+暂无短剧项目
+
+
+---
+
+## 🎬 短剧项目
+
+暂无短剧项目
+
+
+---
+
+## 🎬 短剧项目
+
+暂无短剧项目
+
+
+---
+
+## 🎬 短剧项目
+
+暂无短剧项目
+
+
+---
+
+## 🎬 短剧项目
+
+暂无短剧项目
+
+
+---
+
+## 🎬 短剧项目
+
+暂无短剧项目
+
+
+---
+
+## 🎬 短剧项目
+
+暂无短剧项目
+
+
+---
+
+## 🎬 短剧项目
+
+暂无短剧项目
+
+
+---
+
+## 🎬 短剧项目
+
+暂无短剧项目
+
+
+---
+
+## 🙏 感谢赞助
+
+暂无赞助者
+
+---
+>>>>>>> origin/main

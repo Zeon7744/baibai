@@ -4,14 +4,14 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "baibai"
-version = "1.0.0"
-description = "Vibe Coding 开发工具库 - 用自然语言驱动开发"
+version = "1.2.0"
+description = "Vibe Coding 开发工具库 - MCP + CLI 内容创作工具集"
 readme = "README.md"
 license = {text = "MIT"}
 authors = [
     {name = "Zeon7744", email = "zeon7744@gmail.com"}
 ]
-keywords = ["vibe-coding", "cli", "ai", "assistant", "markdown", "analysis"]
+keywords = ["vibe-coding", "mcp", "cli", "ai", "assistant", "markdown", "short-drama"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Environment :: Console",
@@ -24,11 +24,13 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Text Processing :: General",
 ]
 requires-python = ">=3.8"
 dependencies = [
     "typer>=0.9.0",
     "rich>=13.0.0",
+    "markdown>=3.5.0",
 ]
 
 [project.optional-dependencies]
@@ -50,9 +52,14 @@ Homepage = "https://github.com/Zeon7744/baibai"
 Documentation = "https://github.com/Zeon7744/baibai#readme"
 Repository = "https://github.com/Zeon7744/baibai.git"
 Issues = "https://github.com/Zeon7744/baibai/issues"
+Changelog = "https://github.com/Zeon7744/baibai/blob/main/CHANGELOG.md"
 
 [tool.setuptools.packages.find]
+where = ["."]
 include = ["tools*"]
+
+[tool.setuptools.package-data]
+"tools" = ["**/*.py"]
 
 [tool.black]
 line-length = 100

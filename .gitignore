@@ -1,66 +1,18 @@
-# Python
 __pycache__/
 *.py[cod]
 *$py.class
-*.so
 .Python
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+.env
+.venv
 env/
 venv/
-ENV/
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-
-# IDE
-.vscode/
 .idea/
-*.swp
-*.swo
-
-# Testing
-.pytest_cache/
-.coverage
-htmlcov/
-
-# Data
-data/stats/*.json
-!data/.gitkeep
-
-# OS
+.vscode/
 .DS_Store
-Thumbs.db
-
-# Releases (本地测试用，实际发布通过 GitHub Releases)
-releases/*/
-!releases/.gitkeep
-
-# Node
-node_modules/
-npm-debug.log
-yarn-error.log
-
-# Logs
 *.log
-logs/
-
-# Build artifacts
-dist/
-build/
-*.egg-info/
-*.egg
-
-# Python distribution
-*.tar.gz
-*.whl
+reports/*.html
+reports/*.json
