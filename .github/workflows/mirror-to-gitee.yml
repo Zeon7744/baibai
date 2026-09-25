@@ -1,0 +1,43 @@
+name: Mirror to Gitee
+
+on:
+  push:
+    branches: [main, master]
+    tags: ['v*']
+  workflow_dispatch:
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Mirror to Gitee
+        env:
+          GITEE_TOKEN: ${{ secrets.GITEE_TOKEN }}
+          REPO_NAME: ${{ github.event.repository.name }}
+        run: |
+          # 添加 Gitee remote
+          git remote add gitee https://oauth2:${GITEE_TOKEN}@gitee.com/Zeon7744/${REPO_NAME}.git 2>/dev/null || true
+          
+          # 推送主分支
+          git push gitee main --force 2>/dev/null || git push gitee master --force 2>/dev/null || true
+          
+          # 推送标签
+          git push gitee --tags --force 2>/dev/null || true
+          
+          echo "✅ 已同步到 Gitee"
+
+      - name: Mirror to GitCode
+        if: github.event.repository.name != 'baibai'
+        env:
+          GITCODE_TOKEN: ${{ secrets.GITCODE_TOKEN }}
+          REPO_NAME: ${{ github.event.repository.name }}
+        run: |
+          git remote add gitcode https://oauth2:${GITCODE_TOKEN}@gitcode.com/Zeon7744/${REPO_NAME}.git 2>/dev/null || true
+          git push gitcode main --force 2>/dev/null || git push gitcode master --force 2>/dev/null || true
+          git push gitcode --tags --force 2>/dev/null || true
+          echo "✅ 已同步到 GitCode"
