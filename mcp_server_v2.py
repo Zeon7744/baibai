@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """
-Baibai MCP Server v2 - MCP 2026-07-28 无状态协议实现
+Baibai MCP Server v3 - MCP 2026-07-28 无状态协议实现
 
 核心特性:
 1. 无状态模式 - 不需要 initialize 握手，每个请求独立处理
 2. MRTR 多轮次请求 - 支持 InputRequiredResult 用户确认场景
 3. HTTP Streamable 传输 - 标准 HTTP POST/GET 端点
 4. Header 路由 - 使用 Mcp-Method 和 Mcp-Name 头进行路由
+5. v3 新增 10 个开发工具 - 文件分析、代码解释、错误分析、测试生成等
 
 支持的协议版本: 2026-07-28
 """
@@ -33,7 +34,24 @@ try:
     TOOLS_AVAILABLE = True
 except ImportError as e:
     TOOLS_AVAILABLE = False
-    print(f"警告: 工具导入失败: {e}")
+    print(f"警告: 基础工具导入失败: {e}")
+
+# 导入 v3 新工具
+try:
+    from tools.file_analyzer import analyze_project
+    from tools.prompt_engineer import optimize_prompt
+    from tools.code_explainer import explain_code
+    from tools.error_analyzer import analyze_error
+    from tools.batch_processor import batch_process, SUPPORTED_OPERATIONS
+    from tools.docs_generator import generate_docs
+    from tools.test_generator import generate_tests
+    from tools.refactoring_suggester import suggest_refactoring
+    from tools.dependency_checker import check_dependencies
+    from tools.api_doc_builder import build_api_doc
+    V3_TOOLS_AVAILABLE = True
+except ImportError as e:
+    V3_TOOLS_AVAILABLE = False
+    print(f"警告: v3 工具导入失败: {e}")
 
 # MCP 2026 协议常量
 MCP_PROTOCOL_VERSION = "2026-07-28"
@@ -186,6 +204,139 @@ TOOLS_REGISTRY = {
             "type": "object",
             "properties": {}
         }
+    },
+    # ===== v3 新增工具 =====
+    "file_analyzer": {
+        "name": "file_analyzer",
+        "description": "分析项目文件结构、依赖关系、代码质量，返回 JSON 报告",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "path": {"type": "string", "description": "要分析的目录或文件路径"}
+            },
+            "required": ["path"]
+        }
+    },
+    "prompt_engineer": {
+        "name": "prompt_engineer",
+        "description": "优化 AI 提示词，返回优化后的提示词和评分对比",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "original_prompt": {"type": "string", "description": "原始提示词"},
+                "target_outcome": {"type": "string", "description": "期望达到的目标描述"}
+            },
+            "required": ["original_prompt"]
+        }
+    },
+    "code_explainer": {
+        "name": "code_explainer",
+        "description": "解释代码逻辑，返回自然语言解释和流程图描述",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "code": {"type": "string", "description": "要解释的代码"},
+                "language": {"type": "string", "description": "编程语言 (python/javascript/typescript 等)", "default": "python"}
+            },
+            "required": ["code"]
+        }
+    },
+    "error_analyzer": {
+        "name": "error_analyzer",
+        "description": "分析错误堆栈信息，给出可能原因和修复建议",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "error_trace": {"type": "string", "description": "错误堆栈信息"},
+                "context": {"type": "string", "description": "上下文信息（可选，如 http/database/file 等）"}
+            },
+            "required": ["error_trace"]
+        }
+    },
+    "batch_processor": {
+        "name": "batch_processor",
+        "description": "批量处理文件（重命名、替换内容、统计等）",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "pattern": {"type": "string", "description": "文件匹配模式 (如 *.py, *.md)"},
+                "operation": {"type": "string", "description": "操作类型: rename/move/copy/replace/prefix/suffix/lowercase/uppercase/add_line/remove_lines/count_lines/find_replace"},
+                "directory": {"type": "string", "description": "目标目录", "default": "."},
+                "files": {"type": "array", "items": {"type": "string"}, "description": "指定文件列表（可选，优先于 directory）"},
+                "new_name": {"type": "string", "description": "新文件名 (rename 操作)"},
+                "target_dir": {"type": "string", "description": "目标目录 (move/copy 操作)"},
+                "old_text": {"type": "string", "description": "要替换的文本 (replace 操作)"},
+                "new_text": {"type": "string", "description": "替换后的文本 (replace 操作)"},
+                "prefix": {"type": "string", "description": "文件名前缀 (prefix 操作)"},
+                "suffix": {"type": "string", "description": "文件名后缀 (suffix 操作)"},
+                "text": {"type": "string", "description": "要添加的文本 (add_line 操作)"},
+                "position": {"type": "string", "description": "添加位置: start/end", "default": "end"},
+                "search": {"type": "string", "description": "查找文本 (find_replace 操作)"},
+                "replace": {"type": "string", "description": "替换文本 (find_replace 操作)"},
+                "use_regex": {"type": "boolean", "description": "是否使用正则表达式", "default": False}
+            },
+            "required": ["pattern", "operation"]
+        }
+    },
+    "docs_generator": {
+        "name": "docs_generator",
+        "description": "自动生成代码/项目 Markdown 文档",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "code_path": {"type": "string", "description": "代码文件或项目目录路径"}
+            },
+            "required": ["code_path"]
+        }
+    },
+    "test_generator": {
+        "name": "test_generator",
+        "description": "根据代码自动生成测试用例 (pytest/unittest/jest)",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "code": {"type": "string", "description": "要测试的代码"},
+                "test_type": {"type": "string", "description": "测试框架: pytest/unittest", "default": "pytest"},
+                "language": {"type": "string", "description": "编程语言: python/javascript", "default": "python"}
+            },
+            "required": ["code"]
+        }
+    },
+    "refactoring_suggester": {
+        "name": "refactoring_suggester",
+        "description": "分析代码并提供重构建议报告",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "code_path": {"type": "string", "description": "代码文件或目录路径"}
+            },
+            "required": ["code_path"]
+        }
+    },
+    "dependency_checker": {
+        "name": "dependency_checker",
+        "description": "检查项目依赖安全性，检测已知漏洞和废弃包",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "requirements_path": {"type": "string", "description": "requirements.txt 文件或项目目录路径"},
+                "requirements_content": {"type": "string", "description": "直接传入 requirements 内容（可选）"}
+            },
+            "required": ["requirements_path"]
+        }
+    },
+    "api_doc_builder": {
+        "name": "api_doc_builder",
+        "description": "从路由文件构建 OpenAPI 3.0 规范文档",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "routes_path": {"type": "string", "description": "路由文件或目录路径"},
+                "title": {"type": "string", "description": "API 文档标题", "default": "API Documentation"},
+                "version": {"type": "string", "description": "API 版本号", "default": "1.0.0"}
+            },
+            "required": ["routes_path"]
+        }
     }
 }
 
@@ -222,7 +373,7 @@ class McpRequestHandler(BaseHTTPRequestHandler):
     
     # 服务器信息
     server_name = "baibai-mcp-server"
-    server_version = "1.0.0"
+    server_version = "3.0.0"
     
     def log_message(self, format, *args):
         """自定义日志格式"""
@@ -582,6 +733,103 @@ class McpRequestHandler(BaseHTTPRequestHandler):
         elif tool_name == "list_tools":
             return json.dumps(list(TOOLS_REGISTRY.values()), ensure_ascii=False, indent=2)
         
+        # ===== v3 新工具 =====
+        elif tool_name == "file_analyzer":
+            if not V3_TOOLS_AVAILABLE:
+                raise ImportError("v3 工具未导入")
+            result = analyze_project(arguments.get("path", "."))
+            return json.dumps(result, ensure_ascii=False, indent=2)
+        
+        elif tool_name == "prompt_engineer":
+            if not V3_TOOLS_AVAILABLE:
+                raise ImportError("v3 工具未导入")
+            result = optimize_prompt(
+                arguments.get("original_prompt", ""),
+                arguments.get("target_outcome", "")
+            )
+            return json.dumps(result, ensure_ascii=False, indent=2)
+        
+        elif tool_name == "code_explainer":
+            if not V3_TOOLS_AVAILABLE:
+                raise ImportError("v3 工具未导入")
+            result = explain_code(
+                arguments.get("code", ""),
+                arguments.get("language", "python")
+            )
+            return json.dumps(result, ensure_ascii=False, indent=2)
+        
+        elif tool_name == "error_analyzer":
+            if not V3_TOOLS_AVAILABLE:
+                raise ImportError("v3 工具未导入")
+            result = analyze_error(
+                arguments.get("error_trace", ""),
+                arguments.get("context", "")
+            )
+            return json.dumps(result, ensure_ascii=False, indent=2)
+        
+        elif tool_name == "batch_processor":
+            if not V3_TOOLS_AVAILABLE:
+                raise ImportError("v3 工具未导入")
+            result = batch_process(
+                pattern=arguments.get("pattern", "*"),
+                operation=arguments.get("operation", ""),
+                files=arguments.get("files"),
+                directory=arguments.get("directory", "."),
+                new_name=arguments.get("new_name", ""),
+                target_dir=arguments.get("target_dir", ""),
+                old_text=arguments.get("old_text", ""),
+                new_text=arguments.get("new_text", ""),
+                prefix=arguments.get("prefix", ""),
+                suffix=arguments.get("suffix", ""),
+                text=arguments.get("text", ""),
+                position=arguments.get("position", "end"),
+                search=arguments.get("search", ""),
+                replace=arguments.get("replace", ""),
+                use_regex=arguments.get("use_regex", False)
+            )
+            return json.dumps(result, ensure_ascii=False, indent=2)
+        
+        elif tool_name == "docs_generator":
+            if not V3_TOOLS_AVAILABLE:
+                raise ImportError("v3 工具未导入")
+            result = generate_docs(arguments.get("code_path", "."))
+            return json.dumps(result, ensure_ascii=False, indent=2)
+        
+        elif tool_name == "test_generator":
+            if not V3_TOOLS_AVAILABLE:
+                raise ImportError("v3 工具未导入")
+            result = generate_tests(
+                arguments.get("code", ""),
+                arguments.get("test_type", "pytest"),
+                arguments.get("language", "python")
+            )
+            return json.dumps(result, ensure_ascii=False, indent=2)
+        
+        elif tool_name == "refactoring_suggester":
+            if not V3_TOOLS_AVAILABLE:
+                raise ImportError("v3 工具未导入")
+            result = suggest_refactoring(arguments.get("code_path", "."))
+            return json.dumps(result, ensure_ascii=False, indent=2)
+        
+        elif tool_name == "dependency_checker":
+            if not V3_TOOLS_AVAILABLE:
+                raise ImportError("v3 工具未导入")
+            result = check_dependencies(
+                requirements_path=arguments.get("requirements_path"),
+                requirements_content=arguments.get("requirements_content")
+            )
+            return json.dumps(result, ensure_ascii=False, indent=2)
+        
+        elif tool_name == "api_doc_builder":
+            if not V3_TOOLS_AVAILABLE:
+                raise ImportError("v3 工具未导入")
+            result = build_api_doc(
+                arguments.get("routes_path", "."),
+                title=arguments.get("title", "API Documentation"),
+                version=arguments.get("version", "1.0.0")
+            )
+            return json.dumps(result, ensure_ascii=False, indent=2)
+        
         else:
             raise ValueError(f"Unknown tool: {tool_name}")
 
@@ -616,9 +864,10 @@ def run_server(host: str = "0.0.0.0", port: int = 8000):
     server = HTTPServer((host, port), handler)
     
     print(f"\n{'='*60}")
-    print(f"Baibai MCP Server v2 (MCP 2026-07-28)")
+    print(f"Baibai MCP Server v3 (MCP 2026-07-28)")
     print(f"{'='*60}")
     print(f"协议模式: 无状态 (Stateless)")
+    print(f"工具数量: {len(TOOLS_REGISTRY)} 个 (v2: 12 + v3: 10)")
     print(f"端点: http://{host}:{port}/mcp")
     print(f"健康检查: http://{host}:{port}/health")
     print(f"{'='*60}\n")
@@ -633,7 +882,7 @@ def run_server(host: str = "0.0.0.0", port: int = 8000):
 
 if __name__ == "__main__":
     import argparse
-    parser = argparse.ArgumentParser(description="Baibai MCP Server v2")
+    parser = argparse.ArgumentParser(description="Baibai MCP Server v3")
     parser.add_argument("--host", default="0.0.0.0", help="绑定地址")
     parser.add_argument("--port", type=int, default=8000, help="绑定端口")
     args = parser.parse_args()

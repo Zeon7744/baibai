@@ -4,7 +4,7 @@
       "command": "python",
       "args": ["mcp_server_v2.py", "--port", "8000"],
       "env": {},
-      "notes": "MCP 2026-07-28 无状态协议版本，支持 MRTR 和 HTTP Streamable 传输"
+      "notes": "Baibai MCP Server v3 — MCP 2026-07-28 无状态协议，22 个工具（v2 基础 12 + v3 新增 10），支持 MRTR 和 HTTP Streamable 传输"
     }
   }
 }
