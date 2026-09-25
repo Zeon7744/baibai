@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{REPO_NAME}} - 仓库展示</title>
+    <style>
+        :root {
+            --primary: #0366d6;
+            --success: #28a745;
+            --warning: #ffc107;
+            --bg: #f6f8fa;
+            --card: #ffffff;
+            --text: #24292e;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+        .header h1 { font-size: 2.5em; margin-bottom: 10px; }
+        .header p { opacity: 0.9; font-size: 1.1em; }
+        
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .stat-card {
+            background: var(--card);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .stat-card .value { font-size: 2em; font-weight: bold; color: var(--primary); }
+        .stat-card .label { color: #666; margin-top: 5px; }
+        
+        /* Platform Cards */
+        .platforms {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .platform-card {
+            background: var(--card);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.2s;
+        }
+        .platform-card:hover { transform: translateY(-5px); }
+        .platform-card h3 { margin-bottom: 10px; }
+        .platform-card a { color: var(--primary); text-decoration: none; }
+        .platform-card .status { font-size: 0.9em; color: var(--success); margin-top: 10px; }
+        
+        /* Content Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .content-card {
+            background: var(--card);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .content-card h3 { color: var(--primary); margin-bottom: 10px; }
+        .content-card p { color: #666; font-size: 0.9em; }
+        .content-card .meta { margin-top: 15px; font-size: 0.85em; color: #999; }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            border-top: 1px solid #e1e4e8;
+            margin-top: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .platforms { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>{{REPO_NAME}}</h1>
+            <p>{{REPO_DESCRIPTION}}</p>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="value">{{STARS}}</div>
+                <div class="label">Stars</div>
+            </div>
+            <div class="stat-card">
+                <div class="value">{{FORKS}}</div>
+                <div class="label">Forks</div>
+            </div>
+            <div class="stat-card">
+                <div class="value">{{COMMITS}}</div>
+                <div class="label">Commits</div>
+            </div>
+            <div class="stat-card">
+                <div class="value">{{ISSUES}}</div>
+                <div class="label">Issues</div>
+            </div>
+        </div>
+        
+        <h2 style="margin-bottom: 20px;">🌐 三平台同步</h2>
+        <div class="platforms">
+            <div class="platform-card">
+                <h3>🟣 Gitee</h3>
+                <a href="https://gitee.com/{{GITEE_REPO}}">gitee.com/{{GITEE_REPO}}</a>
+                <div class="status">✓ 已同步</div>
+            </div>
+            <div class="platform-card">
+                <h3>🐙 GitHub</h3>
+                <a href="https://github.com/{{GITHUB_REPO}}">github.com/{{GITHUB_REPO}}</a>
+                <div class="status">✓ 已同步</div>
+            </div>
+            <div class="platform-card">
+                <h3>📦 GitCode</h3>
+                <a href="https://gitcode.com/{{GITCODE_REPO}}">gitcode.com/{{GITCODE_REPO}}</a>
+                <div class="status">⚪ 待配置</div>
+            </div>
+        </div>
+        
+        <h2 style="margin-bottom: 20px;">📦 核心模块</h2>
+        <div class="content-grid">
+            {{CONTENT_BLOCKS}}
+        </div>
+        
+        <div class="footer">
+            <p>由 Zeon7744 维护 | 最后更新: {{LAST_UPDATE}}</p>
+        </div>
+    </div>
+</body>
+</html>

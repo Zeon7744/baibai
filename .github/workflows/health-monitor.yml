@@ -1,0 +1,40 @@
+name: Monitor Repository Health
+
+on:
+  schedule:
+    - cron: '0 9 * * *'
+  workflow_dispatch:
+
+jobs:
+  health-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check GitHub Stats
+        run: |
+          REPO=${{ github.repository }}
+          STATS=$(curl -s "https://api.github.com/repos/$REPO" || echo '{}')
+          STARS=$(echo "$STATS" | python3 -c "import sys,json; print(json.load(sys.stdin).get('stargazers_count', 0))")
+          FORKS=$(echo "$STATS" | python3 -c "import sys,json; print(json.load(sys.stdin).get('forks_count', 0))")
+          ISSUES=$(echo "$STATS" | python3 -c "import sys,json; print(json.load(sys.stdin).get('open_issues_count', 0))")
+          echo "GitHub Stars: $STARS, Forks: $FORKS, Issues: $ISSUES" >> $GITHUB_STEP_SUMMARY
+
+      - name: Check Gitee Stats
+        env:
+          GITEE_TOKEN: ${{ secrets.GITEE_TOKEN }}
+        run: |
+          REPO=${{ github.event.repository.name }}
+          STATS=$(curl -s "https://gitee.com/api/v5/repos/Zeon7744/$REPO" || echo '{}')
+          STARS=$(echo "$STATS" | python3 -c "import sys,json; print(json.load(sys.stdin).get('stargazers_count', 0))")
+          echo "Gitee Stars: $STARS" >> $GITHUB_STEP_SUMMARY
+
+      - name: Check Last Commit
+        run: |
+          LAST_COMMIT=$(git log -1 --format="%ai")
+          DAYS_AGO=$(( ($(date +%s) - $(date -d "$LAST_COMMIT" +%s)) / 86400 ))
+          echo "Last commit: $LAST_COMMIT ($DAYS_AGO days ago)" >> $GITHUB_STEP_SUMMARY
+          
+          if [ $DAYS_AGO -gt 30 ]; then
+            echo "⚠️ Warning: No commits in 30 days" >> $GITHUB_STEP_SUMMARY
+          fi
