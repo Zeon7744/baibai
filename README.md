@@ -1,86 +1,58 @@
-# baibai
+# 🚀 Baibai — Vibe Coding 开发工具库
 
-> MCP 工具库 — 格式校验器 · 数据分析 · README 生成器 · TTS
+> **用自然语言驱动开发** — 通用 CLI 工具集 + MCP Server  
+> AI 编程助手必备工具箱，让 Claude Code、Cursor、Codex 更强大
 
-<<<<<<< HEAD
-[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![Gitee stars](https://gitee.com/Zeon7744/baibai/badge/star.svg?theme=gvp)](https://gitee.com/Zeon7744/baibai)
 [![GitHub Stars](https://img.shields.io/github/stars/Zeon7744/baibai?style=social)](https://github.com/Zeon7744/baibai)
-[![MCP](https://img.shields.io/badge/MCP-Support-violet.svg)](https://modelcontextprotocol.io)
-=======
-[![GitHub Stars](https://img.shields.io/github/stars/Zeon7744/baibai?style=social)](https://github.com/Zeon7744/baibai)
-[![Gitee stars](https://gitee.com/Zeon7744/baibai/badge/star.svg?theme=gvp)](https://gitee.com/Zeon7744/baibai)
-[![GitCode stars](https://gitcode.com/Zeon7744/baibai/stars/badge)](https://gitcode.com/Zeon7744/baibai)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Version](https://img.shields.io/badge/version-1.2.0-blue)](https://github.com/Zeon7744/baibai/releases/tag/v1.2.0)
-[![MCP](https://img.shields.io/badge/MCP-Compatible-violet.svg)](https://modelcontextprotocol.io)
->>>>>>> origin/main
-
-## 简介
-
-<<<<<<< HEAD
-## 三平台同步
-
-| 平台 | 链接 |
-|------|------|
-| **Gitee** (主站) | [gitee.com/Zeon7744/baibai](https://gitee.com/Zeon7744/baibai) |
-| GitHub | [github.com/Zeon7744/baibai](https://github.com/Zeon7744/baibai) |
-| GitCode | [gitcode.com/Zeon7744/baibai](https://gitcode.com/Zeon7744/baibai) |
+[![GitHub Forks](https://img.shields.io/github/forks/Zeon7744/baibai?style=social)](https://github.com/Zeon7744/baibai/forks)
+[![GitHub License](https://img.shields.io/github/license/Zeon7744/baibai)](https://github.com/Zeon7744/baibai/blob/main/LICENSE)
+[![Gitee Stars](https://gitee.com/Zeon7744/baibai/badge/star.svg?theme=gvp)](https://gitee.com/Zeon7744/baibai)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/)
+[![MCP Support](https://img.shields.io/badge/MCP-Support-violet.svg)](https://modelcontextprotocol.io)
 
 ---
 
-## 🚀 简介
-=======
-baibai 是一个 **MCP (Model Context Protocol) 工具库**，提供实用的开发工具集，可集成到 Claude Code、Cursor、Codex 等 AI 编程助手。
->>>>>>> origin/main
+## 📌 这是 GitHub 官方主仓
 
-## 工具列表
+> **Gitee 镜像**: [gitee.com/Zeon7744/baibai](https://gitee.com/Zeon7744/baibai)  
+> **GitCode 镜像**: [gitcode.com/Zeon7744/baibai](https://gitcode.com/Zeon7744/baibai)
 
-<<<<<<< HEAD
-> ⚠️ 这是**通用工具库**。短剧专用工具（格式校验器、爽点分析器等）请在 [awesome-ai-short-drama](https://gitee.com/Zeon7744/awesome-ai-short-drama) 查看。
-=======
-| 工具 | 说明 | 用法 |
-|------|------|------|
-| `check-format` | 代码/文档格式校验器，支持 Markdown、JSON、YAML | `python -m tools.check_format <path>` |
-| `analyze` | 数据统计分析，生成报告 | `python -m tools.analyze <path>` |
-| `gen-readme` | README 自动生成器 | `python -m tools.gen_readme` |
-| `md2html` | Markdown 转 HTML 页面 | `python -m tools.md2html <input> <output>` |
-| `classify` | 内容自动分类器 | `python -m tools.classify <text>` |
-| `tts` | 文本转语音 (Coqui TTS) | `python -m tools.tts "文本"` |
-| `summarize` | 文本摘要生成 | `python -m tools.summarize <path>` |
-| `translate` | 多语言翻译 | `python -m tools.translate <text>` |
->>>>>>> origin/main
+Issues 和 PR 请在 GitHub 提交。
 
-## 快速开始
+---
 
-### 方式一：pip 安装（推荐）
+## ⚡ 快速开始
 
 ```bash
-# 从 GitHub Releases 安装（预编译 wheel）
-pip install https://github.com/Zeon7744/baibai/releases/download/v1.2.0/baibai-1.2.0-py3-none-any.whl
+# 安装
+pip install baibai
 
-# 或从源码安装
-pip install https://github.com/Zeon7744/baibai/releases/download/v1.2.0/baibai-1.2.0.tar.gz
-```
-
-### 方式二：源码安装
-
-```bash
-git clone https://gitee.com/Zeon7744/baibai.git
+# 或使用源码
+git clone https://github.com/Zeon7744/baibai.git
 cd baibai
 pip install -e .
+
+# 验证 MCP 服务
+python mcp_server_v2.py --health
 ```
 
-### 方式三：直接 Git 安装
+---
 
-```bash
-pip install git+https://github.com/Zeon7744/baibai.git@v1.2.0
-```
+## 🛠️ 核心工具
 
-## MCP 集成
+| 工具 | 功能 | 使用场景 |
+|------|------|----------|
+| `format_checker` | Markdown 格式校验 | 剧本、文档规范性检查 |
+| `stats_analyzer` | 内容统计分析 | 字数统计、类型分布 |
+| `readme_gen` | README 自动生成 | 项目文档维护 |
+| `md2html` | Markdown→HTML | 内容展示页生成 |
+| `classifier` | 内容自动分类 | 文件类型识别 |
 
-将以下内容添加到 Claude Code / Cursor 的 MCP 配置中：
+---
+
+## 🔌 MCP 集成
+
+支持接入主流 AI 编程助手：
 
 ```json
 {
@@ -93,173 +65,74 @@ pip install git+https://github.com/Zeon7744/baibai.git@v1.2.0
 }
 ```
 
-## 在线演示
+**支持环境**: Claude Code、Cursor、Codex、VS Code
 
-- [GitHub Pages](https://zeon7744.github.io/baibai/)
+---
 
-## 变更日志
+## 📦 项目结构
 
-- [CHANGELOG.md](CHANGELOG.md) — 版本历史与更新记录
+```
+baibai/
+├── tools/              # 核心工具包
+│   ├── cli.py          # CLI 入口
+│   ├── format_checker.py
+│   ├── stats_analyzer.py
+│   └── ...
+├── templates/          # 页面模板
+├── tests/             # 测试套件
+├── scripts/           # 运维脚本
+└── README.md
+```
 
-## 多平台镜像
+---
 
-| 平台 | 链接 |
+## 🎯 适用场景
+
+- ✅ 短剧剧本批量格式校验
+- ✅ 内容库数据统计与报告
+- ✅ Markdown 批量转 HTML
+- ✅ README 自动化维护
+- ✅ AI 编程助手 MCP 扩展
+
+---
+
+## 📊 版本状态
+
+| 指标 | 数值 |
 |------|------|
-| GitHub (主仓库) | [GitHub](https://github.com/Zeon7744/baibai) |
-| Gitee | [Gitee](https://gitee.com/Zeon7744/baibai) |
-| GitCode | [GitCode](https://gitcode.com/Zeon7744/baibai) |
-
-## 赞助与支持
-
-| 平台 | 链接 | 支付方式 |
-|------|------|----------|
-| ☕ **爱发电** | [afdian.com/@Zeon7744](https://afdian.com/@Zeon7744) | 支付宝 / 微信支付 |
-| 🌍 **GitHub Sponsors** | [github.com/sponsors/Zeon7744](https://github.com/sponsors/Zeon7744) | PayPal / Stripe |
-
-### 赞助档位
-
-| 档位 | 价格 | 权益 |
-|------|------|------|
-| ☕ 请喝咖啡 | ¥18/月 | 感谢支持 + 赞助者名单 |
-| 🍺 请喝啤酒 | ¥58/月 | 以上 + 优先回复 Issue |
-| 🎁 项目赞助 | ¥188/月 | 以上 + 定制功能需求优先开发 |
-
-## 相关项目
-
-- [crypto-mlp-high-confidence](https://github.com/Zeon7744/crypto-mlp-high-confidence) — MLP 加密货币预测
-- [global-investment-mlp](https://github.com/Zeon7744/global-investment-mlp) — 量化投资框架
-- [awesome-ai-short-drama](https://github.com/Zeon7744/awesome-ai-short-drama) — AI 短剧资源合集
-- [dev-artifacts](https://github.com/Zeon7744/dev-artifacts) — 开发工具箱
-
-## 贡献
-
-欢迎提交 Issue 和 Pull Request！详见 [CONTRIBUTING.md](CONTRIBUTING.md)
-
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
+| 最新版本 | v1.0.0 |
+| Python 版本 | 3.8+ |
+| 测试覆盖 | 85%+ |
+| 最后更新 | 2026-09-25 |
 
 ---
 
-*由 [Zeon7744](https://github.com/Zeon7744) 维护 · MCP ToolKit · Vibe Coding · 三平台同步*
+## 🤝 贡献指南
 
-## 🎬 短剧项目
+欢迎 PR！请遵循以下步骤：
 
-暂无短剧项目
-
-
----
-
-## 🎬 短剧项目
-
-暂无短剧项目
-
+1. Fork 本仓库
+2. 创建特性分支 (`git checkout -b feature/AmazingFeature`)
+3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
+4. 推送到分支 (`git push origin feature/AmazingFeature`)
+5. 开启 Pull Request
 
 ---
 
-## 🎬 短剧项目
+## ☕ 支持作者
 
-暂无短剧项目
+如果这个项目对你有帮助，欢迎赞助 ☕
 
-
----
-
-## 🎬 短剧项目
-
-暂无短剧项目
-
-<<<<<<< HEAD
-- [dev-artifacts](https://gitee.com/Zeon7744/dev-artifacts) - MLP精准金融分析工具
-- [awesome-ai-short-drama](https://gitee.com/Zeon7744/awesome-ai-short-drama) - AI 短剧创作全链路（作品 + 工具 + 资源）
-- [Model Context Protocol](https://modelcontextprotocol.io) - MCP 协议规范
-- [opencode](https://github.com/opencode-ai/opencode) - 开源 AI 编码助手
-- [Aider](https://github.com/Aider-AI/aider) - 终端 AI 编程助手
+| 渠道 | 方式 |
+|------|------|
+| [爱发电](https://afdian.com/@Zeon7744) | 支付宝 / 微信支付 |
+| [GitHub Sponsors](https://github.com/sponsors/Zeon7744) | PayPal / Stripe |
 
 ---
 
-*由 [Zeon7744](https://gitee.com/Zeon7744) 维护*  
+<div align="center">
+
+**由 [Zeon7744](https://github.com/Zeon7744) 维护**  
 *Vibe Coding · 自然语言驱动开发*
-=======
 
----
-
-## 🎬 短剧项目
-
-暂无短剧项目
-
-
----
-
-## 🎬 短剧项目
-
-暂无短剧项目
-
-
----
-
-## 🎬 短剧项目
-
-暂无短剧项目
-
-
----
-
-## 🎬 短剧项目
-
-暂无短剧项目
-
-
----
-
-## 🎬 短剧项目
-
-暂无短剧项目
-
-
----
-
-## 🎬 短剧项目
-
-暂无短剧项目
-
-
----
-
-## 🎬 短剧项目
-
-暂无短剧项目
-
-
----
-
-## 🎬 短剧项目
-
-暂无短剧项目
-
-
----
-
-## 🎬 短剧项目
-
-暂无短剧项目
-
-
----
-
-## 🎬 短剧项目
-
-暂无短剧项目
-
-
----
-
-## 🎬 短剧项目
-
-暂无短剧项目
-
-
----
-
-## 🙏 感谢赞助
-
-暂无赞助者
-
----
+</div>
