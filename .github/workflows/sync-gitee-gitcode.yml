@@ -1,4 +1,3 @@
-name: Mirror to Gitee and GitCode
 
 on:
   push:
@@ -21,18 +20,3 @@ jobs:
           git push gitee --all --force
           git push gitee --tags --force
 
-  mirror-gitcode:
-    continue-on-error: true
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Mirror to GitCode
-        env:
-          GITCODE_TOKEN: ${{ secrets.GITCODE_TOKEN }}
-        run: |
-          REPO=${{ github.event.repository.name }}
-          git remote add gitcode https://oauth2:${GITCODE_TOKEN}@gitcode.com/Zeon7744/${REPO}.git 2>/dev/null || true
-          git push gitcode --all --force
-          git push gitcode --tags --force
