@@ -250,3 +250,15 @@ pytest tests/ --cov=tools --cov-report=term-missing
 *Vibe Coding · 自然语言驱动开发*
 
 </div>
+
+---
+
+## 🚀 免费 → Pro → 企业（变现入口）
+
+免费=基础工具；Pro=自动化+数据回流；企业=定制运营方案
+
+- **免费**：立即 [安装/克隆] 使用，命中配额即可升级。
+- **Pro**：[Gitee Pro 订阅](https://gitee.com/Zeon7744) 解锁高级能力。
+- **企业**：私有部署 / 定制需求 → 见 `pricing.md`，或联系商务（GitHub Issues / Gitee）。
+
+> 详细定价与 SKU 见 [pricing.md](pricing.md) ｜ 支持项目见 [FUNDING.yml](FUNDING.yml)
