@@ -262,3 +262,15 @@ pytest tests/ --cov=tools --cov-report=term-missing
 - **企业**：私有部署 / 定制需求 → 见 `pricing.md`，或联系商务（GitHub Issues / Gitee）。
 
 > 详细定价与 SKU 见 [pricing.md](pricing.md) ｜ 支持项目见 [FUNDING.yml](FUNDING.yml)
+
+---
+
+## 快速上手
+依赖安装：
+```bash
+python3 -m pip install -r requirements.txt
+```
+
+## 变现路径
+工具库，能力已并入 vibecoding-cli，本仓作资产底座，不独立售卖。
+> 定价与赞助：见仓库内 pricing.md / FUNDING.yml（若有）。
