@@ -1,7 +1,9 @@
 # 🚀 Baibai — Vibe Coding 开发工具库 v3
 
-> **用自然语言驱动开发** — 通用 CLI 工具集 + MCP Server  
+> **用自然语言驱动开发** — MCP Server 内容创作工具集（资产底座）
 > AI 编程助手必备工具箱，让 Claude Code、Cursor、Codex 更强大
+>
+> ⚠️ CLI 入口已弃用，请使用 MCP Server：`python mcp_server_v2.py --port 8000`
 
 [![GitHub Stars](https://img.shields.io/github/stars/Zeon7744/baibai?style=social)](https://github.com/Zeon7744/baibai)
 [![GitHub Forks](https://img.shields.io/github/forks/Zeon7744/baibai?style=social)](https://github.com/Zeon7744/baibai/forks)

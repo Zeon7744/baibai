@@ -5,13 +5,13 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "baibai"
 version = "1.2.0"
-description = "Vibe Coding 开发工具库 - MCP + CLI 内容创作工具集"
+description = "Vibe Coding 开发工具库 - MCP Server 内容创作工具集（资产底座）"
 readme = "README.md"
 license = {text = "MIT"}
 authors = [
     {name = "Zeon7744", email = "zeon7744@gmail.com"}
 ]
-keywords = ["vibe-coding", "mcp", "cli", "ai", "assistant", "markdown", "short-drama"]
+keywords = ["vibe-coding", "mcp", "ai", "assistant", "markdown", "short-drama"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Environment :: Console",
@@ -42,10 +42,6 @@ dev = [
 mcp = [
     "mcp>=1.0.0",
 ]
-
-[project.scripts]
-baibai = "tools.cli:main"
-baibai-mcp = "mcp_server:run_server"
 
 [project.urls]
 Homepage = "https://github.com/Zeon7744/baibai"
