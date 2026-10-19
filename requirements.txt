@@ -1,11 +1,29 @@
-# baibai 依赖（从 pyproject.toml 推导）
-# MCP Server + 内容创作工具集
-typer>=0.9.0           # CLI 框架（pyproject.toml dependencies）
-rich>=13.0.0           # 终端富文本输出（pyproject.toml dependencies）
-markdown>=3.5.0        # Markdown 处理（pyproject.toml dependencies）
-mcp>=1.0.0             # MCP 协议支持（pyproject.toml optional mcp）
+# baibai 依赖
+# 推断来源：grep import 语句（2026-10-19 红剑）
+# FastAPI + Flask 双框架，NLP/数据分析工具集
 
-# 可选：开发依赖
-# pytest>=7.0.0
-# black>=23.0.0
-# ruff>=0.1.0
+# Web框架（二选一或都装）
+fastapi>=0.111.0
+uvicorn[standard]>=0.29.0
+flask>=3.0.0
+
+# AI/LLM
+openai>=1.30.0
+anthropic>=0.28.0
+
+# 数据处理
+numpy>=1.26.0
+pandas>=2.2.0
+
+# CLI
+typer>=0.12.0
+rich>=13.7.0
+
+# 测试
+pytest>=8.0.0
+pytest-asyncio>=0.23.0
+
+# 工具
+python-multipart>=0.0.9
+pydantic>=2.6.0
+pydantic-settings>=2.2.0
