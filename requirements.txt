@@ -1,0 +1,11 @@
+# baibai 依赖（从 pyproject.toml 推导）
+# MCP Server + 内容创作工具集
+typer>=0.9.0           # CLI 框架（pyproject.toml dependencies）
+rich>=13.0.0           # 终端富文本输出（pyproject.toml dependencies）
+markdown>=3.5.0        # Markdown 处理（pyproject.toml dependencies）
+mcp>=1.0.0             # MCP 协议支持（pyproject.toml optional mcp）
+
+# 可选：开发依赖
+# pytest>=7.0.0
+# black>=23.0.0
+# ruff>=0.1.0
