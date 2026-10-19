@@ -255,15 +255,14 @@ pytest tests/ --cov=tools --cov-report=term-missing
 
 ---
 
-## 🚀 免费 → Pro → 企业（变现入口）
+## 🚀 免费开源 + 企业定制
 
-免费=基础工具；Pro=自动化+数据回流；企业=定制运营方案
+baibai **永久免费开源**，全部 22 个工具 + MCP Server 均可免费使用。
 
-- **免费**：立即 [安装/克隆] 使用，命中配额即可升级。
-- **Pro**：[Gitee Pro 订阅](https://gitee.com/Zeon7744) 解锁高级能力。
-- **企业**：私有部署 / 定制需求 → 见 `pricing.md`，或联系商务（GitHub Issues / Gitee）。
+- **免费**：`pip install baibai` 或克隆源码，全部功能免费。
+- **企业定制**：按需报价 → [联系商务](https://afdian.net/@Zeon7744)。
 
-> 详细定价与 SKU 见 [pricing.md](pricing.md) ｜ 支持项目见 [FUNDING.yml](FUNDING.yml)
+> 详细定价见 [pricing.md](pricing.md)
 
 ---
 
@@ -274,8 +273,8 @@ python3 -m pip install -r requirements.txt
 ```
 
 ## 变现路径
-工具库，能力已并入 vibecoding-cli，本仓作资产底座，不独立售卖。
-> 定价与赞助：见仓库内 pricing.md / FUNDING.yml（若有）。
+工具库，**免费开源**，能力已并入 vibecoding-cli，本仓作资产底座，不独立售卖。企业定制联系商务。
+> 定价：见 [pricing.md](pricing.md) | 赞助：[爱发电 @Zeon7744](https://afdian.net/@Zeon7744)
 
 ## 🧩 与 vibecoding-cli 的分工（工具仓 vs 护城河仓）
 本仓定位"通用 CLI 工具集 + MCP 资产底座"，与 vibecoding-cli 严格分工、不互卷：
@@ -292,3 +291,18 @@ python3 -m pip install -r requirements.txt
 - **代码不用于训练**：本仓代码与工具调用日志**不用于**任何大模型训练；`mcp_server_v2` 服务端不向第三方回流调用方代码/文件内容。
 - **数据隐私**：工具仅处理调用方在本地/沙箱内提供的文件与代码，不落盘、不上报任何个人敏感信息；`--dangerously-skip-permissions` 模式下的越权风险由使用者自担。
 - **合规免责**：文件读写/终端命令类工具属高风险操作，使用者应自行在受控环境执行并复核结果，因使用本仓工具产生的数据丢失/越权后果由使用者负责。
+
+
+---
+
+## 💰 订阅支持
+
+**baibai 永久免费开源** 🎉 所有 22 个工具 + MCP Server 均可免费使用。
+
+如果你觉得这个项目对你有帮助，欢迎通过爱发电支持作者持续维护：
+
+👉 **[爱发电赞助](https://afdian.net/@Zeon7744)**（支付宝 / 微信支付）
+
+需要企业定制工具？[联系商务](https://afdian.net/@Zeon7744) 按需报价。
+
+> 详细定价见 [pricing.md](pricing.md)
