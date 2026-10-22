@@ -1,0 +1,60 @@
+# 三端自动镜像：GitHub push → Gitee(SSH) + GitCode(token) 全自动
+# 凭据走 GitHub Secrets：
+#   GITEE_SSH_PRIVATE_KEY = 本仓专用 SSH 私钥（已生成）
+#   GITCODE_TOKEN         = GitCode PAT
+name: mirror-triple
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Mirror to Gitee (SSH)
+        env:
+          GITEE_SSH_PRIVATE_KEY: ${{ secrets.GITEE_SSH_PRIVATE_KEY }}
+        run: |
+          set -e
+          REPO_NAME="baibai"
+          echo "$GITEE_SSH_PRIVATE_KEY" > /tmp/gitee_key
+          if ! grep -q "BEGIN" /tmp/gitee_key || ! grep -q "END" /tmp/gitee_key; then
+            echo "::error::GITEE_SSH_PRIVATE_KEY 缺 OPENSSH 边界行，请贴全文（含首尾 -----BEGIN/END-----）"
+            exit 1
+          fi
+          chmod 600 /tmp/gitee_key
+          mkdir -p ~/.ssh
+          ssh-keyscan gitee.com >> ~/.ssh/known_hosts
+          export GIT_SSH_COMMAND="ssh -i /tmp/gitee_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes"
+          git remote add gitee "git@gitee.com:Zeon7744/${REPO_NAME}.git" 2>/dev/null || git remote set-url gitee "git@gitee.com:Zeon7744/${REPO_NAME}.git"
+          git fetch gitee main 2>/dev/null || true
+          git push gitee main --force
+          echo "✅ Gitee SSH synced: $(git rev-parse main)"
+
+      - name: Mirror to GitCode (login:token)
+        env:
+          GITCODE_TOKEN: ${{ secrets.GITCODE_TOKEN }}
+        run: |
+          set -e
+          REPO_NAME="baibai"
+          GITCODE_TOKEN_ENC=$(python3 -c "import urllib.parse,sys; print(urllib.parse.quote(sys.argv[1], safe=''))" "$GITCODE_TOKEN")
+          git remote add gitcode "https://Zeon7744:${GITCODE_TOKEN_ENC}@gitcode.com/Zeon7744/${REPO_NAME}.git" 2>/dev/null || git remote set-url gitcode "https://Zeon7744:${GITCODE_TOKEN_ENC}@gitcode.com/Zeon7744/${REPO_NAME}.git"
+          git fetch gitcode main 2>/dev/null || true
+          git push gitcode main --force
+          echo "✅ GitCode synced: $(git rev-parse main)"
+
+      - name: Summary
+        run: |
+          echo "## Mirror-triple 完成（Gitee SSH + GitCode token）" >> "$GITHUB_STEP_SUMMARY"
+          echo "- 仓: Zeon7744/baibai" >> "$GITHUB_STEP_SUMMARY"
+          echo "- 触发: ${{ github.event_name }} @ ${{ github.sha }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Gitee: SSH 自动镜像 ✅" >> "$GITHUB_STEP_SUMMARY"
+          echo "- GitCode: token 自动镜像 ✅" >> "$GITHUB_STEP_SUMMARY"
