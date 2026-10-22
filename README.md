@@ -1,5 +1,11 @@
 # 🚀 Baibai — Vibe Coding 开发工具库 v3
 
+## 💰 价值主张 & 定价
+> **能卖什么**：通用工具集 + MCP 支持 — 22 个即插即用中文工具，让 Cursor / Claude Code / Codex 直接开箱即用。
+>
+> **定价**：**永久免费开源**（全部 22 工具 + MCP Server + 完整源码）/ 企业定制按需报价（定制开发 + 技术对接 + SLA）。支持渠道：[爱发电赞赏](https://afdian.net/@Zeon7744)
+
+
 > **用自然语言驱动开发** — MCP Server 内容创作工具集（资产底座）
 > AI 编程助手必备工具箱，让 Claude Code、Cursor、Codex 更强大
 >

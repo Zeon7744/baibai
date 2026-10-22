@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baibai — 开箱即用的 AI 工具箱 · 22 个工具 + MCP Server 免费开源</title>
+<style>
+:root{--bg:#0d1117;--card:#161b22;--line:#30363d;--text:#e6edf3;--mut:#8b949e;--acc:#7c5cff;--acc2:#22c55e;}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:system-ui,-apple-system,"PingFang SC",sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+.hero{background:linear-gradient(135deg,#151025,#101d33 60%,#0d1117);padding:72px 0 56px;text-align:center;border-bottom:1px solid var(--line)}
+.badge{display:inline-block;background:rgba(124,92,255,.15);border:1px solid rgba(124,92,255,.45);color:#c9b8ff;border-radius:999px;padding:4px 14px;font-size:14px;margin-bottom:18px}
+.hero h1{font-size:40px;font-weight:800;letter-spacing:-.5px}
+.hero h1 span{color:var(--acc)}
+.sub{color:var(--mut);font-size:18px;margin:14px auto 0;max-width:640px}
+.cta-row{display:flex;gap:14px;justify-content:center;margin-top:30px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 26px;border-radius:10px;font-weight:700;text-decoration:none;font-size:16px;transition:.2s}
+.btn-p{background:var(--acc);color:#fff}
+.btn-p:hover{filter:brightness(1.15);transform:translateY(-2px)}
+.btn-s{border:1px solid var(--line);color:var(--text);background:var(--card)}
+.btn-s:hover{border-color:var(--acc)}
+.btn-a{background:#f85149;color:#fff}
+section{padding:56px 0}
+h2{font-size:26px;margin-bottom:24px;text-align:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
+.card h3{font-size:18px;margin-bottom:8px;color:#c9b8ff}
+.card p{color:var(--mut);font-size:14px}
+.card ul{list-style:none;margin-top:10px}
+.card li{font-size:13.5px;padding:3px 0}
+.card li::before{content:"✓ ";color:var(--acc2);font-weight:700}
+.price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.price{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:28px;text-align:center}
+.price.hot{border:2px solid var(--acc);position:relative}
+.price .tag{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--acc);color:#fff;font-size:12px;padding:2px 14px;border-radius:999px}
+.price h3{font-size:16px;color:var(--mut)}
+.price .amt{font-size:34px;font-weight:800;margin:8px 0}
+.price .amt small{font-size:15px;color:var(--mut);font-weight:400}
+.price ul{list-style:none;text-align:left;margin-top:14px}
+.price li{font-size:14px;color:var(--mut);padding:4px 0}
+.price li::before{content:"✓ ";color:var(--acc2)}
+.foot{text-align:center;padding:40px 0;border-top:1px solid var(--line);color:var(--mut);font-size:13px}
+@media(max-width:640px){.hero h1{font-size:28px}.sub{font-size:15px}}
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="wrap">
+    <div class="badge">MCP Server · 22 个工具 · 免费开源（永久）</div>
+    <h1>Bai<span>bai</span></h1>
+    <p class="sub">通用工具集 + MCP 支持，开箱即用的 AI 工具箱：为 Cursor / Claude Code / Codex 提供 22 个即插即用中文工具，永久免费开源，企业定制按需报价。</p>
+    <div class="cta-row">
+      <a class="btn btn-p" href="https://github.com/Zeon7744/baibai" target="_blank">🚀 立即试用</a>
+      <a class="btn btn-s" href="README.md">查看详情</a>
+      <a class="btn btn-a" href="https://afdian.net/@Zeon7744" target="_blank">💰 赞赏支持</a>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>谁在用它</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>🧑‍💻 独立开发者</h3>
+        <p>想让 AI 编程助手直接调用自己的工具集</p>
+        <ul>
+          <li>python mcp_server_v2.py 一行命令接入 MCP</li>
+          <li>22 个工具开箱即用，无需写胶水代码</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>🤖 AI Agent 团队</h3>
+        <p>需要底层资产底座支撑 vibecoding 工作流</p>
+        <ul>
+          <li>为 vibecoding-cli 提供底层工具能力</li>
+          <li>完整源码可二次开发</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>🏢 企业方</h3>
+        <p>需要定制工具开发与技术对接</p>
+        <ul>
+          <li>定制工具开发（按需报价）</li>
+          <li>技术对接 + SLA 支持</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <h2>定价 · 与 pricing.md 严格一致</h2>
+    <div class="price-grid">
+      <div class="price hot">
+        <div class="tag">永久免费</div>
+        <h3>免费</h3>
+        <div class="amt">¥0</div>
+        <ul>
+          <li>全部 22 个工具 + MCP Server</li>
+          <li>完整开源源码（MIT）</li>
+          <li>社区支持</li>
+        </ul>
+      </div>
+      <div class="price">
+        <h3>企业定制</h3>
+        <div class="amt">按需<small>报价</small></div>
+        <ul>
+          <li>定制工具开发</li>
+          <li>技术对接 + SLA 支持</li>
+          <li>留言咨询开通</li>
+        </ul>
+      </div>
+    </div>
+    <div class="cta-row" style="margin-top:28px">
+      <a class="btn btn-p" href="https://afdian.net/@Zeon7744" target="_blank">💰 赞赏 / 咨询定制</a>
+      <a class="btn btn-s" href="pricing.md">查看完整定价文档</a>
+    </div>
+  </div>
+</section>
+
+<div class="foot">© 2026 Baibai · MIT License · 开源引流 → 企业定制变现 · 赞赏渠道：爱发电 @Zeon7744</div>
+</body>
+</html>
