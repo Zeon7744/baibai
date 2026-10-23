@@ -11,6 +11,14 @@ Baibai MCP Server - 将 Vibe Coding 工具包装为 MCP 协议兼容服务
 
 import json
 import sys
+import os
+
+# 收款层 + 门控
+try:
+    import billing
+except ImportError:
+    sys.path.insert(0, os.path.dirname(__file__))
+    import billing
 from pathlib import Path
 from typing import Any
 
@@ -319,6 +327,12 @@ def register_tools(mcp: "FastMCP") -> None:
 
 
 def run_server():
+    # 门控：免费版 30 次/天
+    gate = billing.check_access("free", "tool_call")
+    if not gate["allowed"]:
+        print(f"❌ {gate['reason']}")
+        print(f"   企业定制/赞赏入口：{gate.get('upgrade_url', 'https://afdian.com/@Zeon7744')}")
+        sys.exit(1)
     """运行 MCP 服务器"""
     if not MCP_AVAILABLE:
         print("错误: mcp 包未安装")
