@@ -3,7 +3,7 @@
 ## 💰 价值主张 & 定价
 > **能卖什么**：通用工具集 + MCP 支持 — 22 个即插即用中文工具，让 Cursor / Claude Code / Codex 直接开箱即用。
 >
-> **定价**：**永久免费开源**（全部 22 工具 + MCP Server + 完整源码）/ 企业定制按需报价（定制开发 + 技术对接 + SLA）。支持渠道：[爱发电赞赏](https://afdian.net/@Zeon7744)
+> **定价**：**永久免费开源**（全部 22 工具 + MCP Server + 完整源码）/ 企业定制按需报价（定制开发 + 技术对接 + SLA）。支持渠道：[面包多 Pay赞赏](https://mbd.net/@Zeon7744)
 
 
 > **用自然语言驱动开发** — MCP Server 内容创作工具集（资产底座）
@@ -247,7 +247,7 @@ pytest tests/ --cov=tools --cov-report=term-missing
 
 | 渠道 | 方式 |
 |------|------|
-| [爱发电](https://afdian.com/@Zeon7744) | 支付宝 / 微信支付 |
+| [面包多 Pay](https://mbd.com/@Zeon7744) | 支付宝 / 微信支付 |
 | [GitHub Sponsors](https://github.com/sponsors/Zeon7744) | PayPal / Stripe |
 
 ---
@@ -266,7 +266,7 @@ pytest tests/ --cov=tools --cov-report=term-missing
 baibai **永久免费开源**，全部 22 个工具 + MCP Server 均可免费使用。
 
 - **免费**：`pip install baibai` 或克隆源码，全部功能免费。
-- **企业定制**：按需报价 → [联系商务](https://afdian.net/@Zeon7744)。
+- **企业定制**：按需报价 → [联系商务](https://mbd.net/@Zeon7744)。
 
 > 详细定价见 [pricing.md](pricing.md)
 
@@ -280,7 +280,7 @@ python3 -m pip install -r requirements.txt
 
 ## 变现路径
 工具库，**免费开源**，能力已并入 vibecoding-cli，本仓作资产底座，不独立售卖。企业定制联系商务。
-> 定价：见 [pricing.md](pricing.md) | 赞助：[爱发电 @Zeon7744](https://afdian.net/@Zeon7744)
+> 定价：见 [pricing.md](pricing.md) | 赞助：[面包多 Pay @Zeon7744](https://mbd.net/@Zeon7744)
 
 ## 🧩 与 vibecoding-cli 的分工（工具仓 vs 护城河仓）
 本仓定位"通用 CLI 工具集 + MCP 资产底座"，与 vibecoding-cli 严格分工、不互卷：
@@ -326,28 +326,28 @@ python3 -m pip install -r requirements.txt
 
 **baibai 永久免费开源** 🎉 所有 22 个工具 + MCP Server 均可免费使用。
 
-如果你觉得这个项目对你有帮助，欢迎通过爱发电支持作者持续维护：
+如果你觉得这个项目对你有帮助，欢迎通过面包多 Pay支持作者持续维护：
 
-👉 **[爱发电赞助](https://afdian.net/@Zeon7744)**（支付宝 / 微信支付）
+👉 **[面包多 Pay赞助](https://mbd.net/@Zeon7744)**（支付宝 / 微信支付）
 
-需要企业定制工具？[联系商务](https://afdian.net/@Zeon7744) 按需报价。
+需要企业定制工具？[联系商务](https://mbd.net/@Zeon7744) 按需报价。
 
 > 详细定价见 [pricing.md](pricing.md)
 
 
 ---
 
-## 💛 支持 & 发布（爱发电双通道）
+## 💛 支持 & 发布（面包多 Pay双通道）
 
-本仓通过**爱发电**完成「**创作者赞赏/订阅收款**」与「**作品/内容社区发布**」双通道运营，二者共存：
+本仓通过**面包多 Pay**完成「**创作者赞赏/订阅收款**」与「**作品/内容社区发布**」双通道运营，二者共存：
 
 | 通道 | 用途 | 入口 |
 |------|------|------|
-| 💰 爱发电收款 | 赞赏、订阅、Pro 会员、赞助维护 | [爱发电 @Zeon7744](https://afdian.net/@Zeon7744) |
-| 📣 爱发电社区发布 | 作品展示、内容连载、粉丝互动、发布分发 | [爱发电社区 @Zeon7744](https://afdian.com/user/0c59dda8a1bb11f19b9552540025c377) |
+| 💰 面包多 Pay收款 | 赞赏、订阅、Pro 会员、赞助维护 | [面包多 Pay @Zeon7744](https://mbd.net/@Zeon7744) |
+| 📣 面包多 Pay社区发布 | 作品展示、内容连载、粉丝互动、发布分发 | [面包多 Pay社区 @Zeon7744](https://mbd.com/user/0c59dda8a1bb11f19b9552540025c377) |
 
 - **收款**：赞赏 / 订阅 Pro / 企业赞助，支付宝 + 微信支付，无需备案域名
-- **社区发布**：把本仓产出（作品 / 剧本 / 工具演示 / 案例）在爱发电社区连载发布，沉淀粉丝、引流回仓
+- **社区发布**：把本仓产出（作品 / 剧本 / 工具演示 / 案例）在面包多 Pay社区连载发布，沉淀粉丝、引流回仓
 - 两通道独立共存，按需选用；收款不强制绑定社区发布
 
 > 本仓内容仅供创作参考，发布前请完成人工合规审查与平台备案。
@@ -368,8 +368,8 @@ python3 -m pip install -r requirements.txt
 
 | 方式 | 入口 | 说明 |
 |------|------|------|
-| 社区评论 | [爱发电社区 @Zeon7744](https://afdian.com/user/0c59dda8a1bb11f19b9552540025c377) | 作品下评论/留言，直接驱动迭代 |
+| 社区评论 | [面包多 Pay社区 @Zeon7744](https://mbd.com/user/0c59dda8a1bb11f19b9552540025c377) | 作品下评论/留言，直接驱动迭代 |
 | Issue | 本仓 GitHub / Gitee / GitCode 的 Issues | Bug / 功能建议 / 定价反馈 |
-| 赞赏反馈 | 爱发电赞赏留言 | 支持的同时留下使用心得 |
+| 赞赏反馈 | 面包多 Pay赞赏留言 | 支持的同时留下使用心得 |
 
 > 每一条回馈都是产品优化的第一手依据。不强制，但真诚欢迎。

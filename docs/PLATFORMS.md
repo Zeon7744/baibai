@@ -3,14 +3,14 @@
 ## 平台架构
 
 ```
-GitHub (国际) ↔ Gitee (国内) ↔ 爱发电 (赞助变现)
+GitHub (国际) ↔ Gitee (国内) ↔ 面包多 Pay (赞助变现)
 ```
 
 | 平台 | 定位 | 地址 |
 |------|------|------|
 | GitHub | 主仓库（国际） | https://github.com/Zeon7744/baibai |
 | Gitee | 镜像同步（国内） | https://gitee.com/Zeon7744/baibai |
-| 爱发电 | 赞助变现 | https://ifdian.net/a/Zeon7744 |
+| 面包多 Pay | 赞助变现 | https://ifdian.net/a/Zeon7744 |
 
 ---
 
@@ -29,9 +29,9 @@ GitHub (国际) ↔ Gitee (国内) ↔ 爱发电 (赞助变现)
 GitHub push → Checkout → Sync to Gitee → Force Push
 ```
 
-### 2. 爱发电赞助名单更新
+### 2. 面包多 Pay赞助名单更新
 
-工作流文件：`.github/workflows/afdian-sponsors.yml`
+工作流文件：`.github/workflows/mbd-sponsors.yml`
 
 触发条件：
 - 每天 UTC 09:00（北京时间 17:00）
@@ -50,7 +50,7 @@ Cron → Fetch Sponsors → Parse → Update README → Commit → Push
 
 | Secret 名称 | 值 | 用途 |
 |-------------|-----|------|
-| `AFDIAN_TOKEN` | `WTcfMbUpkvFdACswPruY3ySxG87KJ45e` | 爱发电 API 认证 |
+| `mbd_TOKEN` | `WTcfMbUpkvFdACswPruY3ySxG87KJ45e` | 面包多 Pay API 认证 |
 | `GITEE_TOKEN` | `03be1ea3a7dbd34d1a7669426ea133d8` | Gitee API Token |
 | `GITEE_USER` | `Zeon7744` | Gitee 用户名 |
 
@@ -93,7 +93,7 @@ Cron → Fetch Sponsors → Parse → Update README → Commit → Push
 ### 每月检查项
 
 - [ ] Gitee 同步是否正常
-- [ ] 爱发电名单是否更新
+- [ ] 面包多 Pay名单是否更新
 - [ ] Secrets 是否过期
 
 ### 手动触发工作流

@@ -29,4 +29,4 @@ body:
 
         If you find this project helpful, consider sponsoring:
         - [GitHub Sponsors](https://github.com/sponsors/Zeon7744)
-        - [爱发电](https://afdian.com/@Zeon7744)
+        - [面包多 Pay](https://mbd.com/@Zeon7744)

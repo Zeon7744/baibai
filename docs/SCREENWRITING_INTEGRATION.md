@@ -15,7 +15,7 @@
                     ┌─────────────────────────┼─────────────────────────┐
                     ▼                         ▼                         ▼
                ┌─────────┐              ┌─────────┐              ┌─────────┐
-               │ Gitee  │              │爱发电   │              │Pages  │
+               │ Gitee  │              │面包多 Pay   │              │Pages  │
                │  镜像   │              │  README │              │ 网页   │
                └─────────┘              └─────────┘              └─────────┘
 ```
@@ -39,10 +39,10 @@ baibai/
 │   ├── update-content.yml     # 内容自动更新
 │   ├── publish-pages.yml      # GitHub Pages 发布
 │   ├── sync-to-gitee.yml      # Gitee 同步
-│   └── afdian-sponsors.yml    # 赞助名单更新
+│   └── mbd-sponsors.yml    # 赞助名单更新
 └── scripts/
     ├── update-content.sh      # README 更新脚本
-    └── fetch-sponsors.sh      # 爱发电 API 调用
+    └── fetch-sponsors.sh      # 面包多 Pay API 调用
 ```
 
 ## 自动化工作流
@@ -52,7 +52,7 @@ baibai/
 - **功能**: 
   - 扫描短剧项目目录
   - 更新README中的项目列表
-  - 获取爱发电赞助者名单
+  - 获取面包多 Pay赞助者名单
   - 自动提交并推送
 
 ### 2. Publish to GitHub Pages
@@ -99,7 +99,7 @@ git push
 | GitHub | https://github.com/Zeon7744/baibai |
 | Gitee | https://gitee.com/Zeon7744/baibai |
 | 编剧工坊 | https://zeon7744.github.io/baibai/ |
-| 爱发电 | https://ifdian.net/a/Zeon7744 |
+| 面包多 Pay | https://ifdian.net/a/Zeon7744 |
 
 ## 创作规范
 

@@ -53,11 +53,11 @@ jobs:
 - 点击 `Commit new file`
 
 ### 5. 重复上述步骤创建第二个文件
-文件名：`.github/workflows/afdian-sponsors.yml`
+文件名：`.github/workflows/mbd-sponsors.yml`
 
 内容：
 ```yaml
-name: 更新爱发电赞助者名单
+name: 更新面包多 Pay赞助者名单
 
 on:
   schedule:
@@ -70,18 +70,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Fetch Afdian Sponsors
+      - name: Fetch mbd Sponsors
         env:
-          AFDIAN_USER_ID: "0c59dda8a1bb11f19b9552540025c377"
-          AFDIAN_TOKEN: "${{ secrets.AFDIAN_TOKEN }}"
+          mbd_USER_ID: "0c59dda8a1bb11f19b9552540025c377"
+          mbd_TOKEN: "${{ secrets.mbd_TOKEN }}"
         run: |
           TS=$(date +%s)
           PARAMS='{"page":1}'
-          SIGN=$(echo -n "${AFDIAN_TOKEN}${PARAMS}${TS}${AFDIAN_USER_ID}" | md5sum | cut -d' ' -f1)
+          SIGN=$(echo -n "${mbd_TOKEN}${PARAMS}${TS}${mbd_USER_ID}" | md5sum | cut -d' ' -f1)
           
-          RESPONSE=$(curl -s -X POST "https://afdian.net/api/open/query-sponsor" \
+          RESPONSE=$(curl -s -X POST "https://mbd.net/api/open/query-sponsor" \
             -H "Content-Type: application/json" \
-            -d "{\"user_id\": \"${AFDIAN_USER_ID}\", \"params\": \"${PARAMS}\", \"ts\": ${TS}, \"sign\": \"${SIGN}\"}")
+            -d "{\"user_id\": \"${mbd_USER_ID}\", \"params\": \"${PARAMS}\", \"ts\": ${TS}, \"sign\": \"${SIGN}\"}")
           
           echo "$RESPONSE" | python3 -c "
 import json,sys
@@ -92,7 +92,7 @@ sponsors=data['data']['list']
 lines=[]
 for s in sponsors[:20]:
     u=s.get('user',{})
-    lines.append(f\"- [{u.get('name','匿名')}](https://afdian.net/u/{u.get('user_id','')})\")
+    lines.append(f\"- [{u.get('name','匿名')}](https://mbd.net/u/{u.get('user_id','')})\")
 print('\n'.join(lines))
 " > /tmp/sponsors.txt
           cat /tmp/sponsors.txt
@@ -123,7 +123,7 @@ PYEOF
           git config user.email "action@github.com"
           git config user.name "GitHub Action"
           git add README.md
-          git diff --staged --quiet || git commit -m "chore: update afdian sponsors"
+          git diff --staged --quiet || git commit -m "chore: update mbd sponsors"
           git push
 ```
 
@@ -137,7 +137,7 @@ PYEOF
 
 | Secret名称 | 值 |
 |-----------|-----|
-| AFDIAN_TOKEN | WTcfMbUpkvFdACswPruY3ySxG87KJ45e |
+| mbd_TOKEN | WTcfMbUpkvFdACswPruY3ySxG87KJ45e |
 | GITEE_TOKEN | 03be1ea3a7dbd34d1a7669426ea133d8 |
 | GITEE_USER | Zeon7744 |
 

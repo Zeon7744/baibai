@@ -12,7 +12,7 @@
   - PLATFORMS.md
 - [x] workflow文件上传（已同步）
   - sync-to-gitee.yml
-  - afdian-sponsors.yml
+  - mbd-sponsors.yml
   - test.yml
   - publish-pages.yml
   - generate-pages.yml
@@ -23,7 +23,7 @@
 - [x] 仓库已存在
 - [x] GitHub workflow同步已配置
 
-### 爱发电
+### 面包多 Pay
 - [x] 赞助页面已开通
 - [x] API Token已准备
 
@@ -35,7 +35,7 @@
    - 触发：每次push到main/master分支
    - 状态：✅ 已启用
 
-2. **afdian-sponsors.yml**
+2. **mbd-sponsors.yml**
    - 触发：每天UTC 9:00（北京时间17:00）
    - 状态：✅ 已启用
 
@@ -51,7 +51,7 @@ baibai/
 │   └── PLATFORMS.md
 ├── .github/workflows/
 │   ├── sync-to-gitee.yml ✅
-│   ├── afdian-sponsors.yml ✅
+│   ├── mbd-sponsors.yml ✅
 │   ├── test.yml ✅
 │   ├── publish-pages.yml ✅
 │   ├── generate-pages.yml ✅

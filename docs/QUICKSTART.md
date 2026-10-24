@@ -13,5 +13,5 @@ python mcp_server.py
 
 ## 3. 收款与门控
 - 22 工具 + MCP 永久免费（30 次/天）；企业定制报价
-- 爱发电赞赏码：https://afdian.com/@Zeon7744
+- 面包多 Pay赞赏码：https://mbd.com/@Zeon7744
 - 冒烟：`bash smoke_test.sh`

@@ -17,10 +17,10 @@
   - [x] PLATFORMS.md
 - [x] .github/workflows/
   - [x] sync-to-gitee.yml ✅ 已测试运行成功
-  - [x] afdian-sponsors.yml ✅ 已修复语法问题
+  - [x] mbd-sponsors.yml ✅ 已修复语法问题
 - [x] scripts/fetch-sponsors.sh
 - [x] GitHub Secrets配置完成
-  - [x] AFDIAN_TOKEN
+  - [x] mbd_TOKEN
   - [x] GITEE_TOKEN
   - [x] GITEE_USER
 
@@ -33,7 +33,7 @@
 
 ---
 
-## 爱发电
+## 面包多 Pay
 
 - [x] 赞助页面: https://ifdian.net/a/Zeon7744
 - [x] API Token已配置
@@ -46,7 +46,7 @@
 | Workflow | 状态 | 触发方式 | 功能 |
 |----------|------|----------|------|
 | Sync to Gitee | ✅ active | push到main/master | 同步代码到Gitee |
-| 更新爱发电赞助者名单 | ✅ active | 每天UTC 9:00 (北京时间17:00) | 更新README赞助者名单 |
+| 更新面包多 Pay赞助者名单 | ✅ active | 每天UTC 9:00 (北京时间17:00) | 更新README赞助者名单 |
 
 ---
 
