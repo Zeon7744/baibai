@@ -16,3 +16,4 @@ venv/
 *.log
 reports/*.html
 reports/*.json
+praise_ledger.jsonl

@@ -46,3 +46,23 @@ print("OK: MBD_API_KEY 未配时 MbdGateway.create_order 走'待开通'降级路
 PYEOF_MBD
 echo "smoke_test: PASS=$PASS FAIL=$FAIL"
 [ "$FAIL" -eq 0 ] && echo "=== SMOKE PASS ===" && exit 0 || { echo "=== SMOKE FAIL ==="; exit 1; }
+
+# ── 第三条通道 praise（支付宝/微信个人赞赏码）降级验证 ─────────────────────
+echo "==> [praise] 赞赏码网关未配码值降级验证（created_pending_key + needs_secret）"
+python3 - <<'PYEOF_PRAISE'
+import importlib.util, os
+os.environ.pop("PRAISE_ALIPAY_QR", None); os.environ.pop("PRAISE_WX_QR", None)
+spec = importlib.util.spec_from_file_location("billing", "billing.py")
+mod = importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
+gws = getattr(mod, "_REGISTRY", None) or getattr(mod, "_GATEWAYS", None) or getattr(mod, "BUILTIN_REGISTRY", None)
+assert gws and "praise" in gws, "praise 网关未登记: %s" % gws
+gw = gws["praise"]()
+try:
+    o = gw.create_order("t1", 300, "smoke", "free")
+except TypeError:
+    o = gw.create_order("free", 300, {})
+assert o["status"] == "created_pending_key", o
+assert any("PRAISE" in s for s in o.get("needs_secret", [])), o
+print(f"OK: praise 降级 status={o['status']} needs={o['needs_secret']}")
+PYEOF_PRAISE
+echo "smoke_test: praise gateway 通过"
