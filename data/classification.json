@@ -435,9 +435,9 @@
     }
   },
   {
-    "file": ".github/workflows/afdian-sponsors.yml",
-    "name": "afdian-sponsors.yml",
-    "title": "afdian-sponsors.yml",
+    "file": ".github/workflows/mbd-sponsors.yml",
+    "name": "mbd-sponsors.yml",
+    "title": "mbd-sponsors.yml",
     "type": "配置文件",
     "description": "配置文件",
     "scores": {

@@ -1,24 +1,24 @@
 #!/bin/bash
-# Fetch Afdian sponsors and update README
+# Fetch mbd sponsors and update README
 
-AFDIAN_USER_ID="0c59dda8a1bb11f19b9552540025c377"
-AFDIAN_TOKEN="${AFDIAN_TOKEN}"
+MBD_APP_ID="0c59dda8a1bb11f19b9552540025c377"
+MBD_API_KEY="${MBD_API_KEY}"
 
 TS=$(date +%s)
 PARAMS='{"page":1}'
-SIGN=$(echo -n "${AFDIAN_TOKEN}${PARAMS}${TS}${AFDIAN_USER_ID}" | md5sum | cut -d' ' -f1)
+SIGN=$(echo -n "${MBD_API_KEY}${PARAMS}${TS}${MBD_APP_ID}" | md5sum | cut -d' ' -f1)
 
-curl -s -X POST "https://afdian.net/api/open/query-sponsor" \
+curl -s -X POST "https://mbd.pub/@Zeon7744 \
   -H "Content-Type: application/json" \
-  -d "{\"user_id\": \"${AFDIAN_USER_ID}\", \"params\": \"${PARAMS}\", \"ts\": ${TS}, \"sign\": \"${SIGN}\"}" \
-  > /tmp/afdian_resp.json
+  -d "{\"user_id\": \"${MBD_APP_ID}\", \"params\": \"${PARAMS}\", \"ts\": ${TS}, \"sign\": \"${SIGN}\"}" \
+  > /tmp/mbd_resp.json
 
 python3 << 'PYEOF'
 import json
 import sys
 import re
 
-with open('/tmp/afdian_resp.json') as f:
+with open('/tmp/mbd_resp.json') as f:
     data = json.load(f)
 
 if data.get('ec') != 200:
@@ -29,7 +29,7 @@ sponsors = data['data']['list']
 lines = []
 for s in sponsors[:20]:
     u = s.get('user', {})
-    lines.append(f"- [{u.get('name', '匿名')}](https://afdian.net/u/{u.get('user_id', '')})")
+    lines.append(f"- [{u.get('name', '匿名')}](https://mbd.pub/@Zeon7744 '')})")
 
 sponsors_text = '\n'.join(lines) if lines else '暂无赞助者'
 

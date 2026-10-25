@@ -331,7 +331,7 @@ def run_server():
     gate = billing.check_access("free", "tool_call")
     if not gate["allowed"]:
         print(f"❌ {gate['reason']}")
-        print(f"   企业定制/赞赏入口：{gate.get('upgrade_url', 'https://afdian.com/@Zeon7744')}")
+        print(f"   企业定制/赞赏入口：{gate.get('upgrade_url', 'https://mbd.pub/@Zeon7744
         sys.exit(1)
     """运行 MCP 服务器"""
     if not MCP_AVAILABLE:

@@ -1,29 +1,29 @@
 #!/bin/bash
-# 更新爱发电赞助者名单和短剧项目展示
+# 更新面包多 Pay赞助者名单和短剧项目展示
 
-AFDIAN_USER_ID="0c59dda8a1bb11f19b9552540025c377"
-AFDIAN_TOKEN="${AFDIAN_TOKEN}"
+MBD_APP_ID="0c59dda8a1bb11f19b9552540025c377"
+MBD_API_KEY="${MBD_API_KEY}"
 
-# 如果没有TOKEN，跳过爱发电更新
-if [ -z "$AFDIAN_TOKEN" ]; then
-    echo "Warning: AFDIAN_TOKEN not set, skipping sponsor update"
-    AFDIAN_ERROR=true
+# 如果没有TOKEN，跳过面包多 Pay更新
+if [ -z "$MBD_API_KEY" ]; then
+    echo "Warning: MBD_API_KEY not set, skipping sponsor update"
+    mbd_ERROR=true
 else
     # 获取时间戳
     TS=$(date +%s)
     PARAMS='{"page":1}'
-    SIGN=$(echo -n "${AFDIAN_TOKEN}${PARAMS}${TS}${AFDIAN_USER_ID}" | md5sum | cut -d' ' -f1)
+    SIGN=$(echo -n "${MBD_API_KEY}${PARAMS}${TS}${MBD_APP_ID}" | md5sum | cut -d' ' -f1)
 
-    # 调用爱发电API
-    curl -s -X POST "https://afdian.net/api/open/query-sponsor" \
+    # 调用面包多 PayAPI
+    curl -s -X POST "https://mbd.pub/@Zeon7744 \
       -H "Content-Type: application/json" \
-      -d "{\"user_id\": \"${AFDIAN_USER_ID}\", \"params\": \"${PARAMS}\", \"ts\": ${TS}, \"sign\": \"${SIGN}\"}" \
-      > /tmp/afdian_resp.json
+      -d "{\"user_id\": \"${MBD_APP_ID}\", \"params\": \"${PARAMS}\", \"ts\": ${TS}, \"sign\": \"${SIGN}\"}" \
+      > /tmp/mbd_resp.json
 
     # 检查响应
-    if [ ! -s /tmp/afdian_resp.json ]; then
-        echo "Error: Empty response from Afdian API"
-        AFDIAN_ERROR=true
+    if [ ! -s /tmp/mbd_resp.json ]; then
+        echo "Error: Empty response from mbd API"
+        mbd_ERROR=true
     fi
 fi
 
@@ -34,13 +34,13 @@ import re
 import os
 import glob
 
-# 读取爱发电响应（如果存在）
+# 读取面包多 Pay响应（如果存在）
 sponsors_text = '暂无赞助者'
-afdian_error = os.environ.get('AFDIAN_ERROR', 'false') == 'true'
+mbd_error = os.environ.get('mbd_ERROR', 'false') == 'true'
 
-if not afdian_error and os.path.exists('/tmp/afdian_resp.json'):
+if not mbd_error and os.path.exists('/tmp/mbd_resp.json'):
     try:
-        with open('/tmp/afdian_resp.json') as f:
+        with open('/tmp/mbd_resp.json') as f:
             content = f.read().strip()
             if content:
                 data = json.loads(content)
@@ -49,7 +49,7 @@ if not afdian_error and os.path.exists('/tmp/afdian_resp.json'):
                     sponsor_lines = []
                     for s in sponsors[:20]:
                         u = s.get('user', {})
-                        sponsor_lines.append(f"- [{u.get('name', '匿名')}](https://afdian.net/u/{u.get('user_id', '')})")
+                        sponsor_lines.append(f"- [{u.get('name', '匿名')}](https://mbd.pub/@Zeon7744 '')})")
                     sponsors_text = '\n'.join(sponsor_lines) if sponsor_lines else '暂无赞助者'
                     print(f"Updated {len(sponsors)} sponsors")
                 else:
